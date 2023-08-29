@@ -6,10 +6,10 @@ modId="rot" #mandatory
 version="0.1.0" #mandatory
 displayName="Relics of Time" #mandatory
 displayURL="§9Discord: https://discord.gg/Xxx3n6Xw" #optional
-#logoFile=".png" #optional
+logoFile="logo.png" #optional
 credits="Phoillows, SennaHN" #optional
 authors="Gibblygjabble" #optional
-description='''[DESCRIPTION MISSING]'''
+description='''Relics of Time allows you to revive prehistoric animals and plants using machinery.'''
 [[dependencies.rot]] #optional
     modId="geckolib3" #mandatory
     mandatory=true #mandatory
