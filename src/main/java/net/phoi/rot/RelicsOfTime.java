@@ -22,11 +22,12 @@ public class RelicsOfTime {
     public RelicsOfTime() {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
-        ItemRegistry.ITEM.register(modEventBus);  // Register items
         EntityRegistry.ENTITY_TYPE.register(modEventBus);  // Register entities
+        ItemRegistry.ITEM.register(modEventBus);  // Register items
+
+        BlockRegistry.BLOCK.register(modEventBus);  // Register blocks
 
         modEventBus.addListener(this::commonSetup);  // Register the commonSetup method for modloading
-
         MinecraftForge.EVENT_BUS.register(this);  // Register ourselves for server and other game events we are interested in
     }
 

@@ -1,4 +1,12 @@
 {
+  "block.rot.foozia": "Foozia",
+  "block.rot.dillhoffia": "Dillhoffia",
+  "block.rot.archaeosigillaria": "Archaeosigillaria",
+  "block.rot.vaccinium": "Vaccinium",
+  "block.rot.sarracenia": "Sarracenia",
+  "block.rot.horsetail": "Horsetail",
+  "block.rot.dna_analyzer": "DNA Analyzer",
+
   "item.rot.furcacauda_spawn_egg": "Furcacauda Spawn Egg",
   "item.rot.furcacauda_bucket": "Bucket of Furcacauda",
 

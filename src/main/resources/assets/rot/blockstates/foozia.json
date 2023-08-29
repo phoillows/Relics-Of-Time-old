@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "half=lower": {
+      "model": "rot:block/foozia_bottom"
+    },
+    "half=upper": {
+      "model": "rot:block/foozia_top"
+    }
+  }
+}

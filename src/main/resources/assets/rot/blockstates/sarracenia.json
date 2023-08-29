@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "half=lower": {
+      "model": "rot:block/sarracenia_bottom"
+    },
+    "half=upper": {
+      "model": "rot:block/sarracenia_top"
+    }
+  }
+}
