@@ -10,8 +10,7 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import net.phoi.rot.RelicsOfTime;
-import net.phoi.rot.level.item.DNABottleItem;
-import net.phoi.rot.level.item.ModTabs;
+import net.phoi.rot.level.item.*;
 
 import static net.phoi.rot.registry.BlockRegistry.*;
 import static net.phoi.rot.registry.EntityRegistry.*;
