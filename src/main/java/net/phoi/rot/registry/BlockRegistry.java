@@ -14,7 +14,6 @@ public class BlockRegistry {
 
     public static final RegistryObject<Block> DNA_ANALYZER = BLOCK.register("dna_analyzer", () -> new DnaAnaylzerBlock(BlockBehaviour.Properties.of(Material.METAL).strength(3.0F, 9.0F).sound(SoundType.METAL).requiresCorrectToolForDrops()));
 
-    // Plants
     public static final RegistryObject<Block> FOOZIA = BLOCK.register("foozia", () -> new DoublePlantBlock(BlockBehaviour.Properties.of(Material.REPLACEABLE_PLANT).noCollission().instabreak().sound(SoundType.GRASS)));
     public static final RegistryObject<Block> DILLHOFFIA = BLOCK.register("dillhoffia", () -> new TallGrassBlock(BlockBehaviour.Properties.copy(FOOZIA.get())));
     public static final RegistryObject<Block> ARCHAEOSIGLILLARIA = BLOCK.register("archaeosigillaria", () -> new TallGrassBlock(BlockBehaviour.Properties.copy(FOOZIA.get())));

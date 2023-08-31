@@ -14,5 +14,6 @@ public class CommonEvents {
     @SubscribeEvent
     public static void entityAttributes(EntityAttributeCreationEvent event) {
         event.put(FURCACAUDA.get(), Furcacauda.createAttributes().build());
+        event.put(CONCAVENATOR.get(), Concavenator.createAttributes().build());
     }
 }

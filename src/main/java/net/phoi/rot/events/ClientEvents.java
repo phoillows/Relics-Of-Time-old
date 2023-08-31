@@ -15,5 +15,6 @@ public class ClientEvents {
     @SubscribeEvent
     public static void entityRenderers(EntityRenderersEvent.RegisterRenderers event) {
         event.registerEntityRenderer(FURCACAUDA.get(), FurcacaudaRenderer::new);
+        event.registerEntityRenderer(CONCAVENATOR.get(), ConcavenatorRenderer::new);
     }
 }

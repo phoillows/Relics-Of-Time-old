@@ -8,9 +8,17 @@
   "block.rot.dna_analyzer": "DNA Analyzer",
 
   "item.rot.furcacauda_spawn_egg": "Furcacauda Spawn Egg",
+  "item.rot.concavenator_spawn_egg": "Concavenator Spawn Egg",
   "item.rot.furcacauda_bucket": "Bucket of Furcacauda",
+  "item.rot.dna_bottle": "DNA Bottle",
 
   "entity.rot.furcacauda": "Furcacauda",
+  "entity.rot.concavenator": "Concavenator",
 
-  "itemGroup.relics_of_time": "Relics of Time"
+  "itemGroup.relics_of_time": "Relics of Time",
+
+  "subtitles.entity.concavenator.ambient": "Concavenator roars",
+  "subtitles.entity.concavenator.hurt": "Concavenator hurts",
+  "subtitles.entity.concavenator.death": "Concavenator dies",
+  "subtitles.entity.concavenator.call": "Concavenator calls"
 }

@@ -1,0 +1,25 @@
+{
+  "entity.concavenator.ambient": {
+    "subtitle": "subtitles.entity.concavenator.ambient",
+    "sounds": [
+      "rot:entity/concav/concavenator_idle1",
+      "rot:entity/concav/concavenator_idle2",
+      "rot:entity/concav/concavenator_idle3"
+    ]
+  },
+  "entity.concavenator.hurt": {
+    "subtitle": "subtitles.entity.concavenator.hurt",
+    "sounds": [
+      "rot:entity/concav/concavenator_hurt1",
+      "rot:entity/concav/concavenator_hurt2"
+    ]
+  },
+  "entity.concavenator.death": {
+    "subtitle": "subtitles.entity.concavenator.death",
+    "sounds": ["rot:entity/concav/concavenator_death" ]
+  },
+  "entity.concavenator.call": {
+    "subtitle": "subtitles.entity.concavenator.call",
+    "sounds": [ "rot:entity/concav/concavenator_call" ]
+  }
+}

@@ -12,4 +12,5 @@ public class EntityRegistry {
     public static final DeferredRegister<EntityType<?>> ENTITY_TYPE = DeferredRegister.create(ForgeRegistries.ENTITY_TYPES, RelicsOfTime.MODID);
 
     public static final RegistryObject<EntityType<Furcacauda>> FURCACAUDA = ENTITY_TYPE.register("furcacauda", () -> EntityType.Builder.of(Furcacauda::new, MobCategory.WATER_CREATURE).sized(0.3F, 0.3F).build(RelicsOfTime.MODID + "furcacauda"));
+    public static final RegistryObject<EntityType<Concavenator>> CONCAVENATOR = ENTITY_TYPE.register("concavenator", () -> EntityType.Builder.of(Concavenator::new, MobCategory.CREATURE).sized(1.4F, 2.1F).build(RelicsOfTime.MODID + "concavenator"));
 }
