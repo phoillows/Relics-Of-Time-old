@@ -16,7 +16,7 @@
   },
   "entity.concavenator.death": {
     "subtitle": "subtitles.entity.concavenator.death",
-    "sounds": ["rot:entity/concav/concavenator_death" ]
+    "sounds": [ "rot:entity/concav/concavenator_death" ]
   },
   "entity.concavenator.call": {
     "subtitle": "subtitles.entity.concavenator.call",

@@ -20,6 +20,11 @@ public class ItemRegistry {
     public static final DeferredRegister<Item> ITEM = DeferredRegister.create(ForgeRegistries.ITEMS, RelicsOfTime.MODID);
 
     public static final RegistryObject<Item> DNA_ANALYZER_ITEM = ITEM.register("dna_analyzer", () -> new BlockItem(DNA_ANALYZER.get(), new Item.Properties().tab(ModTabs.RELICS_OF_TIME)));
+    public static final RegistryObject<Item> DNA_CENTRIFUGE_ITEM = ITEM.register("dna_centrifuge", () -> new BlockItem(DNA_CENTRIFUGE.get(), new Item.Properties().tab(ModTabs.RELICS_OF_TIME)));
+    public static final RegistryObject<Item> AMBER_GLASS_ITEM = ITEM.register("amber_glass", () -> new BlockItem(AMBER_GLASS.get(), new Item.Properties().tab(ModTabs.RELICS_OF_TIME)));
+    public static final RegistryObject<Item> AMBER_ORE_ITEM = ITEM.register("amber_ore", () -> new BlockItem(AMBER_ORE.get(), new Item.Properties().tab(ModTabs.RELICS_OF_TIME)));
+
+    public static final RegistryObject<Item> AMBER = ITEM.register("amber", () -> new Item(new Item.Properties().tab(ModTabs.RELICS_OF_TIME)));
 
     public static final RegistryObject<Item> FOOZIA_ITEM = ITEM.register("foozia", () -> new BlockItem(FOOZIA.get(), new Item.Properties().tab(ModTabs.RELICS_OF_TIME)));
     public static final RegistryObject<Item> DILLHOFFIA_ITEM = ITEM.register("dillhoffia", () -> new BlockItem(DILLHOFFIA.get(), new Item.Properties().tab(ModTabs.RELICS_OF_TIME)));
