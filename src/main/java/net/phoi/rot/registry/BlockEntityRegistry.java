@@ -11,4 +11,5 @@ public class BlockEntityRegistry {
     public static final DeferredRegister<BlockEntityType<?>> BLOCK_ENTITY = DeferredRegister.create(ForgeRegistries.BLOCK_ENTITY_TYPES, RelicsOfTime.MODID);
 
     public static final RegistryObject<BlockEntityType<DnaAnaylzerBlockEntity>> DNA_ANAYLZER = BLOCK_ENTITY.register("dna_anaylzer", () -> BlockEntityType.Builder.of(DnaAnaylzerBlockEntity::new, BlockRegistry.DNA_ANALYZER.get()).build(null));
+    public static final RegistryObject<BlockEntityType<DnaCentrifugeBlockEntity>> DNA_CENTRIFUGE = BLOCK_ENTITY.register("dna_centrifuge", () -> BlockEntityType.Builder.of(DnaCentrifugeBlockEntity::new, BlockRegistry.DNA_CENTRIFUGE.get()).build(null));
 }

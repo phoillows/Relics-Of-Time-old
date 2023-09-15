@@ -1,12 +1,12 @@
 {
   "parent": "block/cube",
   "textures": {
-    "down": "rot:block/iron_block",
-    "east": "rot:block/iron_block",
+    "down": "rot:block/dna_analyzer_bottom",
+    "east": "rot:block/dna_analyzer_side",
     "north": "rot:block/dna_analyzer_front",
-    "south": "rot:block/iron_block",
+    "south": "rot:block/dna_analyzer_back",
     "up": "rot:block/dna_analyzer_top",
-    "west": "rot:block/iron_block",
-    "particle": "rot:block/iron_block"
+    "west": "rot:block/dna_analyzer_side",
+    "particle": "rot:block/dna_analyzer_side"
   }
 }

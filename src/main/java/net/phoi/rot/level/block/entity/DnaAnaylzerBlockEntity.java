@@ -14,14 +14,14 @@ import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
-import net.phoi.rot.client.screen.DnaAnaylzerMenu;
+import net.phoi.rot.client.gui.inventory.DnaAnaylzerMenu;
 import net.phoi.rot.registry.BlockEntityRegistry;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 public class DnaAnaylzerBlockEntity extends BlockEntity implements MenuProvider {
     private LazyOptional<IItemHandler> lazyItemHandler = LazyOptional.empty();
-    private final ItemStackHandler itemHandler = new ItemStackHandler(3) {
+    private final ItemStackHandler itemHandler = new ItemStackHandler(5) {
         @Override
         protected void onContentsChanged(int slot) {
             setChanged();
@@ -34,7 +34,7 @@ public class DnaAnaylzerBlockEntity extends BlockEntity implements MenuProvider 
 
     @Override
     public Component getDisplayName() {
-        return Component.translatable("gui.rot.dna_analyzer");
+        return Component.literal("");
     }
 
     @Nullable

@@ -3,6 +3,7 @@
   "values": [
     "rot:dna_analyzer",
     "rot:dna_centrifuge",
-    "rot:amber_ore"
+    "rot:amber_ore",
+    "rot:ammonite_fossil_path"
   ]
 }
