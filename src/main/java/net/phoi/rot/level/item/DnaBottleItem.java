@@ -3,17 +3,16 @@ package net.phoi.rot.level.item;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
-public class DNABottleItem extends Item {
+public class DnaBottleItem extends Item {
     private final String text;
 
-    public DNABottleItem(String text, Properties properties) {
+    public DnaBottleItem(String text, Properties properties) {
         super(properties);
         this.text = text;
     }

@@ -26,4 +26,7 @@ public class BlockRegistry {
     public static final RegistryObject<Block> VACCINIUM = BLOCK.register("vaccinium", () -> new TallGrassBlock(BlockBehaviour.Properties.copy(FOOZIA.get())));
     public static final RegistryObject<Block> SARRACENIA = BLOCK.register("sarracenia", () -> new DoublePlantBlock(BlockBehaviour.Properties.copy(FOOZIA.get())));
     public static final RegistryObject<Block> HORSETAIL = BLOCK.register("horsetail", () -> new TallGrassBlock(BlockBehaviour.Properties.copy(FOOZIA.get())));
+    public static final RegistryObject<Block> FLORISSANTIA = BLOCK.register("florissantia", () -> new TallGrassBlock(BlockBehaviour.Properties.copy(FOOZIA.get())));
+
+    public static final RegistryObject<Block> CONCAVENATOR_EGG = BLOCK.register("concavenator_egg", () -> new ConcavenatorEggBlock(BlockBehaviour.Properties.of(Material.EGG, MaterialColor.COLOR_ORANGE).strength(0.5F).sound(SoundType.METAL).noOcclusion()));
 }

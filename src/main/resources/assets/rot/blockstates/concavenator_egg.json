@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "eggs=1": {
+      "model": "rot:block/concavenator_egg"
+    },
+    "eggs=2": {
+      "model": "rot:block/two_concavenator_eggs"
+    },
+    "eggs=3": {
+      "model": "rot:block/three_concavenator_eggs"
+    }
+  }
+}

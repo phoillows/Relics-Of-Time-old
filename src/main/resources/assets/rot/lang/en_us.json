@@ -5,11 +5,13 @@
   "block.rot.vaccinium": "Vaccinium",
   "block.rot.sarracenia": "Sarracenia",
   "block.rot.horsetail": "Horsetail",
+  "block.rot.florissantia": "Florissantia",
   "block.rot.dna_analyzer": "DNA Analyzer",
   "block.rot.dna_centrifuge": "DNA Centrifuge",
   "block.rot.amber_ore": "Amber Ore",
   "block.rot.amber_glass": "Amber Glass",
   "block.rot.ammonite_fossil_path": "Ammonite Fossil Path",
+  "block.rot.concavenator_egg": "Concavenator Egg",
 
   "item.rot.furcacauda_spawn_egg": "Furcacauda Spawn Egg",
   "item.rot.concavenator_spawn_egg": "Concavenator Spawn Egg",

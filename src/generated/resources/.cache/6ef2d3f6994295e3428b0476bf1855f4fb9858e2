@@ -1,4 +1,4 @@
-// 1.19.2	2023-09-15T11:15:46.413784	Item Models: rot
+// 1.19.2	2023-09-15T16:28:31.8147486	Item Models: rot
 cee045daa42fdce5dcb04627b8e55e14bdd98de5 assets/rot/models/item/amber.json
 f84bbc69c52f7e120cb98828384fea917a639db1 assets/rot/models/item/amber_ore.json
 2f150d6ae4ddda3aa06fd8cc7d97d7f40ae5e8a3 assets/rot/models/item/ammonite_fossil_path.json
@@ -6,6 +6,7 @@ f84bbc69c52f7e120cb98828384fea917a639db1 assets/rot/models/item/amber_ore.json
 5ad938a840443d0176dbaddfd184d6cbc208918e assets/rot/models/item/concavenator_dna.json
 63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/rot/models/item/concavenator_spawn_egg.json
 9be53228481ca1d4a0548a2494ca63752c72a2c5 assets/rot/models/item/dillhoffia_dna.json
+a407f6e1f5f29ddfb546bd1dcaf88a03dc41f813 assets/rot/models/item/florissantia_dna.json
 90b3555dac3f5c396c5f1272e158964c8944d7e7 assets/rot/models/item/foozia_dna.json
 b3c084de6b9796e6ba6f6dd7e0b15f04b1faf190 assets/rot/models/item/furcacauda_bucket.json
 c84e4285eb93049f027f55da9ec140cb8583a68d assets/rot/models/item/furcacauda_dna.json
