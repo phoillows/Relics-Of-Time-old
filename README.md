@@ -6,6 +6,8 @@ Gibblygjabble (Owner, Artist)
 
 SennaHN (Artist)
 
-Phoillows (Coder) 😎
+Phoillows (Java Coder) 😎
+
+DinoFazbearYT (Bedrock Coder)
 
 Kent (Animator)
