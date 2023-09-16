@@ -21,10 +21,10 @@ public class BlockRegistry {
     public static final RegistryObject<Block> AMBER_GLASS = BLOCK.register("amber_glass", () -> new GlassBlock(BlockBehaviour.Properties.copy(Blocks.GLASS).color(MaterialColor.COLOR_ORANGE)));
 
     public static final RegistryObject<Block> FOOZIA = BLOCK.register("foozia", () -> new DoublePlantBlock(BlockBehaviour.Properties.of(Material.REPLACEABLE_PLANT).noCollission().instabreak().sound(SoundType.GRASS)));
+    public static final RegistryObject<Block> SARRACENIA = BLOCK.register("sarracenia", () -> new DoublePlantBlock(BlockBehaviour.Properties.copy(FOOZIA.get())));
     public static final RegistryObject<Block> DILLHOFFIA = BLOCK.register("dillhoffia", () -> new TallGrassBlock(BlockBehaviour.Properties.copy(FOOZIA.get())));
     public static final RegistryObject<Block> ARCHAEOSIGLILLARIA = BLOCK.register("archaeosigillaria", () -> new TallGrassBlock(BlockBehaviour.Properties.copy(FOOZIA.get())));
     public static final RegistryObject<Block> VACCINIUM = BLOCK.register("vaccinium", () -> new TallGrassBlock(BlockBehaviour.Properties.copy(FOOZIA.get())));
-    public static final RegistryObject<Block> SARRACENIA = BLOCK.register("sarracenia", () -> new DoublePlantBlock(BlockBehaviour.Properties.copy(FOOZIA.get())));
     public static final RegistryObject<Block> HORSETAIL = BLOCK.register("horsetail", () -> new TallGrassBlock(BlockBehaviour.Properties.copy(FOOZIA.get())));
     public static final RegistryObject<Block> FLORISSANTIA = BLOCK.register("florissantia", () -> new TallGrassBlock(BlockBehaviour.Properties.copy(FOOZIA.get())));
 

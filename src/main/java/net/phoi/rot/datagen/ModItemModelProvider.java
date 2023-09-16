@@ -19,25 +19,31 @@ public class ModItemModelProvider extends ItemModelProvider {
 
     @Override
     protected void registerModels() {
-        simpleItem(AMBER);
-        simpleItem(PLANT_FOSSIL);
-        simpleItem(MESOZOIC_FOSSIL);
-        simpleItem(PALEOZOIC_FOSSIL);
-        simpleItem(FURCACAUDA_BUCKET);
-
-        spawnEggItem(FURCACAUDA_SPAWN_EGG);
-        spawnEggItem(CONCAVENATOR_SPAWN_EGG);
+        genericItem(AMBER);
+        genericItem(PLANT_FOSSIL);
+        genericItem(MESOZOIC_FOSSIL);
+        genericItem(PALEOZOIC_FOSSIL);
+        genericItem(FURCACAUDA_BUCKET);
+        spawnEgg(FURCACAUDA_SPAWN_EGG);
+        spawnEgg(CONCAVENATOR_SPAWN_EGG);
 
         blockItem(AMBER_ORE_ITEM);
+        blockItem(AMBER_GLASS_ITEM);
         blockItem(AMMONITE_FOSSIL_PATH_ITEM);
+        texturedBlockItem(DILLHOFFIA_ITEM);
+        texturedBlockItem(ARCHAEOSIGLILLARIA_ITEM);
+        texturedBlockItem(VACCINIUM_ITEM);
+        texturedBlockItem(HORSETAIL_ITEM);
+        texturedBlockItem(FLORISSANTIA_ITEM);
+
         for (RegistryObject<Item> item : ItemRegistry.ITEM.getEntries()) {
             if (item.get() instanceof DnaBottleItem) {
-                simpleItem(item);
+                genericItem(item);
             }
         }
     }
 
-    private ItemModelBuilder simpleItem(RegistryObject<Item> item) {
+    private ItemModelBuilder genericItem(RegistryObject<Item> item) {
         return withExistingParent(item.getId().getPath(), new ResourceLocation("item/generated"))
                 .texture("layer0", new ResourceLocation(RelicsOfTime.MODID, "item/" + item.getId().getPath()));
     }
@@ -46,7 +52,12 @@ public class ModItemModelProvider extends ItemModelProvider {
         return withExistingParent(item.getId().getPath(), new ResourceLocation(RelicsOfTime.MODID, "block/" + item.getId().getPath()));
     }
 
-    private ItemModelBuilder spawnEggItem(RegistryObject<Item> item) {
+    private ItemModelBuilder texturedBlockItem(RegistryObject<Item> item) {
+        return withExistingParent(item.getId().getPath(), new ResourceLocation("item/generated"))
+                .texture("layer0", new ResourceLocation(RelicsOfTime.MODID, "block/" + item.getId().getPath()));
+    }
+
+    private ItemModelBuilder spawnEgg(RegistryObject<Item> item) {
         return withExistingParent(item.getId().getPath(), new ResourceLocation("item/template_spawn_egg"));
     }
 }

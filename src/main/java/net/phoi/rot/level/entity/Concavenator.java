@@ -1,6 +1,5 @@
 package net.phoi.rot.level.entity;
 
-import net.minecraft.client.Minecraft;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
@@ -58,7 +57,7 @@ public class Concavenator extends TamableAnimal implements Saddleable, Sleepable
     protected void registerGoals() {
         this.goalSelector.addGoal(0, new FloatGoal(this));
         this.goalSelector.addGoal(1, new ConcavenatorAttackGoal(this));
-        this.goalSelector.addGoal(2, new DinosaurSleepGoal(this, 500) {
+        this.goalSelector.addGoal(2, new DinosaurSleepGoal(this, 600, this.level) {
             @Override
             public boolean canUse() {
                 return !isSaddled() && super.canUse();

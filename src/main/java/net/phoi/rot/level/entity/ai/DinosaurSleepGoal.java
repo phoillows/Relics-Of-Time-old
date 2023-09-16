@@ -2,27 +2,34 @@ package net.phoi.rot.level.entity.ai;
 
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.ai.goal.Goal;
+import net.minecraft.world.level.Level;
 import net.phoi.rot.level.entity.Sleepable;
 
 public class DinosaurSleepGoal extends Goal {
     private Sleepable dino;
+    private Level level;
     private final int sleepAmount;
     private int sleepTimer = 0;
 
-    public DinosaurSleepGoal(Sleepable dino, int sleepAmount) {
+    public DinosaurSleepGoal(Sleepable dino, int sleepAmount, Level level) {
         super();
         this.dino = dino;
         this.sleepAmount = sleepAmount;
+        this.level = level;
     }
 
     @Override
     public boolean canUse() {
-        return RandomSource.create().nextInt(200) == 1;
+        if (this.level.isDay()) {
+            return RandomSource.create().nextInt(600) == 1;
+        } else {
+            return RandomSource.create().nextInt(400) == 1;
+        }
     }
 
     @Override
     public boolean canContinueToUse() {
-        if (sleepTimer >= sleepAmount) {
+        if (this.sleepTimer >= this.sleepAmount) {
             stop();
             return false;
         } else {
@@ -33,21 +40,21 @@ public class DinosaurSleepGoal extends Goal {
     @Override
     public void tick() {
         super.tick();
-        sleepTimer++;
-        if (sleepTimer >= sleepAmount) {
+        this.sleepTimer++;
+        if (this.sleepTimer >= this.sleepAmount) {
             stop();
         }
     }
 
     @Override
     public void start() {
-        sleepTimer = 0;
-        dino.setSleeping(true);
+        this.sleepTimer = 0;
+        this.dino.setSleeping(true);
     }
 
     @Override
     public void stop() {
-        sleepTimer = 0;
-        dino.setSleeping(false);
+        this.sleepTimer = 0;
+        this.dino.setSleeping(false);
     }
 }

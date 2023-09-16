@@ -3,10 +3,10 @@ package net.phoi.rot.datagen;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.world.level.block.Block;
 import net.minecraftforge.client.model.generators.BlockStateProvider;
+import net.minecraftforge.client.model.generators.ConfiguredModel;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.registries.RegistryObject;
 import net.phoi.rot.RelicsOfTime;
-import net.phoi.rot.registry.BlockRegistry;
 import static net.phoi.rot.registry.BlockRegistry.*;
 
 public class ModBlockStateProvider extends BlockStateProvider {
@@ -16,11 +16,26 @@ public class ModBlockStateProvider extends BlockStateProvider {
 
     @Override
     protected void registerStatesAndModels() {
-        basicBlock(AMBER_ORE);
-        basicBlock(AMMONITE_FOSSIL_PATH);
+        genericBlock(AMBER_ORE);
+        genericBlock(AMMONITE_FOSSIL_PATH);
+        translucentBlock(AMBER_GLASS);
+
+        crossBlock(DILLHOFFIA);
+        crossBlock(ARCHAEOSIGLILLARIA);
+        crossBlock(VACCINIUM);
+        crossBlock(HORSETAIL);
+        crossBlock(FLORISSANTIA);
     }
 
-    private void basicBlock(RegistryObject<Block> block) {
-        simpleBlock(block.get());
+    private void genericBlock(RegistryObject<Block> block) {
+        simpleBlock(block.get(), cubeAll(block.get()));
+    }
+
+    private void translucentBlock(RegistryObject<Block> block) {
+        simpleBlock(block.get(), new ConfiguredModel(models().cubeAll(block.getId().getPath(), blockTexture(block.get())).renderType("translucent")));
+    }
+
+    private void crossBlock(RegistryObject<Block> block) {
+        simpleBlock(block.get(), new ConfiguredModel(models().cross(block.getId().getPath(), blockTexture(block.get())).renderType("cutout")));
     }
 }

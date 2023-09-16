@@ -1,5 +1,17 @@
-// 1.19.2	2023-09-15T11:12:14.6427465	Block States: rot
+// 1.19.2	2023-09-15T19:49:54.6998754	Block States: rot
+705ca8a887cd3ce29c4bbb5a68eb0e767c8b020a assets/rot/blockstates/amber_glass.json
 31c479b45f3747a4def17025a3705bbb9f766be2 assets/rot/blockstates/amber_ore.json
 bb3b812cf64af8432306c938e73075d3bfb7ed05 assets/rot/blockstates/ammonite_fossil_path.json
+396eaeb871ddc54ded4928c8644c822f2e715337 assets/rot/blockstates/archaeosigillaria.json
+0de2caa7e81ac2e0fe65db8e7be5b405cd0fd566 assets/rot/blockstates/dillhoffia.json
+635b4a89f7020a019233c89eb2b3b96924212e87 assets/rot/blockstates/florissantia.json
+f4bbea075659fec5fa47c1ff58ca8d55f318ca38 assets/rot/blockstates/horsetail.json
+a9c343a42d12798c3782b179a1f570fd8be302bf assets/rot/blockstates/vaccinium.json
+6b009f6a96ad7833a120e1d93833efce599312de assets/rot/models/block/amber_glass.json
 7b40e24252af3ee093097dca3a327d5aa0c94dc2 assets/rot/models/block/amber_ore.json
 f7e23b9a541d3d3827f4a7a486a7684edf30442c assets/rot/models/block/ammonite_fossil_path.json
+923ae19010bd864cc52a1033e954c2cf394200b7 assets/rot/models/block/archaeosigillaria.json
+e46c000c7df8ac40d475a879c1685712a46858ae assets/rot/models/block/dillhoffia.json
+2a86b87aaa36797511ac94f419910210ad8dd6ff assets/rot/models/block/florissantia.json
+dec1487aab0d3c5a273c80a5ac142577d46747bf assets/rot/models/block/horsetail.json
+a95b571244128d449f42e38d26a91f1f724fc539 assets/rot/models/block/vaccinium.json

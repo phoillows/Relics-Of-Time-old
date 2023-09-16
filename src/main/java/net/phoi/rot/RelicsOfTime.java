@@ -1,6 +1,8 @@
 package net.phoi.rot;
 
 import com.mojang.logging.LogUtils;
+import net.minecraft.world.item.CreativeModeTab;
+import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -17,6 +19,12 @@ import org.slf4j.Logger;
 public class RelicsOfTime {
     public static final String MODID = "rot";
     public static final Logger LOGGER = LogUtils.getLogger();
+    public static final CreativeModeTab ROT_TAB = new CreativeModeTab("relics_of_time") {
+        @Override
+        public ItemStack makeIcon() {
+            return new ItemStack(ItemRegistry.AMBER.get());
+        }
+    };
 
     public RelicsOfTime() {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
