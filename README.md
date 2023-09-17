@@ -6,9 +6,11 @@ Gibblygjabble (Owner, Artist)
 
 SennaHN (Artist)
 
+Tellioari (Artist)
+
 Phoillows (Java Coder) 😎
 
-DinoFazbear (Bedrock Coder)
+DinoFazbearYT (Bedrock Coder)
 
 Kent (Animator)
 
@@ -18,6 +20,6 @@ Kent (Animator)
 
 The code in this Github repo is licensed under the MIT License. Read the [LICENSE](LICENSE.md) file for more details.
 
-### LICENSE for Models, animations, and textures:
+### LICENSE for Assets:
 
-The models, animations, and textures in this repo are not covered by the MIT License. You are not allowed to use, modify, or claim any assets (models, animations, textures) in this repository as your own.
+The assets (models, animations, textures, etc) in this repo are not covered by the MIT License. You are not allowed to use, modify, or claim any assets in this repository as your own.
