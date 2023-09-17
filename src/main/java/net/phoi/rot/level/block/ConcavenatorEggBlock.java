@@ -5,6 +5,7 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.BlockGetter;
@@ -41,6 +42,13 @@ public class ConcavenatorEggBlock extends Block {
             return InteractionResult.sidedSuccess(level.isClientSide);
         }
         return super.use(state, level, pos, player, hand, blockHitResult);
+    }
+
+    @Override
+    public void fallOn(Level level, BlockState state, BlockPos pos, Entity entity, float p_152430_) {
+        level.destroyBlock(pos, false, entity);
+        level.playSound((Player) entity, pos, SoundEvents.TURTLE_EGG_BREAK, SoundSource.BLOCKS, 1.0F, 1.0F);
+        super.fallOn(level, state, pos, entity, p_152430_);
     }
 
     @Override

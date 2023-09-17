@@ -9,6 +9,7 @@ import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.registries.RegistryObject;
 import net.phoi.rot.RelicsOfTime;
 import net.phoi.rot.level.item.DnaBottleItem;
+import net.phoi.rot.level.item.GenericItem;
 import net.phoi.rot.registry.ItemRegistry;
 import static net.phoi.rot.registry.ItemRegistry.*;
 
@@ -19,14 +20,14 @@ public class ModItemModelProvider extends ItemModelProvider {
 
     @Override
     protected void registerModels() {
-        genericItem(AMBER);
-        genericItem(PLANT_FOSSIL);
-        genericItem(MESOZOIC_FOSSIL);
-        genericItem(PALEOZOIC_FOSSIL);
+        for (RegistryObject<Item> item : ItemRegistry.ITEM.getEntries()) {
+            if (item.get() instanceof GenericItem) {
+                genericItem(item);
+            }
+        }
         genericItem(FURCACAUDA_BUCKET);
         spawnEgg(FURCACAUDA_SPAWN_EGG);
         spawnEgg(CONCAVENATOR_SPAWN_EGG);
-
         blockItem(AMBER_ORE_ITEM);
         blockItem(AMBER_GLASS_ITEM);
         blockItem(AMMONITE_FOSSIL_PATH_ITEM);
@@ -35,12 +36,6 @@ public class ModItemModelProvider extends ItemModelProvider {
         texturedBlockItem(VACCINIUM_ITEM);
         texturedBlockItem(HORSETAIL_ITEM);
         texturedBlockItem(FLORISSANTIA_ITEM);
-
-        for (RegistryObject<Item> item : ItemRegistry.ITEM.getEntries()) {
-            if (item.get() instanceof DnaBottleItem) {
-                genericItem(item);
-            }
-        }
     }
 
     private ItemModelBuilder genericItem(RegistryObject<Item> item) {

@@ -19,7 +19,6 @@ public class ModBlockStateProvider extends BlockStateProvider {
         genericBlock(AMBER_ORE);
         genericBlock(AMMONITE_FOSSIL_PATH);
         translucentBlock(AMBER_GLASS);
-
         crossBlock(DILLHOFFIA);
         crossBlock(ARCHAEOSIGLILLARIA);
         crossBlock(VACCINIUM);
