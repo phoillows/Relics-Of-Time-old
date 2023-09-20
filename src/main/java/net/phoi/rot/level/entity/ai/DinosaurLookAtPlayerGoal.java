@@ -7,8 +7,8 @@ import net.minecraft.world.entity.player.Player;
 public class DinosaurLookAtPlayerGoal extends LookAtPlayerGoal {
     private Mob mob;
 
-    public DinosaurLookAtPlayerGoal(Mob mob, Class<? extends Player> player, float range) {
-        super(mob, player, range);
+    public DinosaurLookAtPlayerGoal(Mob mob) {
+        super(mob, Player.class, 6.0F);
         this.mob =  mob;
     }
 

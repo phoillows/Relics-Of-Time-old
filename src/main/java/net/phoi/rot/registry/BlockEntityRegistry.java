@@ -12,4 +12,7 @@ public class BlockEntityRegistry {
 
     public static final RegistryObject<BlockEntityType<DnaAnaylzerBlockEntity>> DNA_ANAYLZER = BLOCK_ENTITY.register("dna_anaylzer", () -> BlockEntityType.Builder.of(DnaAnaylzerBlockEntity::new, BlockRegistry.DNA_ANALYZER.get()).build(null));
     public static final RegistryObject<BlockEntityType<DnaCentrifugeBlockEntity>> DNA_CENTRIFUGE = BLOCK_ENTITY.register("dna_centrifuge", () -> BlockEntityType.Builder.of(DnaCentrifugeBlockEntity::new, BlockRegistry.DNA_CENTRIFUGE.get()).build(null));
+
+    public static final RegistryObject<BlockEntityType<TemplateSignBlockEntity>> SIGN_BLOCK_ENTITY = BLOCK_ENTITY.register("sign_block_entity", () -> BlockEntityType.Builder.of(TemplateSignBlockEntity::new,
+            BlockRegistry.ARCHAEOPTERIS_SIGN.get(), BlockRegistry.ARCHAEOPTERIS_WALL_SIGN.get()).build(null));
 }

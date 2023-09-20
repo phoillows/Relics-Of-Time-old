@@ -1,8 +1,15 @@
-// 1.19.2	2023-09-15T19:48:44.043093	Item Models: rot
+// 1.19.2	2023-09-20T18:25:10.1883717	Item Models: rot
 cee045daa42fdce5dcb04627b8e55e14bdd98de5 assets/rot/models/item/amber.json
 a7c140919a115f2d6d35dcf16089c6064cc3002e assets/rot/models/item/amber_glass.json
 f84bbc69c52f7e120cb98828384fea917a639db1 assets/rot/models/item/amber_ore.json
 2f150d6ae4ddda3aa06fd8cc7d97d7f40ae5e8a3 assets/rot/models/item/ammonite_fossil_path.json
+50d7bc1c809cc1c60948e13c0cca2da954594210 assets/rot/models/item/archaeopteris_door.json
+618736505d4d50333a47e7396eecf5c3291aa474 assets/rot/models/item/archaeopteris_leaves.json
+c801f6be3c6203aa1040737a996f525485a51cca assets/rot/models/item/archaeopteris_log.json
+10a566faf760d3e30732b8e984c02e6e183e8f4e assets/rot/models/item/archaeopteris_planks.json
+5ba15d048cbbc783fac878ee48fdbc185fc3e2c4 assets/rot/models/item/archaeopteris_sapling.json
+87ec92da702eae6f7edd6b59cab248d38df41208 assets/rot/models/item/archaeopteris_sign.json
+1456e44e301d6cf4eb672f9a519e68d140e8c8a9 assets/rot/models/item/archaeopteris_trapdoor.json
 207c82b7225f05ad161d7fddfa3e3b37f797bfc6 assets/rot/models/item/archaeosigillaria.json
 74e409c9d55976ab53bdd3662ddc4ccb5cf5ce36 assets/rot/models/item/archaeosigillaria_dna.json
 5ad938a840443d0176dbaddfd184d6cbc208918e assets/rot/models/item/concavenator_dna.json
@@ -20,6 +27,9 @@ a19cdeae5133dde64fdb72a1fdeb59b4f9c514b3 assets/rot/models/item/horsetail.json
 5fe6d9f1fd0a0002a96523e6fc7c86a3bf54f9f9 assets/rot/models/item/mesozoic_fossil.json
 7d862403bc1807271779890cda7a17674da7f187 assets/rot/models/item/paleozoic_fossil.json
 4c513b41879323170bc24992c4385a5d423fdd06 assets/rot/models/item/plant_fossil.json
+ba807792aa12d8cc5ad92f475dc46fb4895ac18e assets/rot/models/item/platyhystrix_dna.json
+63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/rot/models/item/platyhystrix_spawn_egg.json
 acd0c74e59e27d1c98a46b01a5a88b62418692d1 assets/rot/models/item/sarracenia_dna.json
+d4182c411d04527208f6b44c276c7598197f6dc2 assets/rot/models/item/stripped_archaeopteris_log.json
 0c45e0da755b757006840be9ef40454c588c1070 assets/rot/models/item/vaccinium.json
 564b9ea66648ceb17d8bf62baf9fcd3f7471f71a assets/rot/models/item/vaccinium_dna.json

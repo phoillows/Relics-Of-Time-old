@@ -15,5 +15,6 @@ public class CommonEvents {
     public static void entityAttributes(EntityAttributeCreationEvent event) {
         event.put(FURCACAUDA.get(), Furcacauda.createAttributes().build());
         event.put(CONCAVENATOR.get(), Concavenator.createAttributes().build());
+        event.put(PLATYHYSTRIX.get(), Platyhystrix.createAttributes().build());
     }
 }

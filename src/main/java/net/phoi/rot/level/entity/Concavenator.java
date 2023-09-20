@@ -42,13 +42,12 @@ import software.bernie.geckolib3.core.manager.AnimationData;
 import software.bernie.geckolib3.core.manager.AnimationFactory;
 import software.bernie.geckolib3.util.GeckoLibUtil;
 
-public class Concavenator extends TamableAnimal implements Saddleable, Sleepable, PlayerRideable, IAnimatable {
+public class Concavenator extends Dinosaur implements Saddleable, PlayerRideable, IAnimatable {
     public static final EntityDataAccessor<Boolean> IS_LEADER = SynchedEntityData.defineId(Concavenator.class, EntityDataSerializers.BOOLEAN);
     public static final EntityDataAccessor<Boolean> SADDLED = SynchedEntityData.defineId(Concavenator.class, EntityDataSerializers.BOOLEAN);
-    public static final EntityDataAccessor<Boolean> SLEEPING = SynchedEntityData.defineId(Concavenator.class, EntityDataSerializers.BOOLEAN);
     private final AnimationFactory cache = GeckoLibUtil.createFactory(this);
 
-    public Concavenator(EntityType<? extends TamableAnimal> entityType, Level level) {
+    public Concavenator(EntityType<? extends Dinosaur> entityType, Level level) {
         super(entityType, level);
         this.maxUpStep = 1.0F;
     }
@@ -57,14 +56,14 @@ public class Concavenator extends TamableAnimal implements Saddleable, Sleepable
     protected void registerGoals() {
         this.goalSelector.addGoal(0, new FloatGoal(this));
         this.goalSelector.addGoal(1, new ConcavenatorAttackGoal(this));
-        this.goalSelector.addGoal(2, new DinosaurSleepGoal(this, 600, this.level) {
+        this.goalSelector.addGoal(2, new DinosaurSleepGoal(this, 600) {
             @Override
             public boolean canUse() {
                 return !isSaddled() && super.canUse();
             }
         });
         this.goalSelector.addGoal(3, new RandomStrollGoal(this, 1.1D));
-        this.goalSelector.addGoal(4, new DinosaurLookAtPlayerGoal(this, Player.class, 6.0F));
+        this.goalSelector.addGoal(4, new DinosaurLookAtPlayerGoal(this));
         this.goalSelector.addGoal(5, new DinosaurLookAroundGoal(this));
         this.targetSelector.addGoal(3, new HurtByTargetGoal(this).setAlertOthers());
         this.targetSelector.addGoal(4, new NearestAttackableTargetGoal<>(this, Player.class, true));
@@ -91,21 +90,10 @@ public class Concavenator extends TamableAnimal implements Saddleable, Sleepable
     }
 
     @Override
-    public boolean isSleeping() {
-        return this.entityData.get(SLEEPING);
-    }
-
-    @Override
-    public void setSleeping(boolean value) {
-        this.entityData.set(SLEEPING, value);
-    }
-
-    @Override
     protected void defineSynchedData() {
         super.defineSynchedData();
         this.entityData.define(IS_LEADER, false);
         this.entityData.define(SADDLED, false);
-        this.entityData.define(SLEEPING, false);
     }
 
     @Override
@@ -113,7 +101,6 @@ public class Concavenator extends TamableAnimal implements Saddleable, Sleepable
         super.addAdditionalSaveData(nbt);
         nbt.putBoolean("leader", this.isLeader());
         nbt.putBoolean("saddled", this.isSaddled());
-        nbt.putBoolean("sleeping", this.isSleeping());
     }
 
     @Override
@@ -121,7 +108,6 @@ public class Concavenator extends TamableAnimal implements Saddleable, Sleepable
         super.readAdditionalSaveData(nbt);
         this.setLeader(nbt.getBoolean("leader"));
         this.setSaddled(nbt.getBoolean("saddled"));
-        this.setSleeping(nbt.getBoolean("sleeping"));
     }
 
     @Override
@@ -204,12 +190,6 @@ public class Concavenator extends TamableAnimal implements Saddleable, Sleepable
             RelicsOfTime.LOGGER.info("Current concavenator has been chosen as leader");
         }
         return super.finalizeSpawn(level, difficulty, spawnType, groupData, nbt);
-    }
-
-    @Override
-    public boolean hurt(DamageSource damageSource, float amount) {
-        this.setSleeping(false);
-        return super.hurt(damageSource, amount);
     }
 
     @Override

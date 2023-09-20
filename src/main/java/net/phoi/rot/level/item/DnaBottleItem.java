@@ -23,7 +23,7 @@ public class DnaBottleItem extends GenericItem {
 
     @Override
     public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> tooltip, TooltipFlag flag) {
-        tooltip.add(Component.literal("§9" + text));
+        tooltip.add(Component.literal("§9§o" + text));
         super.appendHoverText(stack, level, tooltip, flag);
     }
 }

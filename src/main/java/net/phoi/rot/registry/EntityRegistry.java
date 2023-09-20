@@ -14,4 +14,5 @@ public class EntityRegistry {
 
     public static final RegistryObject<EntityType<Furcacauda>> FURCACAUDA = ENTITY.register("furcacauda", () -> EntityType.Builder.of(Furcacauda::new, MobCategory.WATER_CREATURE).sized(0.3F, 0.3F).build(RelicsOfTime.MODID + "furcacauda"));
     public static final RegistryObject<EntityType<Concavenator>> CONCAVENATOR = ENTITY.register("concavenator", () -> EntityType.Builder.of(Concavenator::new, MobCategory.CREATURE).sized(1.4F, 2.1F).build(RelicsOfTime.MODID + "concavenator"));
+    public static final RegistryObject<EntityType<Platyhystrix>> PLATYHYSTRIX = ENTITY.register("platyhystrix", () -> EntityType.Builder.of(Platyhystrix::new, MobCategory.WATER_CREATURE).sized(0.8F, 0.55F).build(RelicsOfTime.MODID + "platyhystrix"));
 }

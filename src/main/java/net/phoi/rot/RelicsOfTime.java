@@ -1,6 +1,7 @@
 package net.phoi.rot;
 
 import com.mojang.logging.LogUtils;
+import net.minecraft.client.renderer.Sheets;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.common.MinecraftForge;
@@ -10,7 +11,7 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.event.server.ServerStartingEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
-import net.phoi.rot.level.entity.ModPaintings;
+import net.phoi.rot.level.block.ModWoodTypes;
 import net.phoi.rot.registry.*;
 import org.slf4j.Logger;
 
@@ -30,7 +31,7 @@ public class RelicsOfTime {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
         EntityRegistry.ENTITY.register(modEventBus);  // Register entities
-        ModPaintings.PAINTING.register(modEventBus);  // Register paintings
+        PaintingRegistry.PAINTING.register(modEventBus);  // Register paintings
         ItemRegistry.ITEM.register(modEventBus);  // Register items
 
         BlockRegistry.BLOCK.register(modEventBus);  // Register blocks
@@ -43,6 +44,9 @@ public class RelicsOfTime {
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {
+        event.enqueueWork(() -> {
+            Sheets.addWoodType(ModWoodTypes.ARCHAEOPTERIS);
+        });
     }
 
     // You can use SubscribeEvent and let the Event Bus discover methods to call
