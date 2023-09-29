@@ -20,12 +20,10 @@ public class ModBlockStateProvider extends BlockStateProvider {
         genericBlock(AMBER_ORE);
         genericBlock(AMMONITE_FOSSIL_PATH);
         genericBlock(ARCHAEOPTERIS_PLANKS);
+        genericBlock(ARCHAEOPTERIS_WOOD, "block/archaeopteris_log");
+        genericBlock(STRIPPED_ARCHAEOPTERIS_WOOD, "block/stripped_archaeopteris_log");
         translucentBlock(AMBER_GLASS);
-        crossBlock(DILLHOFFIA);
-        crossBlock(ARCHAEOSIGLILLARIA);
-        crossBlock(VACCINIUM);
-        crossBlock(HORSETAIL);
-        crossBlock(FLORISSANTIA);
+        crossBlock(SMALL_HORSETAIL);
         crossBlock(ARCHAEOPTERIS_SAPLING);
         cutoutBlock(ARCHAEOPTERIS_LEAVES);
         logBlock((RotatedPillarBlock)ARCHAEOPTERIS_LOG.get());
@@ -37,6 +35,10 @@ public class ModBlockStateProvider extends BlockStateProvider {
 
     private void genericBlock(RegistryObject<Block> block) {
         simpleBlock(block.get(), cubeAll(block.get()));
+    }
+
+    private void genericBlock(RegistryObject<Block> block, String texture) {
+        simpleBlock(block.get(), new ConfiguredModel(models().cubeAll(block.getId().getPath(), new ResourceLocation(RelicsOfTime.MODID, texture))));
     }
 
     private void translucentBlock(RegistryObject<Block> block) {

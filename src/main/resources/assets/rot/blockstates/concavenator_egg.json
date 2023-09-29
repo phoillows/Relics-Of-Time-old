@@ -1,13 +1,31 @@
 {
   "variants": {
-    "eggs=1": {
+    "eggs=1,cracked=0": {
       "model": "rot:block/concavenator_egg"
     },
-    "eggs=2": {
+    "eggs=1,cracked=1": {
+      "model": "rot:block/slightly_cracked_concavenator_egg"
+    },
+    "eggs=1,cracked=2": {
+      "model": "rot:block/very_cracked_concavenator_egg"
+    },
+    "eggs=2,cracked=0": {
       "model": "rot:block/two_concavenator_eggs"
     },
-    "eggs=3": {
+    "eggs=2,cracked=1": {
+      "model": "rot:block/two_slightly_cracked_concavenator_eggs"
+    },
+    "eggs=2,cracked=2": {
+      "model": "rot:block/two_very_cracked_concavenator_eggs"
+    },
+    "eggs=3,cracked=0": {
       "model": "rot:block/three_concavenator_eggs"
+    },
+    "eggs=3,cracked=1": {
+      "model": "rot:block/three_slightly_cracked_concavenator_eggs"
+    },
+    "eggs=3,cracked=2": {
+      "model": "rot:block/three_very_cracked_concavenator_eggs"
     }
   }
 }

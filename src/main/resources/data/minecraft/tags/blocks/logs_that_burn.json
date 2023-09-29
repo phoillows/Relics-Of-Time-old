@@ -2,6 +2,8 @@
   "replaces": false,
   "values": [
     "rot:archaeopteris_log",
-    "rot:stripped_archaeopteris_log"
+    "rot:archaeopteris_wood",
+    "rot:stripped_archaeopteris_log",
+    "rot:stripped_archaeopteris_wood"
   ]
 }

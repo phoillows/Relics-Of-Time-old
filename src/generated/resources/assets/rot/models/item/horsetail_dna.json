@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "rot:item/horsetail_dna"
+    "layer0": "rot:item/dna/horsetail_dna"
   }
 }

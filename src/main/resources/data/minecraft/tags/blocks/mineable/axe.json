@@ -3,9 +3,11 @@
   "values": [
     "rot:archaeopteris_planks",
     "rot:archaeopteris_log",
+    "rot:archaeopteris_wood",
     "rot:archaeopteris_door",
     "rot:archaeopteris_trapdoor",
     "rot:archaeopteris_sign",
-    "rot:stripped_archaeopteris_log"
+    "rot:stripped_archaeopteris_log",
+    "rot:stripped_archaeopteris_wood"
   ]
 }

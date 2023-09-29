@@ -8,6 +8,7 @@ import net.minecraftforge.client.model.generators.ItemModelProvider;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.registries.RegistryObject;
 import net.phoi.rot.RelicsOfTime;
+import net.phoi.rot.level.item.DnaBottleItem;
 import net.phoi.rot.level.item.GenericItem;
 import net.phoi.rot.registry.ItemRegistry;
 import static net.phoi.rot.registry.ItemRegistry.*;
@@ -21,7 +22,11 @@ public class ModItemModelProvider extends ItemModelProvider {
     protected void registerModels() {
         for (RegistryObject<Item> item : ItemRegistry.ITEM.getEntries()) {
             if (item.get() instanceof GenericItem) {
-                genericItem(item);
+                if (item.get() instanceof DnaBottleItem) {
+                    dnaBottle(item);
+                } else {
+                    genericItem(item);
+                }
             }
         }
         genericItem(FURCACAUDA_BUCKET);
@@ -30,16 +35,18 @@ public class ModItemModelProvider extends ItemModelProvider {
         spawnEgg(PLATYHYSTRIX_SPAWN_EGG);
         blockItem(AMBER_ORE_ITEM);
         blockItem(AMBER_GLASS_ITEM);
+        blockItem(DNA_ANALYZER_ITEM);
+        blockItem(DNA_CENTRIFUGE_ITEM);
         blockItem(AMMONITE_FOSSIL_PATH_ITEM);
+        blockItem(CONCAVENATOR_EGG_ITEM, "item/concavenator_egg");
         blockItem(ARCHAEOPTERIS_PLANKS_ITEM);
         blockItem(ARCHAEOPTERIS_LOG_ITEM);
         blockItem(ARCHAEOPTERIS_LEAVES_ITEM);
         blockItem(STRIPPED_ARCHAEOPTERIS_LOG_ITEM);
-        blockItem(DILLHOFFIA_ITEM, "block/dillhoffia");
-        blockItem(ARCHAEOSIGLILLARIA_ITEM, "block/archaeosigillaria");
-        blockItem(VACCINIUM_ITEM, "block/vaccinium");
-        blockItem(HORSETAIL_ITEM, "block/horsetail");
-        blockItem(FLORISSANTIA_ITEM, "block/florissantia");
+        blockItem(ARCHAEOPTERIS_WOOD_ITEM);
+        blockItem(STRIPPED_ARCHAEOPTERIS_WOOD_ITEM);
+        blockItem(SMALL_HORSETAIL_ITEM, "block/large_horsetail_top");
+        blockItem(LARGE_HORSETAIL_ITEM, "block/small_horsetail");
         blockItem(ARCHAEOPTERIS_DOOR_ITEM, "item/archaeopteris_door");
         blockItem(ARCHAEOPTERIS_SIGN, "item/archaeopteris_sign");
         blockItem(ARCHAEOPTERIS_SAPLING_ITEM, "block/archaeopteris_sapling");
@@ -49,6 +56,11 @@ public class ModItemModelProvider extends ItemModelProvider {
     private ItemModelBuilder genericItem(RegistryObject<Item> item) {
         return withExistingParent(item.getId().getPath(), new ResourceLocation("item/generated"))
                 .texture("layer0", new ResourceLocation(RelicsOfTime.MODID, "item/" + item.getId().getPath()));
+    }
+
+    private ItemModelBuilder dnaBottle(RegistryObject<Item> item) {
+        return withExistingParent(item.getId().getPath(), new ResourceLocation("item/generated"))
+                .texture("layer0", new ResourceLocation(RelicsOfTime.MODID, "item/dna/" + item.getId().getPath()));
     }
 
     private ItemModelBuilder spawnEgg(RegistryObject<Item> item) {

@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "rot:item/dna/sarracenia_dna"
+    "layer0": "rot:block/large_horsetail_top"
   }
 }

@@ -21,12 +21,13 @@ import net.phoi.rot.registry.ItemRegistry;
 
 public class ConcavenatorEggBlock extends Block {
     private static final IntegerProperty EGGS = IntegerProperty.create("eggs", 1, 3);
+    private static final IntegerProperty CRACKED = IntegerProperty.create("cracked", 0, 2);
     private static final VoxelShape ONE_EGG_SHAPE = box(3, 0, 3, 12, 8, 12);
     private static final VoxelShape MULTIPLE_EGG_SHAPE = box(1, 0, 1, 15, 8, 15);
 
     public ConcavenatorEggBlock(Properties properties) {
         super(properties);
-        this.registerDefaultState(this.getStateDefinition().any().setValue(EGGS, 1));
+        this.registerDefaultState(this.getStateDefinition().any().setValue(EGGS, 1).setValue(CRACKED, 0));
     }
 
     @Override
@@ -46,8 +47,18 @@ public class ConcavenatorEggBlock extends Block {
 
     @Override
     public void fallOn(Level level, BlockState state, BlockPos pos, Entity entity, float p_152430_) {
-        level.destroyBlock(pos, false, entity);
-        level.playSound((Player) entity, pos, SoundEvents.TURTLE_EGG_BREAK, SoundSource.BLOCKS, 1.0F, 1.0F);
+        if (state.getValue(CRACKED) < 2) {
+            level.setBlock(pos, state.setValue(CRACKED, state.getValue(CRACKED) + 1), 2);
+            level.playSound((Player) entity, pos, SoundEvents.TURTLE_EGG_CRACK, SoundSource.BLOCKS, 1.0F, 1.0F);
+        } else {
+            if (state.getValue(EGGS) > 1) {
+                level.destroyBlock(pos, false);
+                level.setBlock(pos, state.setValue(EGGS, state.getValue(EGGS) - 1).setValue(CRACKED, 0), 2);
+            } else {
+                level.destroyBlock(pos, false);
+            }
+            level.playSound((Player) entity, pos, SoundEvents.TURTLE_EGG_BREAK, SoundSource.BLOCKS, 1.0F, 1.0F);
+        }
         super.fallOn(level, state, pos, entity, p_152430_);
     }
 
@@ -58,6 +69,6 @@ public class ConcavenatorEggBlock extends Block {
 
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
-        builder.add(EGGS);
+        builder.add(EGGS, CRACKED);
     }
 }

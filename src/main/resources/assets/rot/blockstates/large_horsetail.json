@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "half=lower": {
+      "model": "rot:block/large_horsetail_bottom"
+    },
+    "half=upper": {
+      "model": "rot:block/large_horsetail_top"
+    }
+  }
+}
