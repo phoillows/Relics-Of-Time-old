@@ -1,4 +1,4 @@
-package net.phoi.rot.level.block;
+package net.phoi.rot.util;
 
 import net.minecraft.world.level.block.state.properties.WoodType;
 

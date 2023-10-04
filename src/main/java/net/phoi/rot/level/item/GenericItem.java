@@ -5,7 +5,7 @@ import net.phoi.rot.RelicsOfTime;
 
 public class GenericItem extends Item {
     public GenericItem() {
-        super(new Item.Properties().tab(RelicsOfTime.ROT_TAB));
+        super(new Item.Properties().tab(RelicsOfTime.RELICS_OF_TIME));
     }
 
     public GenericItem(Properties properties) {

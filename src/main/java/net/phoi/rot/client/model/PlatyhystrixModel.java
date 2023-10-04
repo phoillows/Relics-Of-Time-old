@@ -21,6 +21,8 @@ public class PlatyhystrixModel extends AnimatedGeoModel<Platyhystrix> {
     public ResourceLocation getTextureResource(Platyhystrix entity) {
         if (entity.isSleeping()) {
             return new ResourceLocation(RelicsOfTime.MODID, "textures/entity/platyhystrix/platyhystrix_sleeping.png");
+        } else if (entity.isDrousy()) {
+            return new ResourceLocation(RelicsOfTime.MODID, "textures/entity/platyhystrix/platyhystrix_drousy.png");
         }
         return new ResourceLocation(RelicsOfTime.MODID, "textures/entity/platyhystrix/platyhystrix.png");
     }

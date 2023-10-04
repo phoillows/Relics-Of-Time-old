@@ -1,7 +1,6 @@
 package net.phoi.rot.events;
 
 import net.minecraft.client.gui.screens.MenuScreens;
-import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
 import net.minecraft.client.renderer.blockentity.SignRenderer;
 import net.minecraft.world.level.block.state.properties.WoodType;
 import net.minecraftforge.api.distmarker.Dist;
@@ -12,7 +11,7 @@ import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.phoi.rot.RelicsOfTime;
 import net.phoi.rot.client.gui.*;
 import net.phoi.rot.client.renderer.*;
-import net.phoi.rot.level.block.ModWoodTypes;
+import net.phoi.rot.util.ModWoodTypes;
 import net.phoi.rot.registry.BlockEntityRegistry;
 import net.phoi.rot.registry.MenuTypesRegistry;
 import static net.phoi.rot.registry.EntityRegistry.*;

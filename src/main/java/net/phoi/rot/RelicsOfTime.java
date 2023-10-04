@@ -11,7 +11,7 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.event.server.ServerStartingEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
-import net.phoi.rot.level.block.ModWoodTypes;
+import net.phoi.rot.util.ModWoodTypes;
 import net.phoi.rot.registry.*;
 import org.slf4j.Logger;
 
@@ -20,7 +20,7 @@ import org.slf4j.Logger;
 public class RelicsOfTime {
     public static final String MODID = "rot";
     public static final Logger LOGGER = LogUtils.getLogger();
-    public static final CreativeModeTab ROT_TAB = new CreativeModeTab("relics_of_time") {
+    public static final CreativeModeTab RELICS_OF_TIME = new CreativeModeTab("relics_of_time") {
         @Override
         public ItemStack makeIcon() {
             return new ItemStack(ItemRegistry.AMBER.get());
@@ -30,17 +30,17 @@ public class RelicsOfTime {
     public RelicsOfTime() {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
-        EntityRegistry.ENTITY.register(modEventBus);  // Register entities
-        PaintingRegistry.PAINTING.register(modEventBus);  // Register paintings
-        ItemRegistry.ITEM.register(modEventBus);  // Register items
+        EntityRegistry.ENTITY.register(modEventBus); // Register entities
+        PaintingRegistry.PAINTING.register(modEventBus); // Register paintings
+        ItemRegistry.ITEM.register(modEventBus); // Register items
 
-        BlockRegistry.BLOCK.register(modEventBus);  // Register blocks
-        BlockEntityRegistry.BLOCK_ENTITY.register(modEventBus);  // Register block entities
+        BlockRegistry.BLOCK.register(modEventBus); // Register blocks
+        BlockEntityRegistry.BLOCK_ENTITY.register(modEventBus); // Register block entities
 
         MenuTypesRegistry.MENU.register(modEventBus);  // Register menus
 
-        modEventBus.addListener(this::commonSetup);  // Register the commonSetup method for modloading
-        MinecraftForge.EVENT_BUS.register(this);  // Register ourselves for server and other game events we are interested in
+        modEventBus.addListener(this::commonSetup); // Register the commonSetup method for modloading
+        MinecraftForge.EVENT_BUS.register(this); // Register ourselves for server and other game events we are interested in
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {

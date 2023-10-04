@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "tip=false": {
+      "model": "rot:block/neocalamites_log"
+    },
+    "tip=true": {
+      "model": "rot:block/neocalamites_cone"
+    }
+  }
+}

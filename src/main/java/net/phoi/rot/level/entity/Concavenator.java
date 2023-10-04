@@ -81,12 +81,12 @@ public class Concavenator extends Dinosaur implements Saddleable, PlayerRideable
         return this.entityData.get(IS_LEADER);
     }
 
-    public void setLeader(boolean value) {
-        this.entityData.set(IS_LEADER, value);
+    public void setLeader(boolean leader) {
+        this.entityData.set(IS_LEADER, leader);
     }
 
-    public void setSaddled(boolean value) {
-        this.entityData.set(SADDLED, value);
+    public void setSaddled(boolean saddled) {
+        this.entityData.set(SADDLED, saddled);
     }
 
     @Override
