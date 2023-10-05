@@ -10,7 +10,6 @@ import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import net.phoi.rot.RelicsOfTime;
 import net.phoi.rot.level.block.*;
-import net.phoi.rot.level.feature.tree.ArchaeopterisTreeGrower;
 import net.phoi.rot.util.ModWoodTypes;
 
 public class BlockRegistry {

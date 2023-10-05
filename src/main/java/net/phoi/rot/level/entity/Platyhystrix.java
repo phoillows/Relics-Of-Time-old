@@ -50,17 +50,6 @@ public class Platyhystrix extends Dinosaur implements IAnimatable {
 
     @Override
     protected void registerGoals() {
-        this.goalSelector.addGoal(0, new TryFindWaterGoal(this) {
-            @Override
-            public boolean canUse() {
-                return isDrousy() && super.canUse();
-            }
-
-            @Override
-            public boolean canContinueToUse() {
-                return isDrousy() && super.canContinueToUse();
-            }
-        });
         this.goalSelector.addGoal(1, new MeleeAttackGoal(this, 1.15D, true));
         this.goalSelector.addGoal(2, new DinosaurSleepGoal(this, 600) {
             @Override
@@ -75,8 +64,9 @@ public class Platyhystrix extends Dinosaur implements IAnimatable {
         });
         this.goalSelector.addGoal(3, new RandomSwimmingGoal(this, 1.0D, 5));
         this.goalSelector.addGoal(4, new RandomStrollGoal(this, 1.1D));
-        this.goalSelector.addGoal(5, new DinosaurLookAtPlayerGoal(this));
-        this.goalSelector.addGoal(6, new DinosaurLookAroundGoal(this));
+        this.goalSelector.addGoal(5, new TryFindWaterGoal(this));
+        this.goalSelector.addGoal(6, new DinosaurLookAtPlayerGoal(this));
+        this.goalSelector.addGoal(7, new DinosaurLookAroundGoal(this));
         this.targetSelector.addGoal(2, new HurtByTargetGoal(this).setAlertOthers());
     }
 
@@ -119,10 +109,10 @@ public class Platyhystrix extends Dinosaur implements IAnimatable {
             if (!this.level.isClientSide) {
                 drownTimer++;
                 RelicsOfTime.LOGGER.info("Platyhystrix drown timer: " + drownTimer);
-                if (drownTimer > 75) {
+                if (drownTimer > 100) {
                     this.setDrousy(true);
                 }
-                if (drownTimer > 150) {
+                if (drownTimer > 200) {
                     this.hurt(DamageSource.DROWN, 1.0F);
                 }
             }

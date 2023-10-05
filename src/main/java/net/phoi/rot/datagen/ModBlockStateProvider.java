@@ -8,7 +8,9 @@ import net.minecraftforge.client.model.generators.ConfiguredModel;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.registries.RegistryObject;
 import net.phoi.rot.RelicsOfTime;
+import net.phoi.rot.util.Helper;
 import static net.phoi.rot.registry.BlockRegistry.*;
+import static net.phoi.rot.util.Helper.createPath;
 
 public class ModBlockStateProvider extends BlockStateProvider {
     public ModBlockStateProvider(DataGenerator gen, ExistingFileHelper exFileHelper) {
@@ -28,9 +30,9 @@ public class ModBlockStateProvider extends BlockStateProvider {
         cutoutBlock(ARCHAEOPTERIS_LEAVES);
         logBlock((RotatedPillarBlock)ARCHAEOPTERIS_LOG.get());
         logBlock((RotatedPillarBlock)STRIPPED_ARCHAEOPTERIS_LOG.get());
-        doorBlockWithRenderType((DoorBlock)ARCHAEOPTERIS_DOOR.get(), new ResourceLocation(RelicsOfTime.MODID, "block/archaeopteris_door_bottom"), new ResourceLocation(RelicsOfTime.MODID, "block/archaeopteris_door_top"), "cutout");
-        trapdoorBlockWithRenderType((TrapDoorBlock)ARCHAEOPTERIS_TRAPDOOR.get(), new ResourceLocation(RelicsOfTime.MODID, "block/archaeopteris_trapdoor"), true, "cutout");
-        signBlock(ARCHAEOPTERIS_SIGN, ARCHAEOPTERIS_WALL_SIGN, new ResourceLocation(RelicsOfTime.MODID, "block/archaeopteris_planks"));
+        doorBlockWithRenderType((DoorBlock)ARCHAEOPTERIS_DOOR.get(), createPath("block/archaeopteris_door_bottom"), createPath("block/archaeopteris_door_top"), "cutout");
+        trapdoorBlockWithRenderType((TrapDoorBlock)ARCHAEOPTERIS_TRAPDOOR.get(), createPath("block/archaeopteris_trapdoor"), true, "cutout");
+        signBlock(ARCHAEOPTERIS_SIGN, ARCHAEOPTERIS_WALL_SIGN, createPath("block/archaeopteris_planks"));
     }
 
     private void genericBlock(RegistryObject<Block> block) {
@@ -38,7 +40,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
     }
 
     private void genericBlock(RegistryObject<Block> block, String texture) {
-        simpleBlock(block.get(), new ConfiguredModel(models().cubeAll(block.getId().getPath(), new ResourceLocation(RelicsOfTime.MODID, texture))));
+        simpleBlock(block.get(), new ConfiguredModel(models().cubeAll(block.getId().getPath(), createPath(texture))));
     }
 
     private void translucentBlock(RegistryObject<Block> block) {

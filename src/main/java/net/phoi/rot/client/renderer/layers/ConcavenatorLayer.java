@@ -5,14 +5,14 @@ import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.resources.ResourceLocation;
-import net.phoi.rot.RelicsOfTime;
 import net.phoi.rot.level.entity.Concavenator;
+import net.phoi.rot.util.Helper;
 import software.bernie.geckolib3.renderers.geo.GeoLayerRenderer;
 import software.bernie.geckolib3.renderers.geo.IGeoRenderer;
 
 public class ConcavenatorLayer extends GeoLayerRenderer<Concavenator> {
-    private static final ResourceLocation MODEL = new ResourceLocation(RelicsOfTime.MODID, "geo/concavenator.geo.json");
-    private static final ResourceLocation SADDLE = new ResourceLocation(RelicsOfTime.MODID, "textures/entity/concavenator/concavenator_saddle.png");
+    private static final ResourceLocation MODEL = Helper.createPath("geo/concavenator.geo.json");
+    private static final ResourceLocation SADDLE = Helper.createPath("textures/entity/concavenator/concavenator_saddle.png");
 
     public ConcavenatorLayer(IGeoRenderer<Concavenator> entityRendererIn) {
         super(entityRendererIn);

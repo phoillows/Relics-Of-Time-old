@@ -9,9 +9,10 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Inventory;
 import net.phoi.rot.RelicsOfTime;
 import net.phoi.rot.client.gui.inventory.DnaAnaylzerMenu;
+import net.phoi.rot.util.Helper;
 
 public class DnaAnaylzerScreen extends AbstractContainerScreen<DnaAnaylzerMenu> {
-    private static final ResourceLocation TEXTURE = new ResourceLocation(RelicsOfTime.MODID, "textures/gui/dna_analyzer.png");
+    private static final ResourceLocation TEXTURE = Helper.createPath("textures/gui/dna_analyzer.png");
 
     public DnaAnaylzerScreen(DnaAnaylzerMenu menu, Inventory inventory, Component component) {
         super(menu, inventory, component);

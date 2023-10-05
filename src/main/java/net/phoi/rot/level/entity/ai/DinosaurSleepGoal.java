@@ -18,9 +18,9 @@ public class DinosaurSleepGoal extends Goal {
     @Override
     public boolean canUse() {
         if (this.dinosaur.level.isDay()) {
-            return RandomSource.create().nextInt(800) == 1;
+            return RandomSource.create().nextInt(2000) == 1;
         } else {
-            return RandomSource.create().nextInt(500) == 1;
+            return RandomSource.create().nextInt(1000) == 1;
         }
     }
 

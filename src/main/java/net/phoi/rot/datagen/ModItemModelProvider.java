@@ -12,6 +12,7 @@ import net.phoi.rot.level.item.DnaBottleItem;
 import net.phoi.rot.level.item.GenericItem;
 import net.phoi.rot.registry.ItemRegistry;
 import static net.phoi.rot.registry.ItemRegistry.*;
+import static net.phoi.rot.util.Helper.createPath;
 
 public class ModItemModelProvider extends ItemModelProvider {
     public ModItemModelProvider(DataGenerator generator, ExistingFileHelper existingFileHelper) {
@@ -54,29 +55,29 @@ public class ModItemModelProvider extends ItemModelProvider {
     }
 
     private ItemModelBuilder genericItem(RegistryObject<Item> item) {
-        return withExistingParent(item.getId().getPath(), new ResourceLocation("item/generated"))
-                .texture("layer0", new ResourceLocation(RelicsOfTime.MODID, "item/" + item.getId().getPath()));
+        return withExistingParent(item.getId().getPath(), createPath("item/generated"))
+                .texture("layer0", createPath("item/" + item.getId().getPath()));
     }
 
     private ItemModelBuilder dnaBottle(RegistryObject<Item> item) {
-        return withExistingParent(item.getId().getPath(), new ResourceLocation("item/generated"))
-                .texture("layer0", new ResourceLocation(RelicsOfTime.MODID, "item/dna/" + item.getId().getPath()));
+        return withExistingParent(item.getId().getPath(), createPath("item/generated"))
+                .texture("layer0", createPath("item/dna/" + item.getId().getPath()));
     }
 
     private ItemModelBuilder spawnEgg(RegistryObject<Item> item) {
-        return withExistingParent(item.getId().getPath(), new ResourceLocation("item/template_spawn_egg"));
+        return withExistingParent(item.getId().getPath(), createPath("item/template_spawn_egg"));
     }
 
     private ItemModelBuilder blockItem(RegistryObject<Item> item) {
-        return withExistingParent(item.getId().getPath(), new ResourceLocation(RelicsOfTime.MODID, "block/" + item.getId().getPath()));
+        return withExistingParent(item.getId().getPath(), createPath("block/" + item.getId().getPath()));
     }
 
     private ItemModelBuilder blockItem(RegistryObject<Item> item, String texture) {
-        return withExistingParent(item.getId().getPath(), new ResourceLocation("item/generated"))
-                .texture("layer0", new ResourceLocation(RelicsOfTime.MODID, texture));
+        return withExistingParent(item.getId().getPath(), createPath("item/generated"))
+                .texture("layer0", createPath(texture));
     }
 
     private ItemModelBuilder trapdoorBlockItem(RegistryObject<Item> item) {
-        return withExistingParent(item.getId().getPath(), new ResourceLocation(RelicsOfTime.MODID, "block/" + item.getId().getPath() + "_bottom"));
+        return withExistingParent(item.getId().getPath(), createPath("block/" + item.getId().getPath() + "_bottom"));
     }
 }

@@ -4,21 +4,22 @@ import net.minecraft.resources.ResourceLocation;
 import net.phoi.rot.RelicsOfTime;
 import net.phoi.rot.level.entity.Furcacauda;
 import software.bernie.geckolib3.model.AnimatedGeoModel;
+import static net.phoi.rot.util.Helper.createPath;
 
 public class FurcacaudaModel extends AnimatedGeoModel<Furcacauda> {
 
     @Override
     public ResourceLocation getModelResource(Furcacauda entity) {
-        return new ResourceLocation(RelicsOfTime.MODID, "geo/furcacauda.geo.json");
+        return createPath("geo/furcacauda.geo.json");
     }
 
     @Override
     public ResourceLocation getTextureResource(Furcacauda entity) {
-        return new ResourceLocation(RelicsOfTime.MODID, "textures/entity/furcacauda.png");
+        return createPath("textures/entity/furcacauda.png");
     }
 
     @Override
     public ResourceLocation getAnimationResource(Furcacauda entity) {
-        return new ResourceLocation(RelicsOfTime.MODID, "animations/furcacauda.animation.json");
+        return createPath("animations/furcacauda.animation.json");
     }
 }
