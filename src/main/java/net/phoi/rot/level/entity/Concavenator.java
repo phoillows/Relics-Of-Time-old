@@ -165,9 +165,11 @@ public class Concavenator extends Dinosaur implements Saddleable, PlayerRideable
                 super.travel(new Vec3(f, travelVector.y, f1));
             }
         } else if (this.isCalling()) {
+            this.navigation.stop();
+            this.setDeltaMovement(Vec3.ZERO);
+        } else {
             super.travel(travelVector);
         }
-        super.travel(travelVector);
     }
 
     @Override
@@ -208,7 +210,7 @@ public class Concavenator extends Dinosaur implements Saddleable, PlayerRideable
     public SpawnGroupData finalizeSpawn(ServerLevelAccessor level, DifficultyInstance difficulty, MobSpawnType spawnType, @Nullable SpawnGroupData groupData, @Nullable CompoundTag nbt) {
         boolean foundLeader = false;
         for (Concavenator concav : level.getEntitiesOfClass(Concavenator.class, this.getBoundingBox().inflate(24))) {
-            if (concav.entityData.get(DATA_LEADER).equals(true)) {
+            if (concav.entityData.get(DATA_LEADER)) {
                 foundLeader = true;
                 this.entityData.set(DATA_LEADER, false);
                 break;
@@ -219,7 +221,7 @@ public class Concavenator extends Dinosaur implements Saddleable, PlayerRideable
         }
 
         this.entityData.set(DATA_LEADER, !foundLeader);
-        if (this.entityData.get(DATA_LEADER).equals(true)) {
+        if (this.entityData.get(DATA_LEADER)) {
             RelicsOfTime.LOGGER.info("Current concavenator has been chosen as leader");
         }
         return super.finalizeSpawn(level, difficulty, spawnType, groupData, nbt);
@@ -270,6 +272,9 @@ public class Concavenator extends Dinosaur implements Saddleable, PlayerRideable
         this.entityData.set(DATA_SADDLED, true);
         if (source != null) {
             this.level.playSound((Player)null, this.getX(), this.getY(), this.getZ(), SoundEvents.HORSE_SADDLE, source, 1.0F, 1.0F);
+        }
+        if (this.entityData.get(DATA_LEADER)) {
+            this.setLeader(false);
         }
     }
 
