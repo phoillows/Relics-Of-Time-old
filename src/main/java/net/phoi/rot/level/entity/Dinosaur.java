@@ -10,27 +10,28 @@ import net.minecraft.world.entity.AgeableMob;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.TamableAnimal;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.Nullable;
 
 public class Dinosaur extends TamableAnimal {
-    private static final EntityDataAccessor<Boolean> SLEEPING = SynchedEntityData.defineId(Dinosaur.class, EntityDataSerializers.BOOLEAN);
+    private static final EntityDataAccessor<Boolean> DATA_SLEEPING = SynchedEntityData.defineId(Dinosaur.class, EntityDataSerializers.BOOLEAN);
 
     public Dinosaur(EntityType<? extends TamableAnimal> entityType, Level level) {
         super(entityType, level);
     }
 
     public boolean isSleeping() {
-        return this.entityData.get(SLEEPING);
+        return this.entityData.get(DATA_SLEEPING);
     }
 
     public void setSleeping(boolean sleeping) {
-        this.entityData.set(SLEEPING, sleeping);
+        this.entityData.set(DATA_SLEEPING, sleeping);
     }
 
     @Override
     protected void defineSynchedData() {
         super.defineSynchedData();
-        this.entityData.define(SLEEPING, false);
+        this.entityData.define(DATA_SLEEPING, false);
     }
 
     @Override
@@ -43,6 +44,16 @@ public class Dinosaur extends TamableAnimal {
     public void readAdditionalSaveData(CompoundTag nbt) {
         super.readAdditionalSaveData(nbt);
         this.setSleeping(nbt.getBoolean("sleeping"));
+    }
+
+    @Override
+    public void travel(Vec3 travelVector) {
+        if (this.isSleeping()) {
+            this.navigation.stop();
+            this.setDeltaMovement(Vec3.ZERO);
+        } else {
+            super.travel(travelVector);
+        }
     }
 
     @Override

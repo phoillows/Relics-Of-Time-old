@@ -1,32 +1,35 @@
 package net.phoi.rot.level.entity.ai;
 
 import net.minecraft.util.RandomSource;
+import net.minecraft.world.entity.Saddleable;
 import net.minecraft.world.entity.ai.goal.Goal;
 import net.phoi.rot.level.entity.Dinosaur;
 
 public class DinosaurSleepGoal extends Goal {
     private Dinosaur dinosaur;
     private int sleepTimer = 0;
-    private final int sleepAmount;
 
-    public DinosaurSleepGoal(Dinosaur dinosaur, int sleepAmount) {
+    public DinosaurSleepGoal(Dinosaur dinosaur) {
         super();
         this.dinosaur = dinosaur;
-        this.sleepAmount = sleepAmount;
     }
 
     @Override
     public boolean canUse() {
-        if (this.dinosaur.level.isDay()) {
-            return RandomSource.create().nextInt(2000) == 1;
+        if (this.dinosaur.level.isNight()) {
+            if (this.dinosaur instanceof Saddleable saddled && saddled.isSaddled()) {
+                return RandomSource.create().nextInt(2000) == 1;
+            } else {
+                return true;
+            }
         } else {
-            return RandomSource.create().nextInt(1000) == 1;
+            return false;
         }
     }
 
     @Override
     public boolean canContinueToUse() {
-        if (this.sleepTimer >= this.sleepAmount) {
+        if (this.dinosaur.level.isDay()) {
             stop();
             return false;
         } else {
@@ -38,7 +41,7 @@ public class DinosaurSleepGoal extends Goal {
     public void tick() {
         super.tick();
         this.sleepTimer++;
-        if (this.sleepTimer >= this.sleepAmount) {
+        if (this.dinosaur.level.isDay()) {
             stop();
         }
     }

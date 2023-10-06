@@ -37,7 +37,7 @@ import software.bernie.geckolib3.core.manager.AnimationFactory;
 import software.bernie.geckolib3.util.GeckoLibUtil;
 
 public class Platyhystrix extends Dinosaur implements IAnimatable {
-    private static final EntityDataAccessor<Boolean> DROUSY = SynchedEntityData.defineId(Platyhystrix.class, EntityDataSerializers.BOOLEAN);
+    private static final EntityDataAccessor<Boolean> DATA_DROUSY = SynchedEntityData.defineId(Platyhystrix.class, EntityDataSerializers.BOOLEAN);
     private final AnimationFactory cache = GeckoLibUtil.createFactory(this);
     private int drownTimer = 0;
 
@@ -51,7 +51,7 @@ public class Platyhystrix extends Dinosaur implements IAnimatable {
     @Override
     protected void registerGoals() {
         this.goalSelector.addGoal(1, new MeleeAttackGoal(this, 1.15D, true));
-        this.goalSelector.addGoal(2, new DinosaurSleepGoal(this, 600) {
+        this.goalSelector.addGoal(2, new DinosaurSleepGoal(this) {
             @Override
             public boolean canUse() {
                 return !isInWater() && super.canUse();
@@ -78,17 +78,17 @@ public class Platyhystrix extends Dinosaur implements IAnimatable {
     }
 
     public boolean isDrousy() {
-        return this.entityData.get(DROUSY);
+        return this.entityData.get(DATA_DROUSY);
     }
 
     public void setDrousy(boolean drousy) {
-        this.entityData.set(DROUSY, drousy);
+        this.entityData.set(DATA_DROUSY, drousy);
     }
 
     @Override
     protected void defineSynchedData() {
         super.defineSynchedData();
-        this.entityData.define(DROUSY, false);
+        this.entityData.define(DATA_DROUSY, false);
     }
 
     @Override
@@ -108,11 +108,10 @@ public class Platyhystrix extends Dinosaur implements IAnimatable {
         if (!this.isInWater()) {
             if (!this.level.isClientSide) {
                 drownTimer++;
-                RelicsOfTime.LOGGER.info("Platyhystrix drown timer: " + drownTimer);
-                if (drownTimer > 100) {
+                if (drownTimer > 4000) {
                     this.setDrousy(true);
                 }
-                if (drownTimer > 200) {
+                if (drownTimer > 6000) {
                     this.hurt(DamageSource.DROWN, 1.0F);
                 }
             }
@@ -129,11 +128,6 @@ public class Platyhystrix extends Dinosaur implements IAnimatable {
             this.moveRelative(this.getSpeed(), travelVector);
             this.move(MoverType.SELF, this.getDeltaMovement());
             this.setDeltaMovement(this.getDeltaMovement().scale(0.9D));
-
-        } else if (this.isSleeping()) {
-            this.navigation.stop();
-            this.setDeltaMovement(Vec3.ZERO);
-
         } else {
             super.travel(travelVector);
         }

@@ -17,7 +17,7 @@ public class ConcavenatorAttackGoal extends MeleeAttackGoal {
     @Override
     public void start() {
         super.start();
-        if (this.mob.getEntityData().get(Concavenator.IS_LEADER)) {
+        if (this.mob.getEntityData().get(Concavenator.DATA_LEADER)) {
             this.mob.level.playSound((Player)null, this.mob.getX(), this.mob.getY(), this.mob.getZ(), SoundRegistry.CONCAVENATOR_CALL, SoundSource.HOSTILE, 2.0F, 1.0F);
             this.mob.setCalling(true);
         }
