@@ -1,6 +1,8 @@
 package net.phoi.rot.events;
 
 import net.minecraft.client.gui.screens.MenuScreens;
+import net.minecraft.client.model.BoatModel;
+import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.client.renderer.blockentity.SignRenderer;
 import net.minecraft.world.level.block.state.properties.WoodType;
 import net.minecraftforge.api.distmarker.Dist;
@@ -11,6 +13,7 @@ import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.phoi.rot.RelicsOfTime;
 import net.phoi.rot.client.gui.*;
 import net.phoi.rot.client.renderer.*;
+import net.phoi.rot.util.Helper;
 import net.phoi.rot.util.ModWoodTypes;
 import net.phoi.rot.registry.BlockEntityRegistry;
 import net.phoi.rot.registry.MenuTypesRegistry;
@@ -34,7 +37,15 @@ public class ClientEvents {
         event.registerEntityRenderer(CONCAVENATOR.get(), ConcavenatorRenderer::new);
         event.registerEntityRenderer(PLATYHYSTRIX.get(), PlatyhystrixRenderer::new);
 
+        event.registerEntityRenderer(BOAT.get(), (context) -> new TemplateBoatRenderer(context, false));
+
+
         // Block entity renderers
         event.registerBlockEntityRenderer(BlockEntityRegistry.SIGN_BLOCK_ENTITY.get(), SignRenderer::new);
+    }
+
+    @SubscribeEvent
+    public static void layerDefinitions(EntityRenderersEvent.RegisterLayerDefinitions event) {
+        event.registerLayerDefinition(new ModelLayerLocation(Helper.createPath("boat/archaeopteris"), "main"), () -> BoatModel.createBodyModel(false));
     }
 }

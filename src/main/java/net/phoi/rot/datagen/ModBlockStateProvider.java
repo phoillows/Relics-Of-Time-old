@@ -33,6 +33,8 @@ public class ModBlockStateProvider extends BlockStateProvider {
         doorBlockWithRenderType((DoorBlock)ARCHAEOPTERIS_DOOR.get(), createPath("block/archaeopteris_door_bottom"), createPath("block/archaeopteris_door_top"), "cutout");
         trapdoorBlockWithRenderType((TrapDoorBlock)ARCHAEOPTERIS_TRAPDOOR.get(), createPath("block/archaeopteris_trapdoor"), true, "cutout");
         signBlock(ARCHAEOPTERIS_SIGN, ARCHAEOPTERIS_WALL_SIGN, createPath("block/archaeopteris_planks"));
+        slabBlock((SlabBlock)ARCHAEOPTERIS_SLAB.get(), createPath("block/archaeopteris_planks"), createPath("block/archaeopteris_planks"));
+        stairsBlock((StairBlock)ARCHAEOPTERIS_STAIRS.get(), "archaeopteris", createPath("block/archaeopteris_planks"));
     }
 
     private void genericBlock(RegistryObject<Block> block) {

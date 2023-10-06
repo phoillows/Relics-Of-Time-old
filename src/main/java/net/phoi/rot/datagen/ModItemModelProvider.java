@@ -31,6 +31,7 @@ public class ModItemModelProvider extends ItemModelProvider {
             }
         }
         genericItem(FURCACAUDA_BUCKET);
+        genericItem(ARCHAEOPTERIS_BOAT);
         spawnEgg(FURCACAUDA_SPAWN_EGG);
         spawnEgg(CONCAVENATOR_SPAWN_EGG);
         spawnEgg(PLATYHYSTRIX_SPAWN_EGG);
@@ -46,6 +47,8 @@ public class ModItemModelProvider extends ItemModelProvider {
         blockItem(STRIPPED_ARCHAEOPTERIS_LOG_ITEM);
         blockItem(ARCHAEOPTERIS_WOOD_ITEM);
         blockItem(STRIPPED_ARCHAEOPTERIS_WOOD_ITEM);
+        blockItem(ARCHAEOPTERIS_SLAB_ITEM);
+        blockItem(ARCHAEOPTERIS_STAIRS_ITEM);
         blockItem(SMALL_HORSETAIL_ITEM, "block/large_horsetail_top");
         blockItem(LARGE_HORSETAIL_ITEM, "block/small_horsetail");
         blockItem(ARCHAEOPTERIS_DOOR_ITEM, "item/archaeopteris_door");
@@ -55,17 +58,17 @@ public class ModItemModelProvider extends ItemModelProvider {
     }
 
     private ItemModelBuilder genericItem(RegistryObject<Item> item) {
-        return withExistingParent(item.getId().getPath(), createPath("item/generated"))
+        return withExistingParent(item.getId().getPath(), new ResourceLocation("item/generated"))
                 .texture("layer0", createPath("item/" + item.getId().getPath()));
     }
 
     private ItemModelBuilder dnaBottle(RegistryObject<Item> item) {
-        return withExistingParent(item.getId().getPath(), createPath("item/generated"))
+        return withExistingParent(item.getId().getPath(), new ResourceLocation("item/generated"))
                 .texture("layer0", createPath("item/dna/" + item.getId().getPath()));
     }
 
     private ItemModelBuilder spawnEgg(RegistryObject<Item> item) {
-        return withExistingParent(item.getId().getPath(), createPath("item/template_spawn_egg"));
+        return withExistingParent(item.getId().getPath(), new ResourceLocation("item/template_spawn_egg"));
     }
 
     private ItemModelBuilder blockItem(RegistryObject<Item> item) {
@@ -73,7 +76,7 @@ public class ModItemModelProvider extends ItemModelProvider {
     }
 
     private ItemModelBuilder blockItem(RegistryObject<Item> item, String texture) {
-        return withExistingParent(item.getId().getPath(), createPath("item/generated"))
+        return withExistingParent(item.getId().getPath(), new ResourceLocation("item/generated"))
                 .texture("layer0", createPath(texture));
     }
 

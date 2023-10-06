@@ -9,6 +9,6 @@ public class GenericItem extends Item {
     }
 
     public GenericItem(Properties properties) {
-        super(properties);
+        super(properties.tab(RelicsOfTime.RELICS_OF_TIME));
     }
 }

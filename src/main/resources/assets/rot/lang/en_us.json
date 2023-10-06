@@ -8,6 +8,8 @@
   "block.rot.ammonite_fossil_path": "Ammonite Fossil Path",
   "block.rot.concavenator_egg": "Concavenator Egg",
   "block.rot.archaeopteris_planks": "Archaeopteris Planks",
+  "block.rot.archaeopteris_slab": "Archaeopteris Slab",
+  "block.rot.archaeopteris_stairs": "Archaeopteris Stairs",
   "block.rot.archaeopteris_log": "Archaeopteris Log",
   "block.rot.archaeopteris_wood": "Archaeopteris Wood",
   "block.rot.archaeopteris_leaves": "Archaeopteris Leaves",
@@ -28,10 +30,12 @@
   "item.rot.mesozoic_fossil": "Mesozoic Fossil",
   "item.rot.paleozoic_fossil": "Paleozoic Fossil",
   "item.rot.plant_fossil": "Plant Fossil",
+  "item.rot.archaeopteris_boat": "Archaeopteris Boat",
 
   "entity.rot.furcacauda": "Furcacauda",
   "entity.rot.concavenator": "Concavenator",
   "entity.rot.platyhystrix": "Platyhystrix",
+  "entity.rot.template_boat": "Boat",
 
   "itemGroup.relics_of_time": "Relics of Time",
 

@@ -1,25 +1,24 @@
-// 1.19.2	2023-09-29T09:54:48.3105389	Item Models: rot
+// 1.19.2	2023-10-06T09:23:17.3132651	Item Models: rot
 cee045daa42fdce5dcb04627b8e55e14bdd98de5 assets/rot/models/item/amber.json
 a7c140919a115f2d6d35dcf16089c6064cc3002e assets/rot/models/item/amber_glass.json
 f84bbc69c52f7e120cb98828384fea917a639db1 assets/rot/models/item/amber_ore.json
 2f150d6ae4ddda3aa06fd8cc7d97d7f40ae5e8a3 assets/rot/models/item/ammonite_fossil_path.json
+ebd3e0ef50bdc935a51360b0d00a16fc65cd2530 assets/rot/models/item/archaeopteris_boat.json
 50d7bc1c809cc1c60948e13c0cca2da954594210 assets/rot/models/item/archaeopteris_door.json
 618736505d4d50333a47e7396eecf5c3291aa474 assets/rot/models/item/archaeopteris_leaves.json
 c801f6be3c6203aa1040737a996f525485a51cca assets/rot/models/item/archaeopteris_log.json
 10a566faf760d3e30732b8e984c02e6e183e8f4e assets/rot/models/item/archaeopteris_planks.json
 5ba15d048cbbc783fac878ee48fdbc185fc3e2c4 assets/rot/models/item/archaeopteris_sapling.json
 87ec92da702eae6f7edd6b59cab248d38df41208 assets/rot/models/item/archaeopteris_sign.json
+6b071ab0be88a7599aa53e5a616943170ce22104 assets/rot/models/item/archaeopteris_slab.json
+529ccea8726069e1b212af2bbd6249d28a26797e assets/rot/models/item/archaeopteris_stairs.json
 1456e44e301d6cf4eb672f9a519e68d140e8c8a9 assets/rot/models/item/archaeopteris_trapdoor.json
 53528cda2be926e30cdc4828e484bd43cf672352 assets/rot/models/item/archaeopteris_wood.json
-32202eac0f9be249da2b0936cd15552b14b3d1af assets/rot/models/item/archaeosigillaria_dna.json
 aa44bd7a8b8edad14f6559e58369b3b70f58bad6 assets/rot/models/item/concavenator_dna.json
 7117752c82663412a62a9d8835abd1641f2f8f34 assets/rot/models/item/concavenator_egg.json
 63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/rot/models/item/concavenator_spawn_egg.json
-1229a6a0c39dc886c84f9c4a402fdc928216934e assets/rot/models/item/dillhoffia_dna.json
 942e69a6f715e9bb14e811bb4647c61ca05b8143 assets/rot/models/item/dna_analyzer.json
 a2ec00d37869f09bcd8264c4c841f96549a6c514 assets/rot/models/item/dna_centrifuge.json
-bea60915046922ac88155af8cee5a0af66ea949d assets/rot/models/item/florissantia_dna.json
-d4fc5ccc73f45febc0a3c50d6d654f694d92a3b6 assets/rot/models/item/foozia_dna.json
 b3c084de6b9796e6ba6f6dd7e0b15f04b1faf190 assets/rot/models/item/furcacauda_bucket.json
 0754f0779ebbf2a207d37a4cb27d5109b96c193b assets/rot/models/item/furcacauda_dna.json
 63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/rot/models/item/furcacauda_spawn_egg.json
@@ -30,8 +29,6 @@ b3c084de6b9796e6ba6f6dd7e0b15f04b1faf190 assets/rot/models/item/furcacauda_bucke
 4c513b41879323170bc24992c4385a5d423fdd06 assets/rot/models/item/plant_fossil.json
 ac0f25326e0fd296aa8c8faa29bd96bd44812df5 assets/rot/models/item/platyhystrix_dna.json
 63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/rot/models/item/platyhystrix_spawn_egg.json
-18d0e6d59624f4576bc544fae6ff5d6d127e5724 assets/rot/models/item/sarracenia_dna.json
 bdeb265dcb3ad6f4d68f188615c1ede1d1041db0 assets/rot/models/item/small_horsetail.json
 d4182c411d04527208f6b44c276c7598197f6dc2 assets/rot/models/item/stripped_archaeopteris_log.json
 7675d7bc8ce268b65cbc1c8de275604899128d7e assets/rot/models/item/stripped_archaeopteris_wood.json
-2557d307fa8a7b11ad132fd7b91d3644072ca0a0 assets/rot/models/item/vaccinium_dna.json

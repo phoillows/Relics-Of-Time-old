@@ -1,4 +1,4 @@
-// 1.19.2	2023-09-29T09:48:59.6700126	Block States: rot
+// 1.19.2	2023-10-06T09:23:17.3092758	Block States: rot
 705ca8a887cd3ce29c4bbb5a68eb0e767c8b020a assets/rot/blockstates/amber_glass.json
 31c479b45f3747a4def17025a3705bbb9f766be2 assets/rot/blockstates/amber_ore.json
 bb3b812cf64af8432306c938e73075d3bfb7ed05 assets/rot/blockstates/ammonite_fossil_path.json
@@ -8,6 +8,8 @@ bb3b812cf64af8432306c938e73075d3bfb7ed05 assets/rot/blockstates/ammonite_fossil_
 5146933f23d6adbd15b1c9b5e6e4ba9b33193182 assets/rot/blockstates/archaeopteris_planks.json
 5a2987c4c149c72cd58555bd350d8b547791e516 assets/rot/blockstates/archaeopteris_sapling.json
 e85a0c6bbe50594b3a800b412e21582091547e99 assets/rot/blockstates/archaeopteris_sign.json
+1af1153f4f31d7436f10191def9602218fb51348 assets/rot/blockstates/archaeopteris_slab.json
+28761a02cce1bff542ae0ce990592dba8a4a0ee3 assets/rot/blockstates/archaeopteris_stairs.json
 b4b1e5184a9efb564c958cb06ba493d8de7a3bc6 assets/rot/blockstates/archaeopteris_trapdoor.json
 e85a0c6bbe50594b3a800b412e21582091547e99 assets/rot/blockstates/archaeopteris_wall_sign.json
 ea83424dc1b18eb832c533a54258cb60ced225b9 assets/rot/blockstates/archaeopteris_wood.json
@@ -31,6 +33,11 @@ dd4ff7e178c8739e41acd21c31244d7ab83b013c assets/rot/models/block/archaeopteris_l
 8367f162b692debafbcd25e613aef5d95bb8a907 assets/rot/models/block/archaeopteris_planks.json
 0effd80b030f04f8542771ff306daded7f2110d1 assets/rot/models/block/archaeopteris_sapling.json
 e1dd9bdc3fd00c9768f9182bebd6e71829e15e94 assets/rot/models/block/archaeopteris_sign.json
+07d0d1f391fea872f19a96568503b50b69a9458c assets/rot/models/block/archaeopteris_slab.json
+092898896579ef3eef548413fd3f79a6df41ad30 assets/rot/models/block/archaeopteris_slab_top.json
+23521a714c68a0a415b3dc142c4a8ed6c589c8d8 assets/rot/models/block/archaeopteris_stairs.json
+1320f86dc89142e860b85c6f3f458a6bd139ae16 assets/rot/models/block/archaeopteris_stairs_inner.json
+66cd02b2ceb27cd2465c73caf9a62776e73251aa assets/rot/models/block/archaeopteris_stairs_outer.json
 fcefd2b27f300190d74e831d0be82d6ed1b423e5 assets/rot/models/block/archaeopteris_trapdoor_bottom.json
 f6c3f4b7a2f328f06ca2e5d7cb65a4c772d1fa12 assets/rot/models/block/archaeopteris_trapdoor_open.json
 4339fa4355860cccc1e52d0473685859ec7a0b4f assets/rot/models/block/archaeopteris_trapdoor_top.json

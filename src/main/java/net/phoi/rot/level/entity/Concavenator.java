@@ -45,7 +45,9 @@ import software.bernie.geckolib3.util.GeckoLibUtil;
 public class Concavenator extends Dinosaur implements Saddleable, PlayerRideable, IAnimatable {
     public static final EntityDataAccessor<Boolean> IS_LEADER = SynchedEntityData.defineId(Concavenator.class, EntityDataSerializers.BOOLEAN);
     public static final EntityDataAccessor<Boolean> SADDLED = SynchedEntityData.defineId(Concavenator.class, EntityDataSerializers.BOOLEAN);
+    public static final EntityDataAccessor<Boolean> CALLING = SynchedEntityData.defineId(Concavenator.class, EntityDataSerializers.BOOLEAN);
     private final AnimationFactory cache = GeckoLibUtil.createFactory(this);
+    private int callingTimer = 0;
 
     public Concavenator(EntityType<? extends Dinosaur> entityType, Level level) {
         super(entityType, level);
@@ -59,7 +61,7 @@ public class Concavenator extends Dinosaur implements Saddleable, PlayerRideable
         this.goalSelector.addGoal(2, new DinosaurSleepGoal(this, 600) {
             @Override
             public boolean canUse() {
-                return !isSaddled() && super.canUse();
+                return !isSaddled() && !isCalling() && super.canUse();
             }
         });
         this.goalSelector.addGoal(3, new RandomStrollGoal(this, 1.1D));
@@ -89,11 +91,20 @@ public class Concavenator extends Dinosaur implements Saddleable, PlayerRideable
         this.entityData.set(SADDLED, saddled);
     }
 
+    public boolean isCalling() {
+        return this.entityData.get(CALLING);
+    }
+
+    public void setCalling(boolean calling) {
+        this.entityData.set(CALLING, calling);
+    }
+
     @Override
     protected void defineSynchedData() {
         super.defineSynchedData();
         this.entityData.define(IS_LEADER, false);
         this.entityData.define(SADDLED, false);
+        this.entityData.define(CALLING, false);
     }
 
     @Override
@@ -101,6 +112,7 @@ public class Concavenator extends Dinosaur implements Saddleable, PlayerRideable
         super.addAdditionalSaveData(nbt);
         nbt.putBoolean("leader", this.isLeader());
         nbt.putBoolean("saddled", this.isSaddled());
+        nbt.putBoolean("calling", this.isCalling());
     }
 
     @Override
@@ -108,6 +120,7 @@ public class Concavenator extends Dinosaur implements Saddleable, PlayerRideable
         super.readAdditionalSaveData(nbt);
         this.setLeader(nbt.getBoolean("leader"));
         this.setSaddled(nbt.getBoolean("saddled"));
+        this.setCalling(nbt.getBoolean("calling"));
     }
 
     @Override
@@ -143,7 +156,7 @@ public class Concavenator extends Dinosaur implements Saddleable, PlayerRideable
                 }
                 super.travel(new Vec3(f, travelVector.y, f1));
             }
-        } else if (this.isSleeping()) {
+        } else if (this.isSleeping() || this.isCalling()) {
             this.navigation.stop();
             this.setDeltaMovement(Vec3.ZERO);
         } else {
@@ -163,6 +176,20 @@ public class Concavenator extends Dinosaur implements Saddleable, PlayerRideable
                 passenger.setPos(this.getX() + vec3.x, this.getY() + vec3.y, this.getZ() + vec3.z);
             }
         }
+    }
+
+    @Override
+    public void tick() {
+        if (this.isCalling()) {
+            if (!this.level.isClientSide) {
+                callingTimer++;
+                if (callingTimer > 40) {
+                    this.setCalling(false);
+                    this.setSprinting(true);
+                }
+            }
+        }
+        super.tick();
     }
 
     @Override
@@ -263,7 +290,6 @@ public class Concavenator extends Dinosaur implements Saddleable, PlayerRideable
             if (event.isMoving()) {
                 event.getController().setAnimation(this.isSprinting() ? RUN : WALK);
                 return PlayState.CONTINUE;
-
             } else {
                 event.getController().setAnimation(IDLE);
                 return PlayState.CONTINUE;
@@ -280,10 +306,19 @@ public class Concavenator extends Dinosaur implements Saddleable, PlayerRideable
         return PlayState.CONTINUE;
     }
 
+    private PlayState callPredicate(AnimationEvent event) {
+        if (this.isCalling()) {
+            event.getController().setAnimation(CALL);
+            return PlayState.CONTINUE;
+        }
+        return PlayState.CONTINUE;
+    }
+
     @Override
     public void registerControllers(AnimationData data) {
         data.addAnimationController(new AnimationController<>(this, "basic", 2, this::basicPredicate));
         data.addAnimationController(new AnimationController<>(this, "attack", 2, this::attackPredicate));
+        data.addAnimationController(new AnimationController<>(this, "call", 2, this::callPredicate));
     }
 
     @Override

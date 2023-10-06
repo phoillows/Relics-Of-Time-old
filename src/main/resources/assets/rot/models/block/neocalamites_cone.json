@@ -4,7 +4,7 @@
 	"texture_size": [32, 32],
 	"textures": {
 		"0": "rot:block/neocalamites_cone",
-		"particle": "rot:block/neocalamites_log"
+		"particle": "rot:block/neocalamites_cone"
 	},
 	"elements": [
 		{
