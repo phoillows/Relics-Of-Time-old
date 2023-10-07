@@ -42,6 +42,7 @@ public class ItemRegistry {
     public static final RegistryObject<Item> ARCHAEOPTERIS_DOOR_ITEM = blockItem(ARCHAEOPTERIS_DOOR);
     public static final RegistryObject<Item> ARCHAEOPTERIS_TRAPDOOR_ITEM = blockItem(ARCHAEOPTERIS_TRAPDOOR);
     public static final RegistryObject<Item> ARCHAEOPTERIS_BOAT = ITEM.register("archaeopteris_boat", () -> new ModBoatItem(false, TemplateBoat.Type.ARCHAEOPTERIS));
+    public static final RegistryObject<Item> ARCHAEOPTERIS_CHEST_BOAT = ITEM.register("archaeopteris_chest_boat", () -> new ModBoatItem(true, TemplateBoat.Type.ARCHAEOPTERIS));
     public static final RegistryObject<Item> ARCHAEOPTERIS_SIGN = ITEM.register("archaeopteris_sign", () -> new SignItem(new Item.Properties().stacksTo(16).tab(RelicsOfTime.RELICS_OF_TIME), BlockRegistry.ARCHAEOPTERIS_SIGN.get(), ARCHAEOPTERIS_WALL_SIGN.get()));
 
     public static final RegistryObject<Item> SMALL_HORSETAIL_ITEM = blockItem(SMALL_HORSETAIL);

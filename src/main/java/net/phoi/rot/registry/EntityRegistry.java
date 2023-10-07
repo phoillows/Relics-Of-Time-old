@@ -17,4 +17,5 @@ public class EntityRegistry {
     public static final RegistryObject<EntityType<Platyhystrix>> PLATYHYSTRIX = ENTITY.register("platyhystrix", () -> EntityType.Builder.of(Platyhystrix::new, MobCategory.WATER_CREATURE).sized(0.8F, 0.55F).build(RelicsOfTime.MODID + "platyhystrix"));
 
     public static final RegistryObject<EntityType<TemplateBoat>> BOAT = ENTITY.register("boat", () -> EntityType.Builder.<TemplateBoat>of(TemplateBoat::new, MobCategory.MISC).sized(1.375F, 0.5625F).build(RelicsOfTime.MODID + "boat"));
+    public static final RegistryObject<EntityType<TemplateChestBoat>> CHEST_BOAT = ENTITY.register("chest_boat", () -> EntityType.Builder.<TemplateChestBoat>of(TemplateChestBoat::new, MobCategory.MISC).sized(1.375F, 0.5625F).build(RelicsOfTime.MODID + "chest_boat"));
 }

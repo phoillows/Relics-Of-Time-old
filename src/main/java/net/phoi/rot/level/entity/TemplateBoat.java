@@ -21,12 +21,12 @@ public class TemplateBoat extends Boat {
         super(entityType, level);
     }
 
-    public TemplateBoat(Level level, double pX, double pY, double pZ) {
+    public TemplateBoat(Level level, double x, double y, double z) {
         this(EntityRegistry.BOAT.get(), level);
-        this.setPos(pX, pY, pZ);
-        this.xo = pX;
-        this.yo = pY;
-        this.zo = pZ;
+        this.setPos(x, y, z);
+        this.xo = x;
+        this.yo = y;
+        this.zo = z;
     }
 
     @Override

@@ -1,9 +1,10 @@
-// 1.19.2	2023-10-06T09:23:17.3132651	Item Models: rot
+// 1.19.2	2023-10-07T13:26:30.4295495	Item Models: rot
 cee045daa42fdce5dcb04627b8e55e14bdd98de5 assets/rot/models/item/amber.json
 a7c140919a115f2d6d35dcf16089c6064cc3002e assets/rot/models/item/amber_glass.json
 f84bbc69c52f7e120cb98828384fea917a639db1 assets/rot/models/item/amber_ore.json
 2f150d6ae4ddda3aa06fd8cc7d97d7f40ae5e8a3 assets/rot/models/item/ammonite_fossil_path.json
 ebd3e0ef50bdc935a51360b0d00a16fc65cd2530 assets/rot/models/item/archaeopteris_boat.json
+84bd976e18edefc286e621d96af5ca19186e8e04 assets/rot/models/item/archaeopteris_chest_boat.json
 50d7bc1c809cc1c60948e13c0cca2da954594210 assets/rot/models/item/archaeopteris_door.json
 618736505d4d50333a47e7396eecf5c3291aa474 assets/rot/models/item/archaeopteris_leaves.json
 c801f6be3c6203aa1040737a996f525485a51cca assets/rot/models/item/archaeopteris_log.json

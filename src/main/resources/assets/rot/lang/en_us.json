@@ -31,11 +31,13 @@
   "item.rot.paleozoic_fossil": "Paleozoic Fossil",
   "item.rot.plant_fossil": "Plant Fossil",
   "item.rot.archaeopteris_boat": "Archaeopteris Boat",
+  "item.rot.archaeopteris_chest_boat": "Archaeopteris Boat with Chest",
 
   "entity.rot.furcacauda": "Furcacauda",
   "entity.rot.concavenator": "Concavenator",
   "entity.rot.platyhystrix": "Platyhystrix",
   "entity.rot.boat": "Boat",
+  "entity.rot.chest_boat": "Chest Boat",
 
   "itemGroup.relics_of_time": "Relics of Time",
 

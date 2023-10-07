@@ -15,6 +15,7 @@ import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.Vec3;
 import net.phoi.rot.level.entity.TemplateBoat;
+import net.phoi.rot.level.entity.TemplateChestBoat;
 
 import java.util.List;
 import java.util.function.Predicate;
@@ -54,6 +55,8 @@ public class ModBoatItem extends GenericItem {
                 Boat boat = this.getBoat(level, hitresult);
                 if (boat instanceof TemplateBoat) {
                     ((TemplateBoat)boat).setVariant(this.type);
+                } else if (boat instanceof TemplateChestBoat templateChestBoat) {
+                    templateChestBoat.setVariant(this.type);
                 }
                 boat.setYRot(player.getYRot());
                 if (!level.noCollision(boat, boat.getBoundingBox())) {
@@ -77,6 +80,6 @@ public class ModBoatItem extends GenericItem {
     }
 
     private Boat getBoat(Level level, HitResult hitResult) {
-        return new TemplateBoat(level, hitResult.getLocation().x, hitResult.getLocation().y, hitResult.getLocation().z);
+        return hasChest ? new TemplateChestBoat(level, hitResult.getLocation().x, hitResult.getLocation().y, hitResult.getLocation().z) : new TemplateBoat(level, hitResult.getLocation().x, hitResult.getLocation().y, hitResult.getLocation().z);
     }
 }

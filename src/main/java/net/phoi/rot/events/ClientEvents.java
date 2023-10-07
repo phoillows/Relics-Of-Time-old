@@ -38,6 +38,7 @@ public class ClientEvents {
         event.registerEntityRenderer(PLATYHYSTRIX.get(), PlatyhystrixRenderer::new);
 
         event.registerEntityRenderer(BOAT.get(), (context) -> new TemplateBoatRenderer(context, false));
+        event.registerEntityRenderer(CHEST_BOAT.get(), (context) -> new TemplateBoatRenderer(context, true));
 
 
         // Block entity renderers
@@ -47,5 +48,6 @@ public class ClientEvents {
     @SubscribeEvent
     public static void layerDefinitions(EntityRenderersEvent.RegisterLayerDefinitions event) {
         event.registerLayerDefinition(new ModelLayerLocation(Helper.createPath("boat/archaeopteris"), "main"), () -> BoatModel.createBodyModel(false));
+        event.registerLayerDefinition(new ModelLayerLocation(Helper.createPath("chest_boat/archaeopteris"), "main"), () -> BoatModel.createBodyModel(true));
     }
 }
