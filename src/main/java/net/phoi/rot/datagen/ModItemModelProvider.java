@@ -40,7 +40,6 @@ public class ModItemModelProvider extends ItemModelProvider {
         blockItem(DNA_ANALYZER_ITEM);
         blockItem(DNA_CENTRIFUGE_ITEM);
         blockItem(AMMONITE_FOSSIL_PATH_ITEM);
-        blockItem(CONCAVENATOR_EGG_ITEM, "item/concavenator_egg");
         blockItem(ARCHAEOPTERIS_PLANKS_ITEM);
         blockItem(ARCHAEOPTERIS_LOG_ITEM);
         blockItem(ARCHAEOPTERIS_LEAVES_ITEM);
@@ -49,12 +48,18 @@ public class ModItemModelProvider extends ItemModelProvider {
         blockItem(STRIPPED_ARCHAEOPTERIS_WOOD_ITEM);
         blockItem(ARCHAEOPTERIS_SLAB_ITEM);
         blockItem(ARCHAEOPTERIS_STAIRS_ITEM);
+        blockItem(ARCHAEOPTERIS_FENCE_GATE_ITEM);
+        blockItem(ARCHAEOPTERIS_PRESSURE_PLATE_ITEM);
         blockItem(SMALL_HORSETAIL_ITEM, "block/large_horsetail_top");
         blockItem(LARGE_HORSETAIL_ITEM, "block/small_horsetail");
         blockItem(ARCHAEOPTERIS_DOOR_ITEM, "item/archaeopteris_door");
         blockItem(ARCHAEOPTERIS_SIGN, "item/archaeopteris_sign");
         blockItem(ARCHAEOPTERIS_SAPLING_ITEM, "block/archaeopteris_sapling");
+        blockItem(CONCAVENATOR_EGG_ITEM, "item/concavenator_egg");
+        blockItem(PROTOCERATOPS_EGG_ITEM, "item/protoceratops_egg");
         trapdoorBlockItem(ARCHAEOPTERIS_TRAPDOOR_ITEM);
+        inventoryBlockItem(ARCHAEOPTERIS_FENCE_ITEM);
+        inventoryBlockItem(ARCHAEOPTERIS_BUTTON_ITEM);
     }
 
     private ItemModelBuilder genericItem(RegistryObject<Item> item) {
@@ -82,5 +87,9 @@ public class ModItemModelProvider extends ItemModelProvider {
 
     private ItemModelBuilder trapdoorBlockItem(RegistryObject<Item> item) {
         return withExistingParent(item.getId().getPath(), createPath("block/" + item.getId().getPath() + "_bottom"));
+    }
+
+    private ItemModelBuilder inventoryBlockItem(RegistryObject<Item> item) {
+        return withExistingParent(item.getId().getPath(), createPath("block/" + item.getId().getPath() + "_inventory"));
     }
 }

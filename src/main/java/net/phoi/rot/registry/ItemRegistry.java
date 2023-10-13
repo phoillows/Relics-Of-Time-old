@@ -38,9 +38,13 @@ public class ItemRegistry {
     public static final RegistryObject<Item> ARCHAEOPTERIS_WOOD_ITEM = blockItem(ARCHAEOPTERIS_WOOD);
     public static final RegistryObject<Item> ARCHAEOPTERIS_LEAVES_ITEM = blockItem(ARCHAEOPTERIS_LEAVES);
     public static final RegistryObject<Item> ARCHAEOPTERIS_SLAB_ITEM = blockItem(ARCHAEOPTERIS_SLAB);
+    public static final RegistryObject<Item> ARCHAEOPTERIS_FENCE_ITEM = blockItem(ARCHAEOPTERIS_FENCE);
     public static final RegistryObject<Item> ARCHAEOPTERIS_STAIRS_ITEM = blockItem(ARCHAEOPTERIS_STAIRS);
+    public static final RegistryObject<Item> ARCHAEOPTERIS_BUTTON_ITEM = blockItem(ARCHAEOPTERIS_BUTTON);
+    public static final RegistryObject<Item> ARCHAEOPTERIS_PRESSURE_PLATE_ITEM = blockItem(ARCHAEOPTERIS_PRESSURE_PLATE);
     public static final RegistryObject<Item> ARCHAEOPTERIS_DOOR_ITEM = blockItem(ARCHAEOPTERIS_DOOR);
     public static final RegistryObject<Item> ARCHAEOPTERIS_TRAPDOOR_ITEM = blockItem(ARCHAEOPTERIS_TRAPDOOR);
+    public static final RegistryObject<Item> ARCHAEOPTERIS_FENCE_GATE_ITEM = blockItem(ARCHAEOPTERIS_FENCE_GATE);
     public static final RegistryObject<Item> ARCHAEOPTERIS_BOAT = ITEM.register("archaeopteris_boat", () -> new ModBoatItem(false, TemplateBoat.Type.ARCHAEOPTERIS));
     public static final RegistryObject<Item> ARCHAEOPTERIS_CHEST_BOAT = ITEM.register("archaeopteris_chest_boat", () -> new ModBoatItem(true, TemplateBoat.Type.ARCHAEOPTERIS));
     public static final RegistryObject<Item> ARCHAEOPTERIS_SIGN = ITEM.register("archaeopteris_sign", () -> new SignItem(new Item.Properties().stacksTo(16).tab(RelicsOfTime.RELICS_OF_TIME), BlockRegistry.ARCHAEOPTERIS_SIGN.get(), ARCHAEOPTERIS_WALL_SIGN.get()));
@@ -56,13 +60,14 @@ public class ItemRegistry {
     public static final RegistryObject<Item> PLATYHYSTRIX_DNA = ITEM.register("platyhystrix_dna", () -> new DnaBottleItem("Platyhystrix"));
 
     public static final RegistryObject<Item> CONCAVENATOR_EGG_ITEM = blockItem(CONCAVENATOR_EGG);
+    public static final RegistryObject<Item> PROTOCERATOPS_EGG_ITEM = blockItem(PROTOCERATOPS_EGG);
+
     public static final RegistryObject<Item> CONCAVENATOR_SPAWN_EGG = ITEM.register("concavenator_spawn_egg", () -> new ForgeSpawnEggItem(EntityRegistry.CONCAVENATOR, 10116416, 13478556, new Item.Properties().tab(RelicsOfTime.RELICS_OF_TIME)));
     public static final RegistryObject<Item> FURCACAUDA_SPAWN_EGG = ITEM.register("furcacauda_spawn_egg", () -> new ForgeSpawnEggItem(EntityRegistry.FURCACAUDA, 14178304, 1326687, new Item.Properties().tab(RelicsOfTime.RELICS_OF_TIME)));
     public static final RegistryObject<Item> PLATYHYSTRIX_SPAWN_EGG = ITEM.register("platyhystrix_spawn_egg", () -> new ForgeSpawnEggItem(EntityRegistry.PLATYHYSTRIX, 7504960, 15046697, new Item.Properties().tab(RelicsOfTime.RELICS_OF_TIME)));
     
 
     /** Helper methods **/
-
     private static RegistryObject<Item> blockItem(RegistryObject<Block> block) {
         return ITEM.register(block.getId().getPath(), () -> new BlockItem(block.get(), new Item.Properties().tab(RelicsOfTime.RELICS_OF_TIME)));
     }

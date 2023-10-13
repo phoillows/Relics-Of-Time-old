@@ -11,23 +11,27 @@ import software.bernie.geckolib3.model.provider.data.EntityModelData;
 import static net.phoi.rot.util.Helper.createPath;
 
 public class ConcavenatorModel extends AnimatedGeoModel<Concavenator> {
+    private static final ResourceLocation DEFAULT = createPath("textures/entity/concavenator/concavenator.png");
+    private static final ResourceLocation SLEEPING = createPath("textures/entity/concavenator/concavenator_sleeping.png");
+    private static final ResourceLocation BABY = createPath("textures/entity/concavenator/hatchling_concavenator.png");
+    private static final ResourceLocation BABY_SLEEPING = createPath("textures/entity/concavenator/hatchling_concavenator_sleeping.png");
 
     @Override
     public ResourceLocation getModelResource(Concavenator entity) {
-        return createPath("geo/concavenator.geo.json");
+        return entity.isBaby() ? createPath("geo/hatchling_concavenator.geo.json") : createPath("geo/concavenator.geo.json");
     }
 
     @Override
     public ResourceLocation getTextureResource(Concavenator entity) {
         if (entity.isSleeping()) {
-            return createPath("textures/entity/concavenator/concavenator_sleeping.png");
+            return entity.isBaby() ? BABY_SLEEPING : SLEEPING;
         }
-        return createPath("textures/entity/concavenator/concavenator.png");
+        return entity.isBaby() ? BABY : DEFAULT;
     }
 
     @Override
     public ResourceLocation getAnimationResource(Concavenator entity) {
-        return createPath("animations/concavenator.animation.json");
+        return entity.isBaby() ? createPath("animations/hatchling_concavenator.animation.json") : createPath("animations/concavenator.animation.json");
     }
 
     @Override

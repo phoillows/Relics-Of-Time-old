@@ -306,6 +306,10 @@ public class Concavenator extends Dinosaur implements Saddleable, PlayerRideable
             event.getController().setAnimation(STUNNED);
             return PlayState.CONTINUE;
 
+        } else if (this.isCalling()) {
+            event.getController().setAnimation(CALL);
+            return PlayState.CONTINUE;
+
         } else {
             if (event.isMoving()) {
                 event.getController().setAnimation(this.isSprinting() ? RUN : WALK);
@@ -326,19 +330,10 @@ public class Concavenator extends Dinosaur implements Saddleable, PlayerRideable
         return PlayState.CONTINUE;
     }
 
-    private PlayState callPredicate(AnimationEvent event) {
-        if (this.isCalling()) {
-            event.getController().setAnimation(CALL);
-            return PlayState.CONTINUE;
-        }
-        return PlayState.CONTINUE;
-    }
-
     @Override
     public void registerControllers(AnimationData data) {
         data.addAnimationController(new AnimationController<>(this, "basic", 2, this::basicPredicate));
         data.addAnimationController(new AnimationController<>(this, "attack", 2, this::attackPredicate));
-        data.addAnimationController(new AnimationController<>(this, "call", 2, this::callPredicate));
     }
 
     @Override

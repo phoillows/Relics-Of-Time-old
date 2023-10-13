@@ -1,0 +1,31 @@
+{
+  "variants": {
+    "eggs=1,cracked=0": {
+      "model": "rot:block/protoceratops_egg"
+    },
+    "eggs=1,cracked=1": {
+      "model": "rot:block/protoceratops_egg"
+    },
+    "eggs=1,cracked=2": {
+      "model": "rot:block/protoceratops_egg"
+    },
+    "eggs=2,cracked=0": {
+      "model": "rot:block/two_protoceratops_eggs"
+    },
+    "eggs=2,cracked=1": {
+      "model": "rot:block/two_protoceratops_eggs"
+    },
+    "eggs=2,cracked=2": {
+      "model": "rot:block/two_protoceratops_eggs"
+    },
+    "eggs=3,cracked=0": {
+      "model": "rot:block/three_protoceratops_eggs"
+    },
+    "eggs=3,cracked=1": {
+      "model": "rot:block/three_protoceratops_eggs"
+    },
+    "eggs=3,cracked=2": {
+      "model": "rot:block/three_protoceratops_eggs"
+    }
+  }
+}

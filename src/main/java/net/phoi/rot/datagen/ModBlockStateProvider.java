@@ -35,6 +35,10 @@ public class ModBlockStateProvider extends BlockStateProvider {
         signBlock(ARCHAEOPTERIS_SIGN, ARCHAEOPTERIS_WALL_SIGN, createPath("block/archaeopteris_planks"));
         slabBlock((SlabBlock)ARCHAEOPTERIS_SLAB.get(), createPath("block/archaeopteris_planks"), createPath("block/archaeopteris_planks"));
         stairsBlock((StairBlock)ARCHAEOPTERIS_STAIRS.get(), "archaeopteris", createPath("block/archaeopteris_planks"));
+        fenceBlock((FenceBlock)ARCHAEOPTERIS_FENCE.get(), createPath("block/archaeopteris_planks"));
+        fenceGateBlock((FenceGateBlock)ARCHAEOPTERIS_FENCE_GATE.get(), createPath("block/archaeopteris_planks"));
+        buttonBlock((ButtonBlock)ARCHAEOPTERIS_BUTTON.get(), createPath("block/archaeopteris_planks"));
+        pressurePlateBlock((PressurePlateBlock)ARCHAEOPTERIS_PRESSURE_PLATE.get(), createPath("block/archaeopteris_planks"));
     }
 
     private void genericBlock(RegistryObject<Block> block) {
