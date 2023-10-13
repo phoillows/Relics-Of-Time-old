@@ -30,17 +30,20 @@ public class RelicsOfTime {
     public RelicsOfTime() {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
-        EntityRegistry.ENTITY.register(modEventBus); // Register entities
-        PaintingRegistry.PAINTING.register(modEventBus); // Register paintings
-        ItemRegistry.ITEM.register(modEventBus); // Register items
+        BlockEntityRegistry.BLOCK_ENTITY.register(modEventBus);
+        BlockRegistry.BLOCK.register(modEventBus);
+        ConfiguredFeatureRegistry.CONFIGURED_FEATURE.register(modEventBus);
+        EntityRegistry.ENTITY.register(modEventBus);
+        ItemRegistry.ITEM.register(modEventBus);
+        MenuTypesRegistry.MENU.register(modEventBus);
+        MobEffectRegistry.MOB_EFFECT.register(modEventBus);
+        PaintingRegistry.PAINTING.register(modEventBus);
 
-        BlockRegistry.BLOCK.register(modEventBus); // Register blocks
-        BlockEntityRegistry.BLOCK_ENTITY.register(modEventBus); // Register block entities
+        // Register the commonSetup method for modloading
+        modEventBus.addListener(this::commonSetup);
 
-        MenuTypesRegistry.MENU.register(modEventBus);  // Register menus
-
-        modEventBus.addListener(this::commonSetup); // Register the commonSetup method for modloading
-        MinecraftForge.EVENT_BUS.register(this); // Register ourselves for server and other game events we are interested in
+        // Register ourselves for server and other game events we are interested in
+        MinecraftForge.EVENT_BUS.register(this);
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {

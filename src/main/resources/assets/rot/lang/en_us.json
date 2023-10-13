@@ -44,6 +44,8 @@
   "entity.rot.boat": "Boat",
   "entity.rot.chest_boat": "Chest Boat",
 
+  "effect.rot.intoxicated": "Intoxicated",
+
   "itemGroup.relics_of_time": "Relics of Time",
 
   "subtitles.entity.concavenator.ambient": "Concavenator roars",

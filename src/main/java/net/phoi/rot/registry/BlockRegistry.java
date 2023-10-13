@@ -10,6 +10,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import net.phoi.rot.RelicsOfTime;
 import net.phoi.rot.level.block.*;
+import net.phoi.rot.level.feature.tree.ArchaeopterisTreeGrower;
 import net.phoi.rot.util.ModWoodTypes;
 
 public class BlockRegistry {
@@ -35,8 +36,7 @@ public class BlockRegistry {
     public static final RegistryObject<Block> ARCHAEOPTERIS_LEAVES = BLOCK.register("archaeopteris_leaves", () -> new LeavesBlock(BlockBehaviour.Properties.of(Material.LEAVES).strength(0.2F).sound(SoundType.GRASS).randomTicks().noOcclusion()));
     public static final RegistryObject<Block> ARCHAEOPTERIS_DOOR = BLOCK.register("archaeopteris_door", () -> new DoorBlock(BlockBehaviour.Properties.of(Material.WOOD, MaterialColor.COLOR_ORANGE).strength(2.0F).sound(SoundType.LADDER).noOcclusion()));
     public static final RegistryObject<Block> ARCHAEOPTERIS_TRAPDOOR = BLOCK.register("archaeopteris_trapdoor", () -> new TrapDoorBlock(BlockBehaviour.Properties.of(Material.WOOD, MaterialColor.COLOR_ORANGE).strength(3.0F).sound(SoundType.WOOD).noOcclusion()));
-    public static final RegistryObject<Block> ARCHAEOPTERIS_SAPLING = BLOCK.register("archaeopteris_sapling", () -> new TallGrassBlock(BlockBehaviour.Properties.of(Material.REPLACEABLE_PLANT).noCollission().instabreak().sound(SoundType.GRASS)));
-
+    public static final RegistryObject<Block> ARCHAEOPTERIS_SAPLING = BLOCK.register("archaeopteris_sapling", () -> new SaplingBlock(new ArchaeopterisTreeGrower(), BlockBehaviour.Properties.of(Material.REPLACEABLE_PLANT).noCollission().instabreak().sound(SoundType.GRASS)));
     public static final RegistryObject<Block> ARCHAEOPTERIS_SIGN = BLOCK.register("archaeopteris_sign", () -> new TemplateStandingSignBlock(BlockBehaviour.Properties.of(Material.WOOD).strength(1.0F).sound(SoundType.WOOD).noCollission(), ModWoodTypes.ARCHAEOPTERIS));
     public static final RegistryObject<Block> ARCHAEOPTERIS_WALL_SIGN = BLOCK.register("archaeopteris_wall_sign", () -> new TemplateWallSignBlock(BlockBehaviour.Properties.of(Material.WOOD).strength(1.0F).sound(SoundType.WOOD).noCollission(), ModWoodTypes.ARCHAEOPTERIS));
 
