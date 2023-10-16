@@ -21,6 +21,7 @@ A 1.19.2 mod for Forge that allows you to revive prehistoric animals and plants 
 - Alphaxenopete82 (Artist)
 - PriorMentation (Artist)
 - Phoillows (Java Coder 😎)
+- Magne L  (Java Coder 😎)
 - DinoFazbearYT (Bedrock Coder)
 - Kent (Animator)
 
