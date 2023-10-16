@@ -44,6 +44,6 @@ public class BlockRegistry {
     public static final RegistryObject<Block> LARGE_HORSETAIL = BLOCK.register("large_horsetail", () -> new DoublePlantBlock(BlockBehaviour.Properties.of(Material.REPLACEABLE_PLANT).noCollission().instabreak().sound(SoundType.GRASS)));
     public static final RegistryObject<Block> NEOCALAMITES = BLOCK.register("neocalamites", () -> new NeocalamitesBlock(BlockBehaviour.Properties.of(Material.BAMBOO).strength(1.0F).sound(SoundType.BAMBOO).randomTicks()));
 
-    public static final RegistryObject<Block> CONCAVENATOR_EGG = BLOCK.register("concavenator_egg", () -> new DinosaurEggBlock(ItemRegistry.CONCAVENATOR_EGG_ITEM, EntityRegistry.CONCAVENATOR, BlockBehaviour.Properties.of(Material.EGG, MaterialColor.COLOR_ORANGE).strength(0.5F).sound(SoundType.METAL).randomTicks().noOcclusion()));
-    public static final RegistryObject<Block> PROTOCERATOPS_EGG = BLOCK.register("protoceratops_egg", () -> new DinosaurEggBlock(ItemRegistry.PROTOCERATOPS_EGG_ITEM, EntityRegistry.FURCACAUDA, BlockBehaviour.Properties.of(Material.EGG, MaterialColor.COLOR_ORANGE).strength(0.5F).sound(SoundType.METAL).randomTicks().noOcclusion()));
+    public static final RegistryObject<Block> CONCAVENATOR_EGG = BLOCK.register("concavenator_egg", () -> new DinosaurEggBlock(EntityRegistry.CONCAVENATOR, BlockBehaviour.Properties.of(Material.EGG, MaterialColor.COLOR_ORANGE).strength(0.5F).sound(SoundType.METAL).randomTicks().noOcclusion()));
+    public static final RegistryObject<Block> PROTOCERATOPS_EGG = BLOCK.register("protoceratops_egg", () -> new DinosaurEggBlock(EntityRegistry.PLATYHYSTRIX, BlockBehaviour.Properties.of(Material.EGG, MaterialColor.COLOR_ORANGE).strength(0.5F).sound(SoundType.METAL).randomTicks().noOcclusion()));
 }

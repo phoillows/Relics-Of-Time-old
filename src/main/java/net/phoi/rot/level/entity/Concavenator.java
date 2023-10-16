@@ -65,11 +65,17 @@ public class Concavenator extends Dinosaur implements Saddleable, PlayerRideable
                 return !isCalling() && !isStunned() && getPassengers().isEmpty() && super.canUse();
             }
         });
-        this.goalSelector.addGoal(3, new RandomStrollGoal(this, 1.1D));
-        this.goalSelector.addGoal(4, new DinosaurLookAtPlayerGoal(this));
-        this.goalSelector.addGoal(5, new DinosaurLookAroundGoal(this));
-        this.targetSelector.addGoal(3, new HurtByTargetGoal(this).setAlertOthers());
-        this.targetSelector.addGoal(4, new NearestAttackableTargetGoal<>(this, Player.class, true));
+        this.goalSelector.addGoal(3, new FollowParentGoal(this, 1.2D));
+        this.goalSelector.addGoal(4, new RandomStrollGoal(this, 1.1D));
+        this.goalSelector.addGoal(5, new DinosaurLookAtPlayerGoal(this));
+        this.goalSelector.addGoal(6, new DinosaurLookAroundGoal(this));
+        this.targetSelector.addGoal(2, new HurtByTargetGoal(this).setAlertOthers());
+        this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, Player.class, true) {
+            @Override
+            public boolean canUse() {
+                return !isBaby() && super.canUse();
+            }
+        });
     }
 
     public static AttributeSupplier.Builder createAttributes() {
@@ -210,13 +216,15 @@ public class Concavenator extends Dinosaur implements Saddleable, PlayerRideable
     public SpawnGroupData finalizeSpawn(ServerLevelAccessor level, DifficultyInstance difficulty, MobSpawnType spawnType, @Nullable SpawnGroupData groupData, @Nullable CompoundTag nbt) {
         boolean foundLeader = false;
         for (Concavenator concav : level.getEntitiesOfClass(Concavenator.class, this.getBoundingBox().inflate(24))) {
-            if (concav.entityData.get(DATA_LEADER)) {
-                foundLeader = true;
-                this.entityData.set(DATA_LEADER, false);
-                break;
-            } else {
-                foundLeader = false;
-                this.entityData.set(DATA_LEADER, true);
+            if (!concav.isBaby()) {
+                if (concav.entityData.get(DATA_LEADER)) {
+                    foundLeader = true;
+                    this.entityData.set(DATA_LEADER, false);
+                    break;
+                } else {
+                    foundLeader = false;
+                    this.entityData.set(DATA_LEADER, true);
+                }
             }
         }
 

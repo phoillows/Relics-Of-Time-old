@@ -11,7 +11,6 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
@@ -29,12 +28,10 @@ public class DinosaurEggBlock extends Block {
     private static final IntegerProperty CRACKED = IntegerProperty.create("cracked", 0, 2);
     private static final VoxelShape ONE_EGG_SHAPE = box(3, 0, 3, 12, 8, 12);
     private static final VoxelShape MULTIPLE_EGG_SHAPE = box(1, 0, 1, 15, 8, 15);
-    private final RegistryObject<Item> egg;
     private final RegistryObject<? extends EntityType<?>> entityType;
 
-    public DinosaurEggBlock(RegistryObject<Item> egg, RegistryObject<? extends EntityType<?>> entityType, Properties properties) {
+    public DinosaurEggBlock(RegistryObject<? extends EntityType<?>> entityType, Properties properties) {
         super(properties);
-        this.egg = egg;
         this.entityType = entityType;
         this.registerDefaultState(this.getStateDefinition().any().setValue(EGGS, 1).setValue(CRACKED, 0));
     }
@@ -55,7 +52,7 @@ public class DinosaurEggBlock extends Block {
     @Override
     public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult blockHitResult) {
         ItemStack stack = player.getItemInHand(hand);
-        if (stack.is(egg.get()) && state.getValue(EGGS) < 3) {
+        if (stack.is(this.asItem()) && state.getValue(EGGS) < 3) {
             level.setBlock(pos, state.setValue(EGGS, state.getValue(EGGS) + 1), 2);
             level.playSound(player, pos, SoundEvents.METAL_PLACE, SoundSource.BLOCKS, 1.0F, 1.0F);
             player.swing(hand);
