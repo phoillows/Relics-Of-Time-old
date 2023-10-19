@@ -1,12 +1,12 @@
 package net.phoi.rot.level.entity.ai;
 
-import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.ai.goal.RandomLookAroundGoal;
+import net.phoi.rot.level.entity.Dinosaur;
 
 public class DinosaurLookAroundGoal extends RandomLookAroundGoal {
-    private Mob mob;
+    private Dinosaur mob;
 
-    public DinosaurLookAroundGoal(Mob mob) {
+    public DinosaurLookAroundGoal(Dinosaur mob) {
         super(mob);
         this.mob = mob;
     }

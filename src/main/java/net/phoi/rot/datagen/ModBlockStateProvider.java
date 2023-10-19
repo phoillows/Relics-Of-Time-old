@@ -20,6 +20,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
     @Override
     protected void registerStatesAndModels() {
         genericBlock(AMBER_ORE);
+        genericBlock(FOSSIL_ORE);
         genericBlock(AMMONITE_FOSSIL_PATH);
         genericBlock(ARCHAEOPTERIS_PLANKS);
         genericBlock(ARCHAEOPTERIS_WOOD, "block/archaeopteris_log");

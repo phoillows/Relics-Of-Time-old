@@ -42,7 +42,7 @@ public class NeocalamitesBlock extends Block implements SimpleWaterloggedBlock {
         if (level.getBlockState(pos.above()).isAir()) {
             for (int x = 0; x < 7; x++) {
                 if (!level.getBlockState(pos.below(x)).is(this)) {
-                    level.setBlock(pos.above(), this.defaultBlockState(), 3);
+                    level.setBlock(pos.above(), this.defaultBlockState(), 2);
                 }
             }
         }

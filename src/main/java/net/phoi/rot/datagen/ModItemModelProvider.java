@@ -50,6 +50,7 @@ public class ModItemModelProvider extends ItemModelProvider {
         blockItem(ARCHAEOPTERIS_STAIRS_ITEM);
         blockItem(ARCHAEOPTERIS_FENCE_GATE_ITEM);
         blockItem(ARCHAEOPTERIS_PRESSURE_PLATE_ITEM);
+        blockItem(FOSSIL_ORE_ITEM);
         blockItem(SMALL_HORSETAIL_ITEM, "block/large_horsetail_top");
         blockItem(LARGE_HORSETAIL_ITEM, "block/small_horsetail");
         blockItem(ARCHAEOPTERIS_DOOR_ITEM, "item/archaeopteris_door");

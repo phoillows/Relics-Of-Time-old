@@ -5,27 +5,18 @@ import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraft.world.entity.ai.control.SmoothSwimmingMoveControl;
-import net.minecraft.world.entity.ai.goal.MeleeAttackGoal;
-import net.minecraft.world.entity.ai.goal.RandomStrollGoal;
-import net.minecraft.world.entity.ai.goal.RandomSwimmingGoal;
-import net.minecraft.world.entity.ai.goal.TryFindWaterGoal;
+import net.minecraft.world.entity.ai.goal.*;
 import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
 import net.minecraft.world.entity.ai.navigation.AmphibiousPathNavigation;
 import net.minecraft.world.entity.ai.navigation.PathNavigation;
 import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.pathfinder.BlockPathTypes;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.fluids.FluidType;
-import net.phoi.rot.RelicsOfTime;
-import net.phoi.rot.level.entity.ai.DinosaurLookAroundGoal;
-import net.phoi.rot.level.entity.ai.DinosaurLookAtPlayerGoal;
-import net.phoi.rot.level.entity.ai.DinosaurSleepGoal;
+import net.phoi.rot.level.entity.ai.*;
 import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib3.core.IAnimatable;
 import software.bernie.geckolib3.core.PlayState;
@@ -39,34 +30,29 @@ import software.bernie.geckolib3.util.GeckoLibUtil;
 public class Platyhystrix extends Dinosaur implements IAnimatable {
     private static final EntityDataAccessor<Boolean> DATA_DROUSY = SynchedEntityData.defineId(Platyhystrix.class, EntityDataSerializers.BOOLEAN);
     private final AnimationFactory cache = GeckoLibUtil.createFactory(this);
-    private int drownTimer = 0;
 
     public Platyhystrix(EntityType<? extends Dinosaur> entityType, Level level) {
         super(entityType, level);
-        this.setPathfindingMalus(BlockPathTypes.WATER, 0.0F);
-        this.moveControl = new SmoothSwimmingMoveControl(this, 85, 10, 1.1F, 1.0F, false);
-        this.maxUpStep = 1.0F;
     }
 
     @Override
     protected void registerGoals() {
+        this.goalSelector.addGoal(0, new PlatyhystrixDrowseGoal(this));
         this.goalSelector.addGoal(1, new MeleeAttackGoal(this, 1.15D, true));
-        this.goalSelector.addGoal(2, new DinosaurSleepGoal(this) {
+        this.goalSelector.addGoal(2, new DinosaurSleepGoal(this));
+        this.goalSelector.addGoal(3, new DinosaurGoToWaterGoal(this, 1.1D, 16) {
             @Override
             public boolean canUse() {
-                return !isInWater() && super.canUse();
+                return isDrousy() && super.canUse();
             }
-
             @Override
             public boolean canContinueToUse() {
-                return !isInWater() && super.canContinueToUse();
+                return isDrousy() && super.canContinueToUse();
             }
         });
-        this.goalSelector.addGoal(3, new RandomSwimmingGoal(this, 1.0D, 5));
         this.goalSelector.addGoal(4, new RandomStrollGoal(this, 1.1D));
-        this.goalSelector.addGoal(5, new TryFindWaterGoal(this));
-        this.goalSelector.addGoal(6, new DinosaurLookAtPlayerGoal(this));
-        this.goalSelector.addGoal(7, new DinosaurLookAroundGoal(this));
+        this.goalSelector.addGoal(5, new DinosaurLookAtPlayerGoal(this));
+        this.goalSelector.addGoal(6, new DinosaurLookAroundGoal(this));
         this.targetSelector.addGoal(2, new HurtByTargetGoal(this).setAlertOthers());
     }
 
@@ -105,19 +91,8 @@ public class Platyhystrix extends Dinosaur implements IAnimatable {
 
     @Override
     public void tick() {
-        if (!this.isInWater()) {
-            if (!this.level.isClientSide) {
-                drownTimer++;
-                if (drownTimer > 4000) {
-                    this.setDrousy(true);
-                }
-                if (drownTimer > 6000) {
-                    this.hurt(DamageSource.DROWN, 1.0F);
-                }
-            }
-        } else {
-            drownTimer = 0;
-            this.setDrousy(false);
+        if (this.isUnderWater()) {
+            this.setDeltaMovement(this.getDeltaMovement().x, 0.08D, this.getDeltaMovement().z);
         }
         super.tick();
     }
@@ -125,7 +100,7 @@ public class Platyhystrix extends Dinosaur implements IAnimatable {
     @Override
     public void travel(Vec3 travelVector) {
         if (this.isEffectiveAi() && this.isInWater()) {
-            this.moveRelative(this.getSpeed(), travelVector);
+            this.moveRelative(0.05F, travelVector);
             this.move(MoverType.SELF, this.getDeltaMovement());
             this.setDeltaMovement(this.getDeltaMovement().scale(0.9D));
         } else {
@@ -134,7 +109,7 @@ public class Platyhystrix extends Dinosaur implements IAnimatable {
     }
 
     @Override
-    protected PathNavigation createNavigation(Level level) {
+    protected PathNavigation createNavigation(Level pLevel) {
         return new AmphibiousPathNavigation(this, level);
     }
 
@@ -146,11 +121,6 @@ public class Platyhystrix extends Dinosaur implements IAnimatable {
     @Override
     public boolean isPushedByFluid(FluidType type) {
         return false;
-    }
-
-    @Override
-    public MobType getMobType() {
-        return MobType.WATER;
     }
 
     @Override

@@ -23,8 +23,7 @@ public class TemplateBoatRenderer extends BoatRenderer {
     public TemplateBoatRenderer(EntityRendererProvider.Context context, boolean hasChest) {
         super(context, hasChest);
         this.boatResources = Stream.of(TemplateBoat.Type.values()).collect(ImmutableMap.toImmutableMap((type) -> type,
-                (type) -> Pair.of(new ResourceLocation(RelicsOfTime.MODID, getTextureLocation(type, hasChest)),
-                        this.createBoatModel(context, type, hasChest))));
+                (type) -> Pair.of(new ResourceLocation(RelicsOfTime.MODID, getTextureLocation(type, hasChest)), this.createBoatModel(context, type, hasChest))));
     }
 
     private static String getTextureLocation(TemplateBoat.Type type, boolean hasChest) {
@@ -53,10 +52,8 @@ public class TemplateBoatRenderer extends BoatRenderer {
     public Pair<ResourceLocation, BoatModel> getModelWithLocation(Boat boat) {
         if (boat instanceof TemplateBoat templateBoat) {
             return this.boatResources.get(templateBoat.getVariant());
-
         } else if (boat instanceof TemplateChestBoat templateChestBoat) {
             return this.boatResources.get(templateChestBoat.getVariant());
-
         } else {
             return null;
         }

@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "weight": 1,
+          "name": "rot:mesozoic_fossil"
+        },
+        {
+          "type": "minecraft:item",
+          "weight": 1,
+          "name": "rot:paleozoic_fossil"
+        },
+        {
+          "type": "minecraft:item",
+          "weight": 1,
+          "name": "rot:plant_fossil"
+        }
+      ]
+    }
+  ]
+}

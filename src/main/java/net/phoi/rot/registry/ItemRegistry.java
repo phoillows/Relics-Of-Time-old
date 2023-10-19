@@ -22,6 +22,7 @@ public class ItemRegistry {
     public static final RegistryObject<Item> AMBER_GLASS_ITEM = blockItem(AMBER_GLASS);
     public static final RegistryObject<Item> DNA_ANALYZER_ITEM = blockItem(DNA_ANALYZER);
     public static final RegistryObject<Item> DNA_CENTRIFUGE_ITEM = blockItem(DNA_CENTRIFUGE);
+    public static final RegistryObject<Item> FOSSIL_ORE_ITEM = blockItem(FOSSIL_ORE);
     public static final RegistryObject<Item> AMMONITE_FOSSIL_PATH_ITEM = blockItem(AMMONITE_FOSSIL_PATH);
 
     public static final RegistryObject<Item> MESOZOIC_FOSSIL = ITEM.register("mesozoic_fossil", () -> new GenericItem());
@@ -54,6 +55,7 @@ public class ItemRegistry {
     public static final RegistryObject<Item> NEOCALAMITES_ITEM = blockItem(NEOCALAMITES);
 
     public static final RegistryObject<Item> HORSETAIL_DNA = ITEM.register("horsetail_dna", () -> new DnaBottleItem("Horsetail"));
+    public static final RegistryObject<Item> NEOCALAMITES_DNA = ITEM.register("neocalamites_dna", () -> new DnaBottleItem("Neocalamites"));
 
     public static final RegistryObject<Item> CONCAVENATOR_DNA = ITEM.register("concavenator_dna", () -> new DnaBottleItem("Concavenator"));
     public static final RegistryObject<Item> FURCACAUDA_DNA = ITEM.register("furcacauda_dna", () -> new DnaBottleItem("Furcacauda"));

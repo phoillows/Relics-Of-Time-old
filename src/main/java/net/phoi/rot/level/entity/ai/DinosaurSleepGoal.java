@@ -16,7 +16,7 @@ public class DinosaurSleepGoal extends Goal {
 
     @Override
     public boolean canUse() {
-        if (this.dinosaur.level.isNight()) {
+        if (this.dinosaur.level.isNight() && !this.dinosaur.isInWater() && !this.dinosaur.isInLava() && this.dinosaur.getTarget() == null) {
             if (this.dinosaur instanceof Saddleable saddled && saddled.isSaddled()) {
                 return RandomSource.create().nextInt(2000) == 1;
             } else {

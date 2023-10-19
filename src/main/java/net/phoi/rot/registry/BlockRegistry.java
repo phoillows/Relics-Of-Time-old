@@ -20,6 +20,7 @@ public class BlockRegistry {
     public static final RegistryObject<Block> DNA_CENTRIFUGE = BLOCK.register("dna_centrifuge", () -> new DnaCentrifugeBlock(BlockBehaviour.Properties.of(Material.METAL).strength(2F, 9.0F).sound(SoundType.GLASS).requiresCorrectToolForDrops().noOcclusion()));
     public static final RegistryObject<Block> AMBER_ORE = BLOCK.register("amber_ore", () -> new DropExperienceBlock(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.COLOR_ORANGE).strength(1.5F, 6.0F).sound(SoundType.STONE).requiresCorrectToolForDrops(), UniformInt.of(1, 3)));
     public static final RegistryObject<Block> AMBER_GLASS = BLOCK.register("amber_glass", () -> new GlassBlock(BlockBehaviour.Properties.copy(Blocks.GLASS).color(MaterialColor.COLOR_ORANGE)));
+    public static final RegistryObject<Block> FOSSIL_ORE = BLOCK.register("fossil_ore", () -> new DropExperienceBlock(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.STONE).strength(1.5F, 6.0F).sound(SoundType.STONE).requiresCorrectToolForDrops(), UniformInt.of(1, 3)));
     public static final RegistryObject<Block> AMMONITE_FOSSIL_PATH = BLOCK.register("ammonite_fossil_path", () -> new Block(BlockBehaviour.Properties.of(Material.STONE).strength(1.5F, 6.0F).sound(SoundType.STONE).requiresCorrectToolForDrops()));
 
     public static final RegistryObject<Block> STRIPPED_ARCHAEOPTERIS_LOG = BLOCK.register("stripped_archaeopteris_log", () -> new RotatedPillarBlock(BlockBehaviour.Properties.of(Material.WOOD, MaterialColor.COLOR_ORANGE).strength(2.0F).sound(SoundType.WOOD)));
