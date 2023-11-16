@@ -188,11 +188,11 @@ public class Concavenator extends Dinosaur implements Saddleable, PlayerRideable
 
             if (this.isControlledByLocalInstance()) {
                 if (this.getControllingPassenger() instanceof Player player && player.isSprinting()) {
-                    this.setSprinting(true);
-                    this.setSpeed(0.2F);
+                    this.setRunning(true);
+                    this.setSpeed(0.19F);
                 } else {
-                    this.setSprinting(false);
-                    this.setSpeed(0.08F);
+                    this.setRunning(false);
+                    this.setSpeed(0.07F);
                 }
                 super.travel(new Vec3(f, travelVector.y, f1));
             }
@@ -346,11 +346,12 @@ public class Concavenator extends Dinosaur implements Saddleable, PlayerRideable
             return PlayState.CONTINUE;
 
         } else if (event.isMoving()) {
-            event.getController().setAnimation(this.isSprinting() ? RUN : WALK);
+            event.getController().setAnimation(this.isRunning() ? RUN : WALK);
+            return PlayState.CONTINUE;
         } else {
             event.getController().setAnimation(IDLE);
+            return PlayState.CONTINUE;
         }
-        return PlayState.CONTINUE;
     }
 
     private PlayState attackPredicate(AnimationEvent event) {

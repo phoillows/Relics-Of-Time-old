@@ -15,6 +15,7 @@ import org.jetbrains.annotations.Nullable;
 
 public class Dinosaur extends TamableAnimal {
     private static final EntityDataAccessor<Boolean> DATA_SLEEPING = SynchedEntityData.defineId(Dinosaur.class, EntityDataSerializers.BOOLEAN);
+    private static final EntityDataAccessor<Boolean> DATA_RUNNNING = SynchedEntityData.defineId(Dinosaur.class, EntityDataSerializers.BOOLEAN);
 
     public Dinosaur(EntityType<? extends TamableAnimal> entityType, Level level) {
         super(entityType, level);
@@ -28,22 +29,33 @@ public class Dinosaur extends TamableAnimal {
         this.entityData.set(DATA_SLEEPING, sleeping);
     }
 
+    public boolean isRunning() {
+        return this.entityData.get(DATA_RUNNNING);
+    }
+
+    public void setRunning(boolean running) {
+        this.entityData.set(DATA_RUNNNING, running);
+    }
+
     @Override
     protected void defineSynchedData() {
         super.defineSynchedData();
         this.entityData.define(DATA_SLEEPING, false);
+        this.entityData.define(DATA_RUNNNING, false);
     }
 
     @Override
     public void addAdditionalSaveData(CompoundTag nbt) {
         super.addAdditionalSaveData(nbt);
         nbt.putBoolean("Sleeping", this.isSleeping());
+        nbt.putBoolean("Running", this.isRunning());
     }
 
     @Override
     public void readAdditionalSaveData(CompoundTag nbt) {
         super.readAdditionalSaveData(nbt);
         this.setSleeping(nbt.getBoolean("Sleeping"));
+        this.setRunning(nbt.getBoolean("Running"));
     }
 
     @Override
@@ -51,9 +63,8 @@ public class Dinosaur extends TamableAnimal {
         if (this.isSleeping()) {
             this.navigation.stop();
             this.setDeltaMovement(Vec3.ZERO);
-        } else {
-            super.travel(travelVector);
         }
+        super.travel(travelVector);
     }
 
     @Override

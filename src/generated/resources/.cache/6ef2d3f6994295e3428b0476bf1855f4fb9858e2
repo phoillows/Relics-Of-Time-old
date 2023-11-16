@@ -1,4 +1,4 @@
-// 1.19.2	2023-10-17T20:22:07.7848243	Item Models: rot
+// 1.19.2	2023-11-12T22:22:58.0396331	Item Models: rot
 cee045daa42fdce5dcb04627b8e55e14bdd98de5 assets/rot/models/item/amber.json
 a7c140919a115f2d6d35dcf16089c6064cc3002e assets/rot/models/item/amber_glass.json
 f84bbc69c52f7e120cb98828384fea917a639db1 assets/rot/models/item/amber_ore.json
@@ -6,6 +6,7 @@ f84bbc69c52f7e120cb98828384fea917a639db1 assets/rot/models/item/amber_ore.json
 ebd3e0ef50bdc935a51360b0d00a16fc65cd2530 assets/rot/models/item/archaeopteris_boat.json
 b72e569f91763cc7f1a802a77d2cace0c7ddc2c5 assets/rot/models/item/archaeopteris_button.json
 84bd976e18edefc286e621d96af5ca19186e8e04 assets/rot/models/item/archaeopteris_chest_boat.json
+283803accb5d5a736d5e0827e049dbbb1445f095 assets/rot/models/item/archaeopteris_club.json
 50d7bc1c809cc1c60948e13c0cca2da954594210 assets/rot/models/item/archaeopteris_door.json
 efddc0f3a81e5cb36f71b02e81f1ee11f3694df9 assets/rot/models/item/archaeopteris_fence.json
 280bb32a889a763053980c4e3d705c6a1abcefbd assets/rot/models/item/archaeopteris_fence_gate.json

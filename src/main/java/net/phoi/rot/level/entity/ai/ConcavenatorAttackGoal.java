@@ -7,7 +7,7 @@ public class ConcavenatorAttackGoal extends MeleeAttackGoal {
     private final Concavenator mob;
 
     public ConcavenatorAttackGoal(Concavenator mob) {
-        super(mob, 1.8D, true);
+        super(mob, 1.9D, true);
         this.mob = mob;
     }
 
@@ -27,11 +27,13 @@ public class ConcavenatorAttackGoal extends MeleeAttackGoal {
         if (this.mob.isLeader()) {
             this.mob.call();
         }
+        this.mob.setRunning(true);
     }
 
     @Override
     public void stop() {
         super.stop();
-        mob.setCalling(false);
+        this.mob.setCalling(false);
+        this.mob.setRunning(false);
     }
 }

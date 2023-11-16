@@ -24,6 +24,7 @@ public class ModItemModelProvider extends ItemModelProvider {
         generateItemModels();
         genericItem(FURCACAUDA_BUCKET);
         genericItem(ARCHAEOPTERIS_BOAT);
+        handHeldItem(ARCHAEOPTERIS_CLUB);
         spawnEgg(FURCACAUDA_SPAWN_EGG);
         spawnEgg(CONCAVENATOR_SPAWN_EGG);
         spawnEgg(PLATYHYSTRIX_SPAWN_EGG);

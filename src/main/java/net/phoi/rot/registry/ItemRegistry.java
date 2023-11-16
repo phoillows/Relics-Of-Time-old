@@ -17,7 +17,6 @@ public class ItemRegistry {
     public static final DeferredRegister<Item> ITEM = DeferredRegister.create(ForgeRegistries.ITEMS, RelicsOfTime.MODID);
 
     public static final RegistryObject<Item> AMBER = ITEM.register("amber", () -> new GenericItem());
-
     public static final RegistryObject<Item> AMBER_ORE_ITEM = blockItem(AMBER_ORE);
     public static final RegistryObject<Item> AMBER_GLASS_ITEM = blockItem(AMBER_GLASS);
     public static final RegistryObject<Item> DNA_ANALYZER_ITEM = blockItem(DNA_ANALYZER);
@@ -30,6 +29,7 @@ public class ItemRegistry {
     public static final RegistryObject<Item> PLANT_FOSSIL = ITEM.register("plant_fossil", () -> new GenericItem());
 
     public static final RegistryObject<Item> FURCACAUDA_BUCKET = ITEM.register("furcacauda_bucket", () -> new MobBucketItem(EntityRegistry.FURCACAUDA, () -> Fluids.WATER, () -> SoundEvents.BUCKET_FILL_FISH, new Item.Properties().stacksTo(1).tab(RelicsOfTime.RELICS_OF_TIME)));
+    public static final RegistryObject<Item> ARCHAEOPTERIS_CLUB = ITEM.register("archaeopteris_club", () -> new ArchaeopterisClubItem(Tiers.WOOD, 4, -3.1F, new Item.Properties().stacksTo(1).tab(RelicsOfTime.RELICS_OF_TIME)));
 
     public static final RegistryObject<Item> ARCHAEOPTERIS_PLANKS_ITEM = blockItem(ARCHAEOPTERIS_PLANKS);
     public static final RegistryObject<Item> ARCHAEOPTERIS_SAPLING_ITEM = blockItem(ARCHAEOPTERIS_SAPLING);
