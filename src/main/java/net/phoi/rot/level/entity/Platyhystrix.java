@@ -30,6 +30,9 @@ import software.bernie.geckolib3.util.GeckoLibUtil;
 public class Platyhystrix extends Dinosaur implements IAnimatable {
     private static final EntityDataAccessor<Boolean> DATA_DROUSY = SynchedEntityData.defineId(Platyhystrix.class, EntityDataSerializers.BOOLEAN);
     private final AnimationFactory cache = GeckoLibUtil.createFactory(this);
+    protected static final AnimationBuilder IDLE = new AnimationBuilder().addAnimation("idle", EDefaultLoopTypes.LOOP);
+    protected static final AnimationBuilder WALK = new AnimationBuilder().addAnimation("walk", EDefaultLoopTypes.LOOP);
+    protected static final AnimationBuilder SLEEP = new AnimationBuilder().addAnimation("sleep", EDefaultLoopTypes.LOOP);
 
     public Platyhystrix(EntityType<? extends Dinosaur> entityType, Level level) {
         super(entityType, level);
@@ -52,7 +55,7 @@ public class Platyhystrix extends Dinosaur implements IAnimatable {
         });
         this.goalSelector.addGoal(4, new RandomStrollGoal(this, 1.1D));
         this.goalSelector.addGoal(5, new DinosaurLookAtPlayerGoal(this));
-        this.goalSelector.addGoal(6, new DinosaurLookAroundGoal(this));
+        this.goalSelector.addGoal(5, new DinosaurLookAroundGoal(this));
         this.targetSelector.addGoal(2, new HurtByTargetGoal(this).setAlertOthers());
     }
 
@@ -80,13 +83,13 @@ public class Platyhystrix extends Dinosaur implements IAnimatable {
     @Override
     public void addAdditionalSaveData(CompoundTag nbt) {
         super.addAdditionalSaveData(nbt);
-        nbt.putBoolean("drousy", this.isDrousy());
+        nbt.putBoolean("Drousy", this.isDrousy());
     }
 
     @Override
     public void readAdditionalSaveData(CompoundTag nbt) {
         super.readAdditionalSaveData(nbt);
-        this.setDrousy(nbt.getBoolean("drousy"));
+        this.setDrousy(nbt.getBoolean("Drousy"));
     }
 
     @Override
@@ -134,15 +137,9 @@ public class Platyhystrix extends Dinosaur implements IAnimatable {
         return null;
     }
 
-
-    // Geo animations
-    protected static final AnimationBuilder IDLE = new AnimationBuilder().addAnimation("idle", EDefaultLoopTypes.LOOP);
-    protected static final AnimationBuilder WALK = new AnimationBuilder().addAnimation("walk", EDefaultLoopTypes.LOOP);
-    protected static final AnimationBuilder SLEEP = new AnimationBuilder().addAnimation("sleep", EDefaultLoopTypes.LOOP);
-
     @Override
     public void registerControllers(AnimationData data) {
-        data.addAnimationController(new AnimationController<>(this, "controller", 2, (event) -> {
+        data.addAnimationController(new AnimationController<>(this, "Controller", 5, (event) -> {
             if (this.isSleeping()) {
                 event.getController().setAnimation(SLEEP);
             } else {

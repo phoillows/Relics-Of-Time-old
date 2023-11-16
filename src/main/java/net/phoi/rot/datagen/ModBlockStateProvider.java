@@ -8,7 +8,6 @@ import net.minecraftforge.client.model.generators.ConfiguredModel;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.registries.RegistryObject;
 import net.phoi.rot.RelicsOfTime;
-import net.phoi.rot.util.Helper;
 import static net.phoi.rot.registry.BlockRegistry.*;
 import static net.phoi.rot.util.Helper.createPath;
 

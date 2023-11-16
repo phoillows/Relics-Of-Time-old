@@ -10,11 +10,11 @@ import net.phoi.rot.util.Helper;
 import software.bernie.geckolib3.renderers.geo.GeoLayerRenderer;
 import software.bernie.geckolib3.renderers.geo.IGeoRenderer;
 
-public class ConcavenatorLayer extends GeoLayerRenderer<Concavenator> {
+public class ConcavenatorSaddleLayer extends GeoLayerRenderer<Concavenator> {
     private static final ResourceLocation MODEL = Helper.createPath("geo/concavenator.geo.json");
     private static final ResourceLocation SADDLE = Helper.createPath("textures/entity/concavenator/concavenator_saddle.png");
 
-    public ConcavenatorLayer(IGeoRenderer<Concavenator> entityRendererIn) {
+    public ConcavenatorSaddleLayer(IGeoRenderer<Concavenator> entityRendererIn) {
         super(entityRendererIn);
     }
 

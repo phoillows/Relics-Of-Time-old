@@ -21,20 +21,14 @@ public class ModItemModelProvider extends ItemModelProvider {
 
     @Override
     protected void registerModels() {
-        for (RegistryObject<Item> item : ItemRegistry.ITEM.getEntries()) {
-            if (item.get() instanceof GenericItem) {
-                if (item.get() instanceof DnaBottleItem) {
-                    dnaBottle(item);
-                } else {
-                    genericItem(item);
-                }
-            }
-        }
+        generateItemModels();
         genericItem(FURCACAUDA_BUCKET);
         genericItem(ARCHAEOPTERIS_BOAT);
         spawnEgg(FURCACAUDA_SPAWN_EGG);
         spawnEgg(CONCAVENATOR_SPAWN_EGG);
         spawnEgg(PLATYHYSTRIX_SPAWN_EGG);
+        spawnEgg(PROTOCERATOPS_SPAWN_EGG);
+        spawnEgg(POSTOSUCHUS_SPAWN_EGG);
         blockItem(AMBER_ORE_ITEM);
         blockItem(AMBER_GLASS_ITEM);
         blockItem(DNA_ANALYZER_ITEM);
@@ -64,13 +58,15 @@ public class ModItemModelProvider extends ItemModelProvider {
     }
 
     private ItemModelBuilder genericItem(RegistryObject<Item> item) {
-        return withExistingParent(item.getId().getPath(), new ResourceLocation("item/generated"))
-                .texture("layer0", createPath("item/" + item.getId().getPath()));
+        return withExistingParent(item.getId().getPath(), new ResourceLocation("item/generated")).texture("layer0", createPath("item/" + item.getId().getPath()));
     }
 
-    private ItemModelBuilder dnaBottle(RegistryObject<Item> item) {
-        return withExistingParent(item.getId().getPath(), new ResourceLocation("item/generated"))
-                .texture("layer0", createPath("item/dna/" + item.getId().getPath()));
+    private ItemModelBuilder genericItem(RegistryObject<Item> item, String texture) {
+        return withExistingParent(item.getId().getPath(), new ResourceLocation("item/generated")).texture("layer0", createPath("item/" + texture));
+    }
+
+    private ItemModelBuilder handHeldItem(RegistryObject<Item> item) {
+        return withExistingParent(item.getId().getPath(), new ResourceLocation("item/handheld")).texture("layer0", createPath("item/" + item.getId().getPath()));
     }
 
     private ItemModelBuilder spawnEgg(RegistryObject<Item> item) {
@@ -82,8 +78,7 @@ public class ModItemModelProvider extends ItemModelProvider {
     }
 
     private ItemModelBuilder blockItem(RegistryObject<Item> item, String texture) {
-        return withExistingParent(item.getId().getPath(), new ResourceLocation("item/generated"))
-                .texture("layer0", createPath(texture));
+        return withExistingParent(item.getId().getPath(), new ResourceLocation("item/generated")).texture("layer0", createPath(texture));
     }
 
     private ItemModelBuilder trapdoorBlockItem(RegistryObject<Item> item) {
@@ -92,5 +87,17 @@ public class ModItemModelProvider extends ItemModelProvider {
 
     private ItemModelBuilder inventoryBlockItem(RegistryObject<Item> item) {
         return withExistingParent(item.getId().getPath(), createPath("block/" + item.getId().getPath() + "_inventory"));
+    }
+
+    private void generateItemModels() {
+        for (RegistryObject<Item> item : ItemRegistry.ITEM.getEntries()) {
+            if (item.get() instanceof GenericItem) {
+                if (item.get() instanceof DnaBottleItem) {
+                    genericItem(item, "dna/" + item.getId().getPath());
+                } else {
+                    genericItem(item);
+                }
+            }
+        }
     }
 }

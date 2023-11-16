@@ -14,7 +14,7 @@ import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
-import net.phoi.rot.client.gui.inventory.DnaAnaylzerMenu;
+import net.phoi.rot.level.inventory.DnaAnaylzerMenu;
 import net.phoi.rot.registry.BlockEntityRegistry;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;

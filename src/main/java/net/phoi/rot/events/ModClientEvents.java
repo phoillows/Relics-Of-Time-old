@@ -20,13 +20,11 @@ import net.phoi.rot.registry.MenuTypesRegistry;
 import static net.phoi.rot.registry.EntityRegistry.*;
 
 @Mod.EventBusSubscriber(modid = RelicsOfTime.MODID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
-public class ClientEvents {
-
+public class ModClientEvents {
     @SubscribeEvent
     public static void onClientSetup(FMLClientSetupEvent event) {
         MenuScreens.register(MenuTypesRegistry.DNA_ANAYLZER_MENU.get(), DnaAnaylzerScreen::new);
         MenuScreens.register(MenuTypesRegistry.DNA_CENTRIFUGE_MENU.get(), DnaCentrifugeScreen::new);
-
         WoodType.register(ModWoodTypes.ARCHAEOPTERIS);
     }
 
@@ -36,10 +34,10 @@ public class ClientEvents {
         event.registerEntityRenderer(FURCACAUDA.get(), FurcacaudaRenderer::new);
         event.registerEntityRenderer(CONCAVENATOR.get(), ConcavenatorRenderer::new);
         event.registerEntityRenderer(PLATYHYSTRIX.get(), PlatyhystrixRenderer::new);
-
+        event.registerEntityRenderer(PROTOCERATOPS.get(), ProtoceratopsRenderer::new);
+        event.registerEntityRenderer(POSTOSUCHUS.get(), PostosuchusRenderer::new);
         event.registerEntityRenderer(BOAT.get(), (context) -> new TemplateBoatRenderer(context, false));
         event.registerEntityRenderer(CHEST_BOAT.get(), (context) -> new TemplateBoatRenderer(context, true));
-
 
         // Block entity renderers
         event.registerBlockEntityRenderer(BlockEntityRegistry.SIGN_BLOCK_ENTITY.get(), SignRenderer::new);

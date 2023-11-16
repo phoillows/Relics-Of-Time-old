@@ -60,6 +60,8 @@ public class ItemRegistry {
     public static final RegistryObject<Item> CONCAVENATOR_DNA = ITEM.register("concavenator_dna", () -> new DnaBottleItem("Concavenator"));
     public static final RegistryObject<Item> FURCACAUDA_DNA = ITEM.register("furcacauda_dna", () -> new DnaBottleItem("Furcacauda"));
     public static final RegistryObject<Item> PLATYHYSTRIX_DNA = ITEM.register("platyhystrix_dna", () -> new DnaBottleItem("Platyhystrix"));
+    public static final RegistryObject<Item> POSTOSUCHUS_DNA = ITEM.register("postosuchus_dna", () -> new DnaBottleItem("Postosuchus"));
+    public static final RegistryObject<Item> PROTOCERATOPS_DNA = ITEM.register("protoceratops_dna", () -> new DnaBottleItem("Protoceratops"));
 
     public static final RegistryObject<Item> CONCAVENATOR_EGG_ITEM = blockItem(CONCAVENATOR_EGG);
     public static final RegistryObject<Item> PROTOCERATOPS_EGG_ITEM = blockItem(PROTOCERATOPS_EGG);
@@ -67,7 +69,9 @@ public class ItemRegistry {
     public static final RegistryObject<Item> CONCAVENATOR_SPAWN_EGG = ITEM.register("concavenator_spawn_egg", () -> new ForgeSpawnEggItem(EntityRegistry.CONCAVENATOR, 10116416, 13478556, new Item.Properties().tab(RelicsOfTime.RELICS_OF_TIME)));
     public static final RegistryObject<Item> FURCACAUDA_SPAWN_EGG = ITEM.register("furcacauda_spawn_egg", () -> new ForgeSpawnEggItem(EntityRegistry.FURCACAUDA, 14178304, 1326687, new Item.Properties().tab(RelicsOfTime.RELICS_OF_TIME)));
     public static final RegistryObject<Item> PLATYHYSTRIX_SPAWN_EGG = ITEM.register("platyhystrix_spawn_egg", () -> new ForgeSpawnEggItem(EntityRegistry.PLATYHYSTRIX, 7504960, 15046697, new Item.Properties().tab(RelicsOfTime.RELICS_OF_TIME)));
-    
+    public static final RegistryObject<Item> POSTOSUCHUS_SPAWN_EGG = ITEM.register("postosuchus_spawn_egg", () -> new ForgeSpawnEggItem(EntityRegistry.POSTOSUCHUS, 11443259, 7352096, new Item.Properties().tab(RelicsOfTime.RELICS_OF_TIME)));
+    public static final RegistryObject<Item> PROTOCERATOPS_SPAWN_EGG = ITEM.register("protoceratops_spawn_egg", () -> new ForgeSpawnEggItem(EntityRegistry.PROTOCERATOPS, 9555526, 5929016, new Item.Properties().tab(RelicsOfTime.RELICS_OF_TIME)));
+
 
     /** Helper methods **/
     private static RegistryObject<Item> blockItem(RegistryObject<Block> block) {

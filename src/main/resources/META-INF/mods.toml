@@ -4,14 +4,14 @@ issueTrackerURL = "https://github.com/phoillows/Relics-Of-Time/issues" #optional
 license="MIT"
 [[mods]] #mandatory
 modId="rot" #mandatory
-version="0.2.0" #mandatory
+version="0.0.1" #mandatory
 displayName="Relics of Time" #mandatory
 displayURL="§9Discord: https://discord.gg/Xxx3n6Xw" #optional
 logoFile="logo.png" #optional
 credits="Phoillows, SennaHN, Kent, Tellioari, Seentro, Alphaxenopete82, PriorMentation, DinoFazbearYT, Magne L" #optional
 authors="Gibblygjabble" #optional
 description='''Relics of Time allows you to revive prehistoric animals and plants using machinery.'''
-
+# A dependency - use the . to indicate dependency for a specific modid. Dependencies are optional.
 [[dependencies.rot]] #optional
     modId="geckolib3" #mandatory
     mandatory=true #mandatory

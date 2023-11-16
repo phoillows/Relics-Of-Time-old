@@ -38,10 +38,14 @@
   "item.rot.furcacauda_spawn_egg": "Furcacauda Spawn Egg",
   "item.rot.concavenator_spawn_egg": "Concavenator Spawn Egg",
   "item.rot.platyhystrix_spawn_egg": "Platyhystrix Spawn Egg",
+  "item.rot.protoceratops_spawn_egg": "Protoceratops Spawn Egg",
+  "item.rot.postosuchus_spawn_egg": "Postosuchus Spawn Egg",
 
   "entity.rot.furcacauda": "Furcacauda",
   "entity.rot.concavenator": "Concavenator",
   "entity.rot.platyhystrix": "Platyhystrix",
+  "entity.rot.protoceratops": "Protoceratops",
+  "entity.rot.postosuchus": "Postosuchus",
   "entity.rot.boat": "Boat",
   "entity.rot.chest_boat": "Chest Boat",
 

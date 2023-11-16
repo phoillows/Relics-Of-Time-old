@@ -7,8 +7,7 @@ import net.minecraft.client.renderer.GameRenderer;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Inventory;
-import net.phoi.rot.RelicsOfTime;
-import net.phoi.rot.client.gui.inventory.DnaCentrifugeMenu;
+import net.phoi.rot.level.inventory.DnaCentrifugeMenu;
 import net.phoi.rot.util.Helper;
 
 public class DnaCentrifugeScreen extends AbstractContainerScreen<DnaCentrifugeMenu> {

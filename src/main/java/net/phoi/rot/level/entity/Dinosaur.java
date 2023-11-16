@@ -37,13 +37,13 @@ public class Dinosaur extends TamableAnimal {
     @Override
     public void addAdditionalSaveData(CompoundTag nbt) {
         super.addAdditionalSaveData(nbt);
-        nbt.putBoolean("sleeping", this.isSleeping());
+        nbt.putBoolean("Sleeping", this.isSleeping());
     }
 
     @Override
     public void readAdditionalSaveData(CompoundTag nbt) {
         super.readAdditionalSaveData(nbt);
-        this.setSleeping(nbt.getBoolean("sleeping"));
+        this.setSleeping(nbt.getBoolean("Sleeping"));
     }
 
     @Override

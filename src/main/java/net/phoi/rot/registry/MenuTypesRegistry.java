@@ -6,7 +6,7 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import net.phoi.rot.RelicsOfTime;
-import net.phoi.rot.client.gui.inventory.*;
+import net.phoi.rot.level.inventory.*;
 
 public class MenuTypesRegistry {
     public static final DeferredRegister<MenuType<?>> MENU = DeferredRegister.create(ForgeRegistries.MENU_TYPES, RelicsOfTime.MODID);

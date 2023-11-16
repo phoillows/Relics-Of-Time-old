@@ -21,6 +21,8 @@ import software.bernie.geckolib3.util.GeckoLibUtil;
 
 public class Furcacauda extends AbstractSchoolingFish implements IAnimatable {
     private final AnimationFactory cache = GeckoLibUtil.createFactory(this);
+    protected static final AnimationBuilder SWIM = new AnimationBuilder().addAnimation("swim", EDefaultLoopTypes.LOOP);
+    protected static final AnimationBuilder MOVE = new AnimationBuilder().addAnimation("move", EDefaultLoopTypes.LOOP);
 
     public Furcacauda(EntityType<? extends AbstractSchoolingFish> entityType, Level level) {
         super(entityType, level);
@@ -45,14 +47,9 @@ public class Furcacauda extends AbstractSchoolingFish implements IAnimatable {
         return new ItemStack(ItemRegistry.FURCACAUDA_BUCKET.get());
     }
 
-
-    // Geo animations
-    protected static final AnimationBuilder SWIM = new AnimationBuilder().addAnimation("swim", EDefaultLoopTypes.LOOP);
-    protected static final AnimationBuilder MOVE = new AnimationBuilder().addAnimation("move", EDefaultLoopTypes.LOOP);
-
     @Override
     public void registerControllers(AnimationData data) {
-        data.addAnimationController(new AnimationController(this, "controller", 2, (event) -> {
+        data.addAnimationController(new AnimationController(this, "Controller", 5, (event) -> {
             event.getController().setAnimation(this.isInWater() ? SWIM : MOVE);
             return PlayState.CONTINUE;
         }));

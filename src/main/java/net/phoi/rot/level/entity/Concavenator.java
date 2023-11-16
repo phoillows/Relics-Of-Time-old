@@ -35,7 +35,6 @@ import software.bernie.geckolib3.core.AnimationState;
 import software.bernie.geckolib3.core.IAnimatable;
 import software.bernie.geckolib3.core.PlayState;
 import software.bernie.geckolib3.core.builder.AnimationBuilder;
-import software.bernie.geckolib3.core.builder.ILoopType.EDefaultLoopTypes;
 import software.bernie.geckolib3.core.controller.AnimationController;
 import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
 import software.bernie.geckolib3.core.manager.AnimationData;
@@ -43,12 +42,21 @@ import software.bernie.geckolib3.core.manager.AnimationFactory;
 import software.bernie.geckolib3.util.GeckoLibUtil;
 
 public class Concavenator extends Dinosaur implements Saddleable, PlayerRideable, IAnimatable {
+    private int callingTimer = 40;
+    public int stunnedTimer = 100;
+    public int stunAmount = 0;
     public static final EntityDataAccessor<Boolean> DATA_LEADER = SynchedEntityData.defineId(Concavenator.class, EntityDataSerializers.BOOLEAN);
     public static final EntityDataAccessor<Boolean> DATA_SADDLED = SynchedEntityData.defineId(Concavenator.class, EntityDataSerializers.BOOLEAN);
     public static final EntityDataAccessor<Boolean> DATA_CALLING = SynchedEntityData.defineId(Concavenator.class, EntityDataSerializers.BOOLEAN);
     public static final EntityDataAccessor<Boolean> DATA_STUNNED = SynchedEntityData.defineId(Concavenator.class, EntityDataSerializers.BOOLEAN);
     private final AnimationFactory cache = GeckoLibUtil.createFactory(this);
-    private int callingTimer = 0;
+    protected static final AnimationBuilder IDLE = new AnimationBuilder().loop("idle");
+    protected static final AnimationBuilder WALK = new AnimationBuilder().loop("walk");
+    protected static final AnimationBuilder SLEEP = new AnimationBuilder().loop("sleep");
+    protected static final AnimationBuilder CALL = new AnimationBuilder().playOnce("call");
+    protected static final AnimationBuilder BITE = new AnimationBuilder().playOnce("bite");
+    protected static final AnimationBuilder RUN = new AnimationBuilder().loop("run");
+    protected static final AnimationBuilder STUNNED = new AnimationBuilder().loop("stunned");
 
     public Concavenator(EntityType<? extends Dinosaur> entityType, Level level) {
         super(entityType, level);
@@ -58,6 +66,12 @@ public class Concavenator extends Dinosaur implements Saddleable, PlayerRideable
     @Override
     protected void registerGoals() {
         this.goalSelector.addGoal(0, new FloatGoal(this));
+        this.goalSelector.addGoal(1, new PanicGoal(this, 1.2D) {
+            @Override
+            public boolean canUse() {
+                return isBaby() && super.canUse();
+            }
+        });
         this.goalSelector.addGoal(1, new ConcavenatorAttackGoal(this));
         this.goalSelector.addGoal(2, new DinosaurSleepGoal(this) {
             @Override
@@ -67,23 +81,37 @@ public class Concavenator extends Dinosaur implements Saddleable, PlayerRideable
         });
         this.goalSelector.addGoal(3, new FollowParentGoal(this, 1.2D));
         this.goalSelector.addGoal(4, new RandomStrollGoal(this, 1.1D));
-        this.goalSelector.addGoal(5, new DinosaurLookAtPlayerGoal(this));
-        this.goalSelector.addGoal(6, new DinosaurLookAroundGoal(this));
-        this.targetSelector.addGoal(2, new HurtByTargetGoal(this).setAlertOthers());
-        this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, Player.class, true) {
+        this.goalSelector.addGoal(5, new DinosaurLookAtPlayerGoal(this) {
             @Override
             public boolean canUse() {
-                return !isBaby() && super.canUse();
+                return !isStunned() && super.canUse();
+            }
+
+            @Override
+            public boolean canContinueToUse() {
+                return !isStunned() && super.canContinueToUse();
             }
         });
+        this.goalSelector.addGoal(5, new DinosaurLookAroundGoal(this) {
+            @Override
+            public boolean canUse() {
+                return !isStunned() && super.canUse();
+            }
+            @Override
+            public boolean canContinueToUse() {
+                return !isStunned() &&  super.canContinueToUse();
+            }
+        });
+        this.targetSelector.addGoal(2, new HurtByTargetGoal(this).setAlertOthers());
+        this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, Player.class, true, (entity) -> !isBaby()));
     }
 
     public static AttributeSupplier.Builder createAttributes() {
         return Animal.createMobAttributes()
                 .add(Attributes.MAX_HEALTH, 30.0F)
-                .add(Attributes.KNOCKBACK_RESISTANCE, 0.3F)
                 .add(Attributes.MOVEMENT_SPEED, 0.2F)
-                .add(Attributes.ATTACK_DAMAGE, 5.0F);
+                .add(Attributes.ATTACK_DAMAGE, 5.0F)
+                .add(Attributes.KNOCKBACK_RESISTANCE, 0.3F);
     }
 
     public boolean isLeader() {
@@ -122,34 +150,32 @@ public class Concavenator extends Dinosaur implements Saddleable, PlayerRideable
     @Override
     public void addAdditionalSaveData(CompoundTag nbt) {
         super.addAdditionalSaveData(nbt);
-        nbt.putBoolean("leader", this.isLeader());
-        nbt.putBoolean("saddled", this.isSaddled());
-        nbt.putBoolean("calling", this.isCalling());
-        nbt.putBoolean("stunned", this.isStunned());
+        nbt.putBoolean("Leader", this.isLeader());
+        nbt.putBoolean("Saddled", this.isSaddled());
+        nbt.putBoolean("Calling", this.isCalling());
+        nbt.putBoolean("Stunned", this.isStunned());
     }
 
     @Override
     public void readAdditionalSaveData(CompoundTag nbt) {
         super.readAdditionalSaveData(nbt);
-        this.setLeader(nbt.getBoolean("leader"));
-        this.setSaddled(nbt.getBoolean("saddled"));
-        this.setCalling(nbt.getBoolean("calling"));
-        this.setStunned(nbt.getBoolean("stunned"));
+        this.setLeader(nbt.getBoolean("Leader"));
+        this.setSaddled(nbt.getBoolean("Saddled"));
+        this.setCalling(nbt.getBoolean("Calling"));
+        this.setStunned(nbt.getBoolean("Stunned"));
     }
 
     @Override
     public InteractionResult mobInteract(Player player, InteractionHand hand) {
         if (this.isSaddled()) {
-            // Purely for testing purposes, will be changed
             player.startRiding(this);
-            this.tame(player);
         }
         return super.mobInteract(player, hand);
     }
 
     @Override
     public void travel(Vec3 travelVector) {
-        if (this.isVehicle() && getControllingPassenger() instanceof Player) {
+        if (!this.isStunned() && this.isVehicle() && getControllingPassenger() instanceof Player) {
             LivingEntity entity = this.getControllingPassenger();
             this.setYRot(entity.getYRot());
             this.yRotO = this.getYRot();
@@ -163,14 +189,14 @@ public class Concavenator extends Dinosaur implements Saddleable, PlayerRideable
             if (this.isControlledByLocalInstance()) {
                 if (this.getControllingPassenger() instanceof Player player && player.isSprinting()) {
                     this.setSprinting(true);
-                    this.setSpeed(0.25F);
+                    this.setSpeed(0.2F);
                 } else {
                     this.setSprinting(false);
                     this.setSpeed(0.08F);
                 }
                 super.travel(new Vec3(f, travelVector.y, f1));
             }
-        } else if (this.isCalling()) {
+        } else if (this.isCalling() || this.isStunned()) {
             this.navigation.stop();
             this.setDeltaMovement(Vec3.ZERO);
         } else {
@@ -194,12 +220,21 @@ public class Concavenator extends Dinosaur implements Saddleable, PlayerRideable
 
     @Override
     public void tick() {
-        if (this.isCalling()) {
-            if (!this.level.isClientSide) {
-                callingTimer++;
-                if (callingTimer > 40) {
+        if (!this.level.isClientSide) {
+            if (this.isCalling()) {
+                callingTimer--;
+                if (callingTimer <= 0) {
+                    callingTimer = 40;
                     this.setCalling(false);
-                    this.setSprinting(true);
+                }
+            }
+            if (this.isStunned()) {
+                this.heal(1);
+                stunnedTimer--;
+                if (stunnedTimer <= 0) {
+                    stunnedTimer = 100;
+                    stunAmount++;
+                    this.setStunned(false);
                 }
             }
         }
@@ -207,17 +242,11 @@ public class Concavenator extends Dinosaur implements Saddleable, PlayerRideable
     }
 
     @Override
-    public void aiStep() {
-        super.aiStep();
-        this.updateSwingTime();
-    }
-
-    @Override
     public SpawnGroupData finalizeSpawn(ServerLevelAccessor level, DifficultyInstance difficulty, MobSpawnType spawnType, @Nullable SpawnGroupData groupData, @Nullable CompoundTag nbt) {
         boolean foundLeader = false;
         for (Concavenator concav : level.getEntitiesOfClass(Concavenator.class, this.getBoundingBox().inflate(24))) {
             if (!concav.isBaby()) {
-                if (concav.entityData.get(DATA_LEADER)) {
+                if (concav.isLeader()) {
                     foundLeader = true;
                     this.entityData.set(DATA_LEADER, false);
                     break;
@@ -229,7 +258,7 @@ public class Concavenator extends Dinosaur implements Saddleable, PlayerRideable
         }
 
         this.entityData.set(DATA_LEADER, !foundLeader);
-        if (this.entityData.get(DATA_LEADER)) {
+        if (this.isLeader()) {
             RelicsOfTime.LOGGER.info("Current concavenator has been chosen as leader");
         }
         return super.finalizeSpawn(level, difficulty, spawnType, groupData, nbt);
@@ -272,7 +301,7 @@ public class Concavenator extends Dinosaur implements Saddleable, PlayerRideable
 
     @Override
     public boolean isSaddleable() {
-        return this.isAlive() && !this.isSleeping();
+        return this.isAlive() && this.isTame() && !this.isBaby() && !this.isSleeping();
     }
 
     @Override
@@ -281,7 +310,7 @@ public class Concavenator extends Dinosaur implements Saddleable, PlayerRideable
         if (source != null) {
             this.level.playSound((Player)null, this.getX(), this.getY(), this.getZ(), SoundEvents.HORSE_SADDLE, source, 1.0F, 1.0F);
         }
-        if (this.entityData.get(DATA_LEADER)) {
+        if (this.isLeader()) {
             this.setLeader(false);
         }
     }
@@ -295,15 +324,13 @@ public class Concavenator extends Dinosaur implements Saddleable, PlayerRideable
         this.entityData.set(DATA_SADDLED, saddled);
     }
 
-
-    // Geo animations
-    protected static final AnimationBuilder IDLE = new AnimationBuilder().addAnimation("idle", EDefaultLoopTypes.LOOP);
-    protected static final AnimationBuilder WALK = new AnimationBuilder().addAnimation("walk", EDefaultLoopTypes.LOOP);
-    protected static final AnimationBuilder SLEEP = new AnimationBuilder().addAnimation("sleep", EDefaultLoopTypes.LOOP);
-    protected static final AnimationBuilder CALL = new AnimationBuilder().addAnimation("call", EDefaultLoopTypes.PLAY_ONCE);
-    protected static final AnimationBuilder BITE = new AnimationBuilder().addAnimation("bite", EDefaultLoopTypes.PLAY_ONCE);
-    protected static final AnimationBuilder RUN = new AnimationBuilder().addAnimation("run", EDefaultLoopTypes.LOOP);
-    protected static final AnimationBuilder STUNNED = new AnimationBuilder().addAnimation("stunned", EDefaultLoopTypes.LOOP);
+    public void call() {
+        this.setCalling(true);
+        this.level.playSound((Player)null, this.getX(), this.getY(), this.getZ(), SoundRegistry.CONCAVENATOR_CALL, SoundSource.HOSTILE, 2.0F, 1.0F);
+        for (Concavenator concavenator : this.level.getEntitiesOfClass(Concavenator.class, this.getBoundingBox().inflate(16))) {
+            concavenator.setSleeping(false);
+        }
+    }
 
     private <E extends IAnimatable> PlayState basicPredicate(AnimationEvent<E> event) {
         if (this.isSleeping()) {
@@ -318,15 +345,12 @@ public class Concavenator extends Dinosaur implements Saddleable, PlayerRideable
             event.getController().setAnimation(CALL);
             return PlayState.CONTINUE;
 
+        } else if (event.isMoving()) {
+            event.getController().setAnimation(this.isSprinting() ? RUN : WALK);
         } else {
-            if (event.isMoving()) {
-                event.getController().setAnimation(this.isSprinting() ? RUN : WALK);
-                return PlayState.CONTINUE;
-            } else {
-                event.getController().setAnimation(IDLE);
-                return PlayState.CONTINUE;
-            }
+            event.getController().setAnimation(IDLE);
         }
+        return PlayState.CONTINUE;
     }
 
     private PlayState attackPredicate(AnimationEvent event) {
@@ -340,8 +364,8 @@ public class Concavenator extends Dinosaur implements Saddleable, PlayerRideable
 
     @Override
     public void registerControllers(AnimationData data) {
-        data.addAnimationController(new AnimationController<>(this, "basic", 2, this::basicPredicate));
-        data.addAnimationController(new AnimationController<>(this, "attack", 2, this::attackPredicate));
+        data.addAnimationController(new AnimationController<>(this, "Basic Controller", 5, this::basicPredicate));
+        data.addAnimationController(new AnimationController<>(this, "Attack Controller", 5, this::attackPredicate));
     }
 
     @Override

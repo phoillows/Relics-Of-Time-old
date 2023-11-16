@@ -7,8 +7,7 @@ import net.minecraft.client.renderer.GameRenderer;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Inventory;
-import net.phoi.rot.RelicsOfTime;
-import net.phoi.rot.client.gui.inventory.DnaAnaylzerMenu;
+import net.phoi.rot.level.inventory.DnaAnaylzerMenu;
 import net.phoi.rot.util.Helper;
 
 public class DnaAnaylzerScreen extends AbstractContainerScreen<DnaAnaylzerMenu> {

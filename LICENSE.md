@@ -1,4 +1,4 @@
-MIT License
+### The code in this repository follows the MIT license:
 
 Copyright (c) 2023 Phoillows
 
@@ -19,3 +19,22 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+
+---
+
+### The assets in this repository follows its own custom license:
+
+1. Ownership:
+   You acknowledge and agree that all assets in this repository are the exclusive property of the Relics of Time Development Team.
+
+
+2. Modification:
+   You are not allowed to modify, distribute, sublicense, or create derivative works based upon the assets of Relics of Time.
+
+
+3. No Commercial Use:
+   The assets may not be used for commercial purposes without explicit written permission from the Owner.
+
+
+4. Attribution:
+   If you use the assets, you must provide clear attribution to us.

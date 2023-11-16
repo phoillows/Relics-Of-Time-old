@@ -2,36 +2,32 @@ package net.phoi.rot.client.model;
 
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
-import net.phoi.rot.level.entity.Platyhystrix;
+import net.phoi.rot.level.entity.Protoceratops;
 import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
 import software.bernie.geckolib3.core.processor.IBone;
 import software.bernie.geckolib3.model.AnimatedGeoModel;
 import software.bernie.geckolib3.model.provider.data.EntityModelData;
+
 import static net.phoi.rot.util.Helper.createPath;
 
-public class PlatyhystrixModel extends AnimatedGeoModel<Platyhystrix> {
+public class ProtoceratopsModel extends AnimatedGeoModel<Protoceratops> {
     @Override
-    public ResourceLocation getModelResource(Platyhystrix entity) {
-        return createPath("geo/platyhystrix.geo.json");
+    public ResourceLocation getModelResource(Protoceratops entity) {
+        return createPath("geo/protoceratops.geo.json");
     }
 
     @Override
-    public ResourceLocation getTextureResource(Platyhystrix entity) {
-        if (entity.isSleeping()) {
-            return createPath("textures/entity/platyhystrix/platyhystrix_sleeping.png");
-        } else if (entity.isDrousy()) {
-            return createPath("textures/entity/platyhystrix/platyhystrix_drousy.png");
-        }
-        return createPath("textures/entity/platyhystrix/platyhystrix.png");
+    public ResourceLocation getTextureResource(Protoceratops entity) {
+        return entity.isSleeping() ? createPath("textures/entity/protoceratops/protoceratops_sleeping.png") : createPath("textures/entity/protoceratops/protoceratops.png");
     }
 
     @Override
-    public ResourceLocation getAnimationResource(Platyhystrix entity) {
-        return createPath("animations/platyhystrix.animation.json");
+    public ResourceLocation getAnimationResource(Protoceratops entity) {
+        return createPath("animations/protoceratops.animation.json");
     }
 
     @Override
-    public void setCustomAnimations(Platyhystrix animatable, int instanceId, AnimationEvent animationEvent) {
+    public void setCustomAnimations(Protoceratops animatable, int instanceId, AnimationEvent animationEvent) {
         super.setCustomAnimations(animatable, instanceId, animationEvent);
         IBone head = this.getAnimationProcessor().getBone("Head");
         EntityModelData modelData = (EntityModelData)animationEvent.getExtraDataOfType(EntityModelData.class).get(0);

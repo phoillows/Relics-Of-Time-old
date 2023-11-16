@@ -1,4 +1,4 @@
-package net.phoi.rot.client.gui.inventory;
+package net.phoi.rot.level.inventory;
 
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.world.entity.player.Inventory;
