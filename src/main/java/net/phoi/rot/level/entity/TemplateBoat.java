@@ -22,7 +22,7 @@ public class TemplateBoat extends Boat {
     }
 
     public TemplateBoat(Level level, double x, double y, double z) {
-        this(EntityRegistry.BOAT.get(), level);
+        this(EntityRegistry.MOD_BOAT.get(), level);
         this.setPos(x, y, z);
         this.xo = x;
         this.yo = y;

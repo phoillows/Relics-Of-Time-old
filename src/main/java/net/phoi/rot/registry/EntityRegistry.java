@@ -18,8 +18,8 @@ public class EntityRegistry {
     public static final RegistryObject<EntityType<Protoceratops>> PROTOCERATOPS = register("protoceratops", EntityType.Builder.of(Protoceratops::new, MobCategory.CREATURE).sized(0.9F, 0.9F));
     public static final RegistryObject<EntityType<Postosuchus>> POSTOSUCHUS = register("postosuchus", EntityType.Builder.of(Postosuchus::new, MobCategory.CREATURE).sized(1.3F, 1.35F));
 
-    public static final RegistryObject<EntityType<TemplateBoat>> BOAT = register("boat", EntityType.Builder.<TemplateBoat>of(TemplateBoat::new, MobCategory.MISC).sized(1.375F, 0.5625F));
-    public static final RegistryObject<EntityType<TemplateChestBoat>> CHEST_BOAT = register("chest_boat", EntityType.Builder.<TemplateChestBoat>of(TemplateChestBoat::new, MobCategory.MISC).sized(1.375F, 0.5625F));
+    public static final RegistryObject<EntityType<TemplateBoat>> MOD_BOAT = register("mod_boat", EntityType.Builder.<TemplateBoat>of(TemplateBoat::new, MobCategory.MISC).sized(1.375F, 0.5625F));
+    public static final RegistryObject<EntityType<TemplateChestBoat>> MOD_CHEST_BOAT = register("mod_chest_boat", EntityType.Builder.<TemplateChestBoat>of(TemplateChestBoat::new, MobCategory.MISC).sized(1.375F, 0.5625F));
 
 
     /** Helper methods **/

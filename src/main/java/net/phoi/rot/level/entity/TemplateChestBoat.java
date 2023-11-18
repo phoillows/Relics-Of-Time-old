@@ -20,7 +20,7 @@ public class TemplateChestBoat extends ChestBoat {
     }
 
     public TemplateChestBoat(Level level, double x, double y, double z) {
-        this(EntityRegistry.CHEST_BOAT.get(), level);
+        this(EntityRegistry.MOD_CHEST_BOAT.get(), level);
         this.setPos(x, y, z);
         this.xo = x;
         this.yo = y;

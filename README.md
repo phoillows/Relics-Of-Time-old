@@ -14,16 +14,16 @@ A 1.19.2 mod for Forge that allows you to revive prehistoric animals and plants 
 ---
 
 ## Credits:
-- Gibblygjabble (Owner, Artist)
-- SennaHN (Manager, Artist)
-- Seentro (Manager, Artist)
-- Phoillows (Manager, Java Coder 😎)
-- Alphaxenopete82 (Artist)
-- Tellio (Artist)
-- MrMapleMoose (Artist)
-- BlorusTheUncle (Concept Artist)
-- Domino (Concept Artist)
-- Kent (Animator)
+- Gibblygjabble - **Owner, Artist**
+- SennaHN - **Manager, Artist**
+- Phoillows - **Manager, Java Coder 😎**
+- Alphaxenopete82 - **Artist**
+- Tellio - **Artist**
+- MrMapleMoose - **Artist**
+- Hypsi - **Artist**
+- BlorusTheUncle - **Concept Artist**
+- Domino - **Concept Artist**
+- Kent - **Animator**
 
 ---
 
