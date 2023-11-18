@@ -21,7 +21,7 @@ public class ConcavenatorScreen extends AbstractContainerScreen<ConcavenatorMenu
     private int yMouse;
 
     public ConcavenatorScreen(ConcavenatorMenu menu, Inventory inventory, Component component) {
-        super(menu, inventory, menu.concav.getDisplayName());
+        super(menu, inventory, component);
         this.menu = menu;
         this.level = menu.level;
     }
@@ -32,7 +32,7 @@ public class ConcavenatorScreen extends AbstractContainerScreen<ConcavenatorMenu
         int x = (width - imageWidth) / 2;
         int y = (height - imageHeight) / 2;
         this.blit(poseStack, x, y, 0, 0, imageWidth, imageHeight);
-        Concavenator concav = new Concavenator(EntityRegistry.CONCAVENATOR.get(), level);
+        Concavenator concav = new Concavenator(EntityRegistry.CONCAVENATOR.get(), this.level);
         InventoryScreen.renderEntityInInventory(x + 51, y + 60, 17, (float)(x + 51) - this.xMouse, (float)(y + 75 - 50) - this.yMouse, concav);
     }
 

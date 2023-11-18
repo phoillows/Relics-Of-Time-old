@@ -75,7 +75,7 @@ public class ModLanguageProvider extends LanguageProvider {
         addEntityType(EntityRegistry.MOD_CHEST_BOAT, "Boat with Chest");
 
         // Gui
-
+        add("gui.rot.concavenator", "Concavenator");
 
         // Subtitles
         add("subtitles.entity.concavenator.ambient", "Concavenator roars");

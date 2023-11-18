@@ -343,12 +343,10 @@ public class Concavenator extends Dinosaur implements IAnimatable, Saddleable, P
     @Override
     public void equipSaddle(@Nullable SoundSource source) {
         this.inventory.setItem(0, new ItemStack(Items.SADDLE));
-        this.entityData.set(DATA_SADDLED, true);
+        this.setSaddled(true);
+        this.setLeader(false);
         if (source != null) {
             this.level.playSound((Player)null, this.getX(), this.getY(), this.getZ(), SoundEvents.HORSE_SADDLE, source, 1.0F, 1.0F);
-        }
-        if (this.isLeader()) {
-            this.setLeader(false);
         }
     }
 
