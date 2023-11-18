@@ -21,19 +21,16 @@ public class DnaAnaylzerMenu extends AbstractContainerMenu {
     public final DnaAnaylzerBlockEntity blockEntity;
     private final Level level;
 
-    // Client
     public DnaAnaylzerMenu(int id, Inventory inventory, FriendlyByteBuf extraData) {
         this(id, inventory, inventory.player.level.getBlockEntity(extraData.readBlockPos()));
     }
 
-    // Server
     public DnaAnaylzerMenu(int id, Inventory inventory, BlockEntity blockEntity) {
         super(MenuTypesRegistry.DNA_ANAYLZER_MENU.get(), id);
         checkContainerSize(inventory, 5);
-        addPlayerInventory(inventory);
+        this.addPlayerInventory(inventory);
         this.blockEntity = (DnaAnaylzerBlockEntity)blockEntity;
         this.level = inventory.player.level;
-
         this.blockEntity.getCapability(ForgeCapabilities.ITEM_HANDLER).ifPresent(handler -> {
             this.addSlot(new SlotItemHandler(handler, 0, 58, 12));
             this.addSlot(new SlotItemHandler(handler, 1, 103, 12) {

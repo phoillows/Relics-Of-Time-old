@@ -13,4 +13,5 @@ public class MenuTypesRegistry {
 
     public static final RegistryObject<MenuType<DnaAnaylzerMenu>> DNA_ANAYLZER_MENU = MENU.register("dna_anaylzer", () -> IForgeMenuType.create(DnaAnaylzerMenu::new));
     public static final RegistryObject<MenuType<DnaCentrifugeMenu>> DNA_CENTRIFUGE_MENU = MENU.register("dna_centrifuge", () -> IForgeMenuType.create(DnaCentrifugeMenu::new));
+    public static final RegistryObject<MenuType<ConcavenatorMenu>> CONCAVENATOR_MENU = MENU.register("concavenator", () -> new MenuType<>(ConcavenatorMenu::new));
 }

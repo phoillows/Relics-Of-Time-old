@@ -1,58 +1,52 @@
 package net.phoi.rot.level.inventory;
 
-import net.minecraft.network.FriendlyByteBuf;
+import net.minecraft.world.Container;
+import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
-import net.minecraft.world.inventory.ContainerLevelAccess;
 import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraftforge.common.capabilities.ForgeCapabilities;
-import net.minecraftforge.items.SlotItemHandler;
-import net.phoi.rot.level.block.entity.DnaCentrifugeBlockEntity;
-import net.phoi.rot.level.item.DnaBottleItem;
-import net.phoi.rot.registry.BlockRegistry;
-import net.phoi.rot.registry.ItemRegistry;
+import net.phoi.rot.level.entity.Concavenator;
 import net.phoi.rot.registry.MenuTypesRegistry;
-import org.jetbrains.annotations.NotNull;
 
-public class DnaCentrifugeMenu extends AbstractContainerMenu {
-    public final DnaCentrifugeBlockEntity blockEntity;
-    private final Level level;
+public class ConcavenatorMenu extends AbstractContainerMenu {
+    private final Container container;
+    public final Concavenator concav;
+    public final Level level;
+    private int slotId = 1;
 
-    public DnaCentrifugeMenu(int id, Inventory inventory, FriendlyByteBuf extraData) {
-        this(id, inventory, inventory.player.level.getBlockEntity(extraData.readBlockPos()));
+    public ConcavenatorMenu(int id, Inventory playerInventory) {
+        this(id, new SimpleContainer(16), playerInventory, null);
     }
 
-    public DnaCentrifugeMenu(int id, Inventory inventory, BlockEntity blockEntity) {
-        super(MenuTypesRegistry.DNA_CENTRIFUGE_MENU.get(), id);
-        checkContainerSize(inventory, 3);
-        this.addPlayerInventory(inventory);
-        this.blockEntity = (DnaCentrifugeBlockEntity)blockEntity;
-        this.level = inventory.player.level;
-        this.blockEntity.getCapability(ForgeCapabilities.ITEM_HANDLER).ifPresent(handler -> {
-            this.addSlot(new SlotItemHandler(handler, 0, 80, 15) {
-                @Override
-                public boolean mayPlace(@NotNull ItemStack stack) {
-                    return stack.getItem() instanceof DnaBottleItem;
+    public ConcavenatorMenu(int id, Container container, Inventory playerInventory, Concavenator concav) {
+        super(MenuTypesRegistry.CONCAVENATOR_MENU.get(), id);
+        this.container = container;
+        this.concav = concav;
+        this.level = playerInventory.player.level;
+        this.addPlayerInventory(playerInventory);
+        this.addSlot(new Slot(container, 0, 8, 18) {
+            @Override
+            public boolean mayPlace(ItemStack pStack) {
+                return pStack.is(Items.SADDLE);
+            }
+
+            @Override
+            public void setChanged() {
+                if (ConcavenatorMenu.this.concav != null) {
+                    ConcavenatorMenu.this.concav.setSaddled(this.getItem().is(Items.SADDLE));
                 }
-            });
-            this.addSlot(new SlotItemHandler(handler, 1, 80, 52) {
-                @Override
-                public boolean mayPlace(@NotNull ItemStack stack) {
-                    return stack.is(Items.MILK_BUCKET);
-                }
-            });
-            this.addSlot(new SlotItemHandler(handler, 2, 138, 32) {
-                @Override
-                public boolean mayPlace(@NotNull ItemStack stack) {
-                    return stack.is(ItemRegistry.CONCAVENATOR_EGG_ITEM.get());
-                }
-            });
+                super.setChanged();
+            }
         });
+        for (int x = 0; x < 3; x++) {
+            for (int y = 0; y < 5; y++) {
+                this.addSlot(new Slot(container, slotId++, 80 + y * 18, 18 + x * 18));
+            }
+        }
     }
 
     private static final int HOTBAR_SLOT_COUNT = 9;
@@ -63,7 +57,7 @@ public class DnaCentrifugeMenu extends AbstractContainerMenu {
     private static final int VANILLA_FIRST_SLOT_INDEX = 0;
     private static final int TE_INVENTORY_FIRST_SLOT_INDEX = VANILLA_FIRST_SLOT_INDEX + VANILLA_SLOT_COUNT;
 
-    private static final int TE_INVENTORY_SLOT_COUNT = 3;  // must be the number of slots you have!
+    private static final int TE_INVENTORY_SLOT_COUNT = 16;  // must be the number of slots you have!
 
     // Credit to diesieben07 for the code.
     // In short term, the code below is a bunch of math that calculates when the player shift clicks on a slot, what slot should the item end up in
@@ -97,8 +91,8 @@ public class DnaCentrifugeMenu extends AbstractContainerMenu {
     }
 
     @Override
-    public boolean stillValid(Player player) {
-        return stillValid(ContainerLevelAccess.create(level, blockEntity.getBlockPos()), player, BlockRegistry.DNA_CENTRIFUGE.get());
+    public boolean stillValid(Player pPlayer) {
+        return this.concav.isAlive();
     }
 
     private void addPlayerInventory(Inventory inventory) {

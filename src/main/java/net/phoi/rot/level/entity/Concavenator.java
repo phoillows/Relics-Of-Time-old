@@ -1,16 +1,17 @@
 package net.phoi.rot.level.entity;
 
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.nbt.ListTag;
+import net.minecraft.network.chat.Component;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
-import net.minecraft.world.DifficultyInstance;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
+import net.minecraft.world.*;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
@@ -19,16 +20,21 @@ import net.minecraft.world.entity.ai.goal.*;
 import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
 import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
 import net.minecraft.world.entity.animal.Animal;
+import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.inventory.AbstractContainerMenu;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.phys.Vec3;
+import net.minecraftforge.network.NetworkHooks;
 import net.phoi.rot.RelicsOfTime;
 import net.phoi.rot.level.entity.ai.ConcavenatorAttackGoal;
 import net.phoi.rot.level.entity.ai.DinosaurLookAroundGoal;
 import net.phoi.rot.level.entity.ai.DinosaurLookAtPlayerGoal;
 import net.phoi.rot.level.entity.ai.DinosaurSleepGoal;
+import net.phoi.rot.level.inventory.ConcavenatorMenu;
 import net.phoi.rot.registry.SoundRegistry;
 import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib3.core.AnimationState;
@@ -41,10 +47,11 @@ import software.bernie.geckolib3.core.manager.AnimationData;
 import software.bernie.geckolib3.core.manager.AnimationFactory;
 import software.bernie.geckolib3.util.GeckoLibUtil;
 
-public class Concavenator extends Dinosaur implements Saddleable, PlayerRideable, IAnimatable {
+public class Concavenator extends Dinosaur implements IAnimatable, Saddleable, PlayerRideable {
     private int callingTimer = 40;
     public int stunnedTimer = 100;
     public int stunAmount = 0;
+    protected SimpleContainer inventory;
     public static final EntityDataAccessor<Boolean> DATA_LEADER = SynchedEntityData.defineId(Concavenator.class, EntityDataSerializers.BOOLEAN);
     public static final EntityDataAccessor<Boolean> DATA_SADDLED = SynchedEntityData.defineId(Concavenator.class, EntityDataSerializers.BOOLEAN);
     public static final EntityDataAccessor<Boolean> DATA_CALLING = SynchedEntityData.defineId(Concavenator.class, EntityDataSerializers.BOOLEAN);
@@ -61,6 +68,7 @@ public class Concavenator extends Dinosaur implements Saddleable, PlayerRideable
     public Concavenator(EntityType<? extends Dinosaur> entityType, Level level) {
         super(entityType, level);
         this.maxUpStep = 1.0F;
+        this.inventory = new SimpleContainer(16);
     }
 
     @Override
@@ -154,6 +162,19 @@ public class Concavenator extends Dinosaur implements Saddleable, PlayerRideable
         nbt.putBoolean("Saddled", this.isSaddled());
         nbt.putBoolean("Calling", this.isCalling());
         nbt.putBoolean("Stunned", this.isStunned());
+        if (inventory != null) {
+            ListTag nbtList = new ListTag();
+            for (int i = 0; i < this.inventory.getContainerSize(); ++i) {
+                ItemStack itemstack = this.inventory.getItem(i);
+                if (!itemstack.isEmpty()) {
+                    CompoundTag CompoundNBT = new CompoundTag();
+                    CompoundNBT.putByte("Slot", (byte) i);
+                    itemstack.save(CompoundNBT);
+                    nbtList.add(CompoundNBT);
+                }
+            }
+            nbt.put("Items", nbtList);
+        }
     }
 
     @Override
@@ -163,12 +184,24 @@ public class Concavenator extends Dinosaur implements Saddleable, PlayerRideable
         this.setSaddled(nbt.getBoolean("Saddled"));
         this.setCalling(nbt.getBoolean("Calling"));
         this.setStunned(nbt.getBoolean("Stunned"));
+        if (inventory != null) {
+            ListTag nbtList = nbt.getList("Items", 10);
+            for (int i = 0; i < nbtList.size(); ++i) {
+                CompoundTag CompoundNBT = nbtList.getCompound(i);
+                int j = CompoundNBT.getByte("Slot") & 255;
+                this.inventory.setItem(j, ItemStack.of(CompoundNBT));
+            }
+        }
     }
 
     @Override
     public InteractionResult mobInteract(Player player, InteractionHand hand) {
-        if (this.isSaddled()) {
-            player.startRiding(this);
+        if (this.isSaddled() && !this.isSleeping()) {
+            if (player.isShiftKeyDown()) {
+                this.openConcavInventory(player, this);
+            } else {
+                player.startRiding(this);
+            }
         }
         return super.mobInteract(player, hand);
     }
@@ -283,6 +316,9 @@ public class Concavenator extends Dinosaur implements Saddleable, PlayerRideable
     protected void dropEquipment() {
         if (this.isSaddled()) {
             this.spawnAtLocation(Items.SADDLE);
+            for (int i = 0; i < inventory.getContainerSize(); i++) {
+                this.spawnAtLocation(inventory.getItem(i));
+            }
         }
         super.dropEquipment();
     }
@@ -306,6 +342,7 @@ public class Concavenator extends Dinosaur implements Saddleable, PlayerRideable
 
     @Override
     public void equipSaddle(@Nullable SoundSource source) {
+        this.inventory.setItem(0, new ItemStack(Items.SADDLE));
         this.entityData.set(DATA_SADDLED, true);
         if (source != null) {
             this.level.playSound((Player)null, this.getX(), this.getY(), this.getZ(), SoundEvents.HORSE_SADDLE, source, 1.0F, 1.0F);
@@ -329,6 +366,22 @@ public class Concavenator extends Dinosaur implements Saddleable, PlayerRideable
         this.level.playSound((Player)null, this.getX(), this.getY(), this.getZ(), SoundRegistry.CONCAVENATOR_CALL, SoundSource.HOSTILE, 2.0F, 1.0F);
         for (Concavenator concavenator : this.level.getEntitiesOfClass(Concavenator.class, this.getBoundingBox().inflate(16))) {
             concavenator.setSleeping(false);
+        }
+    }
+
+    private void openConcavInventory(Player player, Concavenator concav) {
+        if (!this.level.isClientSide && !this.hasPassenger(player)) {
+            NetworkHooks.openScreen((ServerPlayer) player, new MenuProvider() {
+                @Override
+                public Component getDisplayName() {
+                    return Component.translatable("gui.rot.concavenator");
+                }
+
+                @Override
+                public AbstractContainerMenu createMenu(int pContainerId, Inventory pPlayerInventory, Player pPlayer) {
+                    return new ConcavenatorMenu(pContainerId, inventory, pPlayerInventory, concav);
+                }
+            });
         }
     }
 
