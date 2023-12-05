@@ -48,14 +48,15 @@ import software.bernie.geckolib3.core.manager.AnimationFactory;
 import software.bernie.geckolib3.util.GeckoLibUtil;
 
 public class Concavenator extends Dinosaur implements IAnimatable, Saddleable, PlayerRideable {
-    private int callingTimer = 40;
-    public int stunnedTimer = 100;
+    private int callTimer = 40;
+    private int callCooldown = 0;
+    private int stunnedTimer = 100;
     public int stunAmount = 0;
     protected SimpleContainer inventory;
-    public static final EntityDataAccessor<Boolean> DATA_LEADER = SynchedEntityData.defineId(Concavenator.class, EntityDataSerializers.BOOLEAN);
-    public static final EntityDataAccessor<Boolean> DATA_SADDLED = SynchedEntityData.defineId(Concavenator.class, EntityDataSerializers.BOOLEAN);
-    public static final EntityDataAccessor<Boolean> DATA_CALLING = SynchedEntityData.defineId(Concavenator.class, EntityDataSerializers.BOOLEAN);
-    public static final EntityDataAccessor<Boolean> DATA_STUNNED = SynchedEntityData.defineId(Concavenator.class, EntityDataSerializers.BOOLEAN);
+    protected static final EntityDataAccessor<Boolean> DATA_LEADER = SynchedEntityData.defineId(Concavenator.class, EntityDataSerializers.BOOLEAN);
+    protected static final EntityDataAccessor<Boolean> DATA_SADDLED = SynchedEntityData.defineId(Concavenator.class, EntityDataSerializers.BOOLEAN);
+    protected static final EntityDataAccessor<Boolean> DATA_CALLING = SynchedEntityData.defineId(Concavenator.class, EntityDataSerializers.BOOLEAN);
+    protected static final EntityDataAccessor<Boolean> DATA_STUNNED = SynchedEntityData.defineId(Concavenator.class, EntityDataSerializers.BOOLEAN);
     private final AnimationFactory cache = GeckoLibUtil.createFactory(this);
     protected static final AnimationBuilder IDLE = new AnimationBuilder().loop("idle");
     protected static final AnimationBuilder WALK = new AnimationBuilder().loop("walk");
@@ -116,7 +117,7 @@ public class Concavenator extends Dinosaur implements IAnimatable, Saddleable, P
 
     public static AttributeSupplier.Builder createAttributes() {
         return Animal.createMobAttributes()
-                .add(Attributes.MAX_HEALTH, 30.0F)
+                .add(Attributes.MAX_HEALTH, 40.0F)
                 .add(Attributes.MOVEMENT_SPEED, 0.2F)
                 .add(Attributes.ATTACK_DAMAGE, 5.0F)
                 .add(Attributes.KNOCKBACK_RESISTANCE, 0.3F);
@@ -196,11 +197,21 @@ public class Concavenator extends Dinosaur implements IAnimatable, Saddleable, P
 
     @Override
     public InteractionResult mobInteract(Player player, InteractionHand hand) {
+        ItemStack stack = player.getItemInHand(hand);
         if (this.isSaddled() && !this.isSleeping()) {
             if (player.isShiftKeyDown()) {
                 this.openConcavInventory(player, this);
             } else {
                 player.startRiding(this);
+            }
+        } else if (this.isStunned()) {
+            if (stack.isEdible() && stack.getFoodProperties(this).isMeat()) {
+                this.playSound(SoundEvents.GENERIC_EAT);
+                this.attemptTame(player);
+                if (!player.getAbilities().instabuild) {
+                    stack.shrink(1);
+                }
+                return InteractionResult.sidedSuccess(this.level.isClientSide);
             }
         }
         return super.mobInteract(player, hand);
@@ -255,11 +266,14 @@ public class Concavenator extends Dinosaur implements IAnimatable, Saddleable, P
     public void tick() {
         if (!this.level.isClientSide) {
             if (this.isCalling()) {
-                callingTimer--;
-                if (callingTimer <= 0) {
-                    callingTimer = 40;
+                callTimer--;
+                if (callTimer <= 0) {
+                    callTimer = 40;
                     this.setCalling(false);
                 }
+            }
+            if (callCooldown > 0) {
+                callCooldown--;
             }
             if (this.isStunned()) {
                 this.heal(1);
@@ -296,6 +310,7 @@ public class Concavenator extends Dinosaur implements IAnimatable, Saddleable, P
         }
         return super.finalizeSpawn(level, difficulty, spawnType, groupData, nbt);
     }
+
 
     @Override
     protected SoundEvent getAmbientSound() {
@@ -346,7 +361,7 @@ public class Concavenator extends Dinosaur implements IAnimatable, Saddleable, P
         this.setSaddled(true);
         this.setLeader(false);
         if (source != null) {
-            this.level.playSound((Player)null, this.getX(), this.getY(), this.getZ(), SoundEvents.HORSE_SADDLE, source, 1.0F, 1.0F);
+            this.level.playSound(null, this.getX(), this.getY(), this.getZ(), SoundEvents.HORSE_SADDLE, source, 1.0F, 1.0F);
         }
     }
 
@@ -359,20 +374,27 @@ public class Concavenator extends Dinosaur implements IAnimatable, Saddleable, P
         this.entityData.set(DATA_SADDLED, saddled);
     }
 
+    public boolean canCall() {
+        return this.callCooldown == 0;
+    }
+
     public void call() {
-        this.setCalling(true);
-        this.level.playSound((Player)null, this.getX(), this.getY(), this.getZ(), SoundRegistry.CONCAVENATOR_CALL, SoundSource.HOSTILE, 2.0F, 1.0F);
-        for (Concavenator concavenator : this.level.getEntitiesOfClass(Concavenator.class, this.getBoundingBox().inflate(16))) {
-            concavenator.setSleeping(false);
+        if (this.canCall()) {
+            this.setCalling(true);
+            this.level.playSound(null, this.getX(), this.getY(), this.getZ(), SoundRegistry.CONCAVENATOR_CALL, SoundSource.HOSTILE, 2.0F, 1.0F);
+            this.callCooldown = 500;
+            for (Concavenator concavenator : this.level.getEntitiesOfClass(Concavenator.class, this.getBoundingBox().inflate(16))) {
+                concavenator.setSleeping(false);
+            }
         }
     }
 
     private void openConcavInventory(Player player, Concavenator concav) {
         if (!this.level.isClientSide && !this.hasPassenger(player)) {
-            NetworkHooks.openScreen((ServerPlayer) player, new MenuProvider() {
+            NetworkHooks.openScreen((ServerPlayer)player, new MenuProvider() {
                 @Override
                 public Component getDisplayName() {
-                    return Component.translatable("gui.rot.concavenator");
+                    return Component.translatable("entity.rot.concavenator");
                 }
 
                 @Override
@@ -380,6 +402,14 @@ public class Concavenator extends Dinosaur implements IAnimatable, Saddleable, P
                     return new ConcavenatorMenu(pContainerId, inventory, pPlayerInventory, concav);
                 }
             });
+        }
+    }
+
+    private void attemptTame(Player player) {
+        this.spawnTamingParticles(this.isTame());
+        if (this.stunAmount > 1 && this.random.nextInt(10) == 1 && !this.isTame()) {
+            this.tame(player);
+            player.displayClientMessage(Component.literal("You've tamed a Concavenator"), true);
         }
     }
 

@@ -22,6 +22,7 @@ public class ItemRegistry {
     public static final RegistryObject<Item> DNA_ANALYZER_ITEM = blockItem(DNA_ANALYZER);
     public static final RegistryObject<Item> DNA_CENTRIFUGE_ITEM = blockItem(DNA_CENTRIFUGE);
     public static final RegistryObject<Item> FOSSIL_ORE_ITEM = blockItem(FOSSIL_ORE);
+    public static final RegistryObject<Item> DUNKLEOSTEUS_SKULL_ITEM = blockItem(DUNKLEOSTEUS_SKULL);
     public static final RegistryObject<Item> AMMONITE_FOSSIL_PATH_ITEM = blockItem(AMMONITE_FOSSIL_PATH);
 
     public static final RegistryObject<Item> MESOZOIC_FOSSIL = ITEM.register("mesozoic_fossil", () -> new GenericItem());

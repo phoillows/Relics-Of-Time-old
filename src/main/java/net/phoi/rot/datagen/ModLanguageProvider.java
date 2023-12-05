@@ -45,6 +45,7 @@ public class ModLanguageProvider extends LanguageProvider {
         addBlock(BlockRegistry.NEOCALAMITES, "Neocalamites");
         addBlock(BlockRegistry.CONCAVENATOR_EGG, "Concavenator Egg");
         addBlock(BlockRegistry.PROTOCERATOPS_EGG, "Protoceratops Egg");
+        addBlock(BlockRegistry.DUNKLEOSTEUS_SKULL, "Dunkleosteus Skull");
 
         // Items
         add("item.rot.dna_bottle", "DNA Bottle");
@@ -74,8 +75,8 @@ public class ModLanguageProvider extends LanguageProvider {
         addEntityType(EntityRegistry.MOD_BOAT, "Boat");
         addEntityType(EntityRegistry.MOD_CHEST_BOAT, "Boat with Chest");
 
-        // Gui
-        add("gui.rot.concavenator", "Concavenator");
+        // GUI
+        // ...
 
         // Subtitles
         add("subtitles.entity.concavenator.ambient", "Concavenator roars");

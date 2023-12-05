@@ -38,15 +38,15 @@ public class NeocalamitesBlock extends Block implements SimpleWaterloggedBlock {
     }
 
     @Override
-    public void tick(BlockState state, ServerLevel level, BlockPos pos, RandomSource randomSource) {
-        if (level.getBlockState(pos.above()).isAir()) {
-            for (int x = 0; x < 7; x++) {
-                if (!level.getBlockState(pos.below(x)).is(this)) {
-                    level.setBlock(pos.above(), this.defaultBlockState(), 2);
+    public void randomTick(BlockState pState, ServerLevel pLevel, BlockPos pPos, RandomSource pRandom) {
+        if (pLevel.getBlockState(pPos.above()).isAir()) {
+            for (int i = 0; i < 7; i++) {
+                if (!pLevel.getBlockState(pPos.below(i)).is(this)) {
+                    pLevel.setBlock(pPos.above(), this.defaultBlockState(), 2);
                 }
             }
         }
-        super.tick(state, level, pos, randomSource);
+        super.randomTick(pState, pLevel, pPos, pRandom);
     }
 
     @Override

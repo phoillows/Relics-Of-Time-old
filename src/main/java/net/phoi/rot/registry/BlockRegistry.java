@@ -47,4 +47,5 @@ public class BlockRegistry {
 
     public static final RegistryObject<Block> CONCAVENATOR_EGG = BLOCK.register("concavenator_egg", () -> new DinosaurEggBlock(EntityRegistry.CONCAVENATOR, BlockBehaviour.Properties.of(Material.EGG, MaterialColor.COLOR_ORANGE).strength(0.5F).sound(SoundType.METAL).randomTicks().noOcclusion()));
     public static final RegistryObject<Block> PROTOCERATOPS_EGG = BLOCK.register("protoceratops_egg", () -> new DinosaurEggBlock(EntityRegistry.PROTOCERATOPS, BlockBehaviour.Properties.of(Material.EGG, MaterialColor.COLOR_ORANGE).strength(0.5F).sound(SoundType.METAL).randomTicks().noOcclusion()));
+    public static final RegistryObject<Block> DUNKLEOSTEUS_SKULL = BLOCK.register("dunkleosteus_skull", () -> new BaseFacingBlock(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.COLOR_GRAY).strength(2.0F).sound(SoundType.BONE_BLOCK).requiresCorrectToolForDrops()));
 }

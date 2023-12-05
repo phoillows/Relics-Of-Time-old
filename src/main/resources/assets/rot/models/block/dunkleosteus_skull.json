@@ -1,0 +1,12 @@
+{
+  "parent": "block/cube",
+  "textures": {
+    "down": "rot:block/dunkleosteus_skull_back",
+    "east": "rot:block/dunkleosteus_skull_west_side",
+    "north": "rot:block/dunkleosteus_skull_front",
+    "south": "rot:block/dunkleosteus_skull_bottom",
+    "up": "rot:block/dunkleosteus_skull_top",
+    "west": "rot:block/dunkleosteus_skull_east_side",
+    "particle": "rot:block/dunkleosteus_skull_top"
+  }
+}

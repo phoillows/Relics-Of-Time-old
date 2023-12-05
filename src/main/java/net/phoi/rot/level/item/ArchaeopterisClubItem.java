@@ -1,10 +1,7 @@
 package net.phoi.rot.level.item;
 
-import net.minecraft.ChatFormatting;
-import net.minecraft.network.chat.Component;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.SwordItem;
 import net.minecraft.world.item.Tier;
@@ -21,10 +18,7 @@ public class ArchaeopterisClubItem extends SwordItem {
             RandomSource random = RandomSource.create();
             if (random.nextInt(3) == 1) {
                 concav.setStunned(true);
-            }
-            if (concav.stunAmount >= 2) {
-                concav.tame((Player)pAttacker);
-                ((Player)pAttacker).displayClientMessage(Component.literal("You've tamed a Concavenator!").withStyle(ChatFormatting.BOLD), false);
+                concav.stunAmount++;
             }
         }
         return super.hurtEnemy(pStack, pTarget, pAttacker);

@@ -14,8 +14,8 @@ import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.Nullable;
 
 public class Dinosaur extends TamableAnimal {
-    private static final EntityDataAccessor<Boolean> DATA_SLEEPING = SynchedEntityData.defineId(Dinosaur.class, EntityDataSerializers.BOOLEAN);
-    private static final EntityDataAccessor<Boolean> DATA_RUNNNING = SynchedEntityData.defineId(Dinosaur.class, EntityDataSerializers.BOOLEAN);
+    protected static final EntityDataAccessor<Boolean> DATA_SLEEPING = SynchedEntityData.defineId(Dinosaur.class, EntityDataSerializers.BOOLEAN);
+    protected static final EntityDataAccessor<Boolean> DATA_RUNNNING = SynchedEntityData.defineId(Dinosaur.class, EntityDataSerializers.BOOLEAN);
 
     public Dinosaur(EntityType<? extends TamableAnimal> entityType, Level level) {
         super(entityType, level);

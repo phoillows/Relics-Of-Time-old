@@ -28,7 +28,7 @@ import software.bernie.geckolib3.core.manager.AnimationFactory;
 import software.bernie.geckolib3.util.GeckoLibUtil;
 
 public class Protoceratops extends Dinosaur implements IAnimatable {
-    private static final EntityDataAccessor<Boolean> DATA_LAYING = SynchedEntityData.defineId(Protoceratops.class, EntityDataSerializers.BOOLEAN);
+    protected static final EntityDataAccessor<Boolean> DATA_LAYING = SynchedEntityData.defineId(Protoceratops.class, EntityDataSerializers.BOOLEAN);
     private final AnimationFactory cache = GeckoLibUtil.createFactory(this);
 
     public Protoceratops(EntityType<? extends TamableAnimal> entityType, Level level) {
