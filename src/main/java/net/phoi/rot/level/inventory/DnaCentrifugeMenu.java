@@ -12,14 +12,14 @@ import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import net.minecraftforge.items.SlotItemHandler;
 import net.phoi.rot.level.block.entity.DnaCentrifugeBlockEntity;
 import net.phoi.rot.level.item.DnaBottleItem;
+import net.phoi.rot.level.tag.ModItemTags;
 import net.phoi.rot.registry.BlockRegistry;
-import net.phoi.rot.registry.ItemRegistry;
 import net.phoi.rot.registry.MenuTypesRegistry;
 import org.jetbrains.annotations.NotNull;
 
 public class DnaCentrifugeMenu extends BaseMenu {
     public final DnaCentrifugeBlockEntity blockEntity;
-    private final Level level;
+    public final Level level;
 
     public DnaCentrifugeMenu(int id, Inventory inventory, FriendlyByteBuf extraData) {
         this(id, inventory, inventory.player.level.getBlockEntity(extraData.readBlockPos()));
@@ -46,7 +46,7 @@ public class DnaCentrifugeMenu extends BaseMenu {
             this.addSlot(new SlotItemHandler(handler, 2, 138, 32) {
                 @Override
                 public boolean mayPlace(@NotNull ItemStack stack) {
-                    return stack.is(ItemRegistry.CONCAVENATOR_EGG_ITEM.get());
+                    return stack.is(ModItemTags.DINO_EGGS);
                 }
             });
         });

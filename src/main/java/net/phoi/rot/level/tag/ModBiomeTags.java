@@ -6,9 +6,9 @@ import net.minecraft.world.level.biome.Biome;
 import net.phoi.rot.util.Helper;
 
 public class ModBiomeTags {
-    public static final TagKey<Biome> ALLOWS_PLATY_TO_DROWSE = createTag("allows_platy_to_drowse");
+    public static final TagKey<Biome> ALLOWS_PLATY_TO_DROWSE = create("allows_platy_to_drowse");
 
-    private static TagKey<Biome> createTag(String name) {
+    private static TagKey<Biome> create(String name) {
         return TagKey.create(Registry.BIOME_REGISTRY, Helper.createPath(name));
     }
 }

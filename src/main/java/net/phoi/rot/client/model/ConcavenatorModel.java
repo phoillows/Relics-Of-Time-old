@@ -2,7 +2,6 @@ package net.phoi.rot.client.model;
 
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
-import net.phoi.rot.RelicsOfTime;
 import net.phoi.rot.level.entity.Concavenator;
 import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
 import software.bernie.geckolib3.core.processor.IBone;

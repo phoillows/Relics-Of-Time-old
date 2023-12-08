@@ -2,13 +2,11 @@ package net.phoi.rot.client.model;
 
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
-import net.phoi.rot.level.entity.Concavenator;
 import net.phoi.rot.level.entity.Postosuchus;
 import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
 import software.bernie.geckolib3.core.processor.IBone;
 import software.bernie.geckolib3.model.AnimatedGeoModel;
 import software.bernie.geckolib3.model.provider.data.EntityModelData;
-
 import static net.phoi.rot.util.Helper.createPath;
 
 public class PostosuchusModel extends AnimatedGeoModel<Postosuchus> {

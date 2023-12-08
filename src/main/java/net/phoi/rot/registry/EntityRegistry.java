@@ -17,12 +17,11 @@ public class EntityRegistry {
     public static final RegistryObject<EntityType<Platyhystrix>> PLATYHYSTRIX = register("platyhystrix", EntityType.Builder.of(Platyhystrix::new, MobCategory.WATER_CREATURE).sized(0.8F, 0.55F));
     public static final RegistryObject<EntityType<Protoceratops>> PROTOCERATOPS = register("protoceratops", EntityType.Builder.of(Protoceratops::new, MobCategory.CREATURE).sized(0.9F, 0.9F));
     public static final RegistryObject<EntityType<Postosuchus>> POSTOSUCHUS = register("postosuchus", EntityType.Builder.of(Postosuchus::new, MobCategory.CREATURE).sized(1.3F, 1.35F));
+    public static final RegistryObject<EntityType<Dunkleosteus>> DUNKLEOSTEUS = register("dunkleosteus", EntityType.Builder.of(Dunkleosteus::new, MobCategory.WATER_CREATURE).sized(1.7F, 1.6F));
 
     public static final RegistryObject<EntityType<TemplateBoat>> MOD_BOAT = register("mod_boat", EntityType.Builder.<TemplateBoat>of(TemplateBoat::new, MobCategory.MISC).sized(1.375F, 0.5625F));
     public static final RegistryObject<EntityType<TemplateChestBoat>> MOD_CHEST_BOAT = register("mod_chest_boat", EntityType.Builder.<TemplateChestBoat>of(TemplateChestBoat::new, MobCategory.MISC).sized(1.375F, 0.5625F));
 
-
-    /** Helper methods **/
     private static <E extends Entity> RegistryObject<EntityType<E>> register(String name, EntityType.Builder<E> builder) {
         return ENTITY.register(name, () -> builder.build(name));
     }

@@ -30,6 +30,7 @@ public class ModItemModelProvider extends ItemModelProvider {
         spawnEgg(PLATYHYSTRIX_SPAWN_EGG);
         spawnEgg(PROTOCERATOPS_SPAWN_EGG);
         spawnEgg(POSTOSUCHUS_SPAWN_EGG);
+        spawnEgg(DUNKLEOSTEUS_SPAWN_EGG);
         blockItem(AMBER_ORE_ITEM);
         blockItem(AMBER_GLASS_ITEM);
         blockItem(DNA_ANALYZER_ITEM);

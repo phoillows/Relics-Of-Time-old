@@ -1,4 +1,4 @@
-// 1.19.2	2023-11-12T22:22:58.0396331	Item Models: rot
+// 1.19.2	2023-12-08T10:03:34.7586041	Item Models: rot
 cee045daa42fdce5dcb04627b8e55e14bdd98de5 assets/rot/models/item/amber.json
 a7c140919a115f2d6d35dcf16089c6064cc3002e assets/rot/models/item/amber_glass.json
 f84bbc69c52f7e120cb98828384fea917a639db1 assets/rot/models/item/amber_ore.json
@@ -25,6 +25,8 @@ aa44bd7a8b8edad14f6559e58369b3b70f58bad6 assets/rot/models/item/concavenator_dna
 63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/rot/models/item/concavenator_spawn_egg.json
 942e69a6f715e9bb14e811bb4647c61ca05b8143 assets/rot/models/item/dna_analyzer.json
 a2ec00d37869f09bcd8264c4c841f96549a6c514 assets/rot/models/item/dna_centrifuge.json
+58d6b7e55ef60fb9b15e77ada66b2bfb82d6a8e0 assets/rot/models/item/dunkleosteus_skull.json
+63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/rot/models/item/dunkleosteus_spawn_egg.json
 127c7ab137ed90376844473d291979d059ddb903 assets/rot/models/item/fossil_ore.json
 b3c084de6b9796e6ba6f6dd7e0b15f04b1faf190 assets/rot/models/item/furcacauda_bucket.json
 0754f0779ebbf2a207d37a4cb27d5109b96c193b assets/rot/models/item/furcacauda_dna.json

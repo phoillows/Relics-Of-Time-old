@@ -101,14 +101,13 @@ public class Platyhystrix extends Dinosaur implements IAnimatable {
     }
 
     @Override
-    public void travel(Vec3 travelVector) {
+    public void travel(Vec3 pTravelVector) {
         if (this.isEffectiveAi() && this.isInWater()) {
-            this.moveRelative(0.05F, travelVector);
+            this.moveRelative(0.05F, pTravelVector);
             this.move(MoverType.SELF, this.getDeltaMovement());
             this.setDeltaMovement(this.getDeltaMovement().scale(0.9D));
-        } else {
-            super.travel(travelVector);
         }
+        super.travel(pTravelVector);
     }
 
     @Override

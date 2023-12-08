@@ -62,6 +62,7 @@ public class ModLanguageProvider extends LanguageProvider {
         addItem(ItemRegistry.PLATYHYSTRIX_SPAWN_EGG, "Platyhystrix Spawn Egg");
         addItem(ItemRegistry.POSTOSUCHUS_SPAWN_EGG, "Postosuchus Spawn Egg");
         addItem(ItemRegistry.PROTOCERATOPS_SPAWN_EGG, "Protoceratops Spawn Egg");
+        addItem(ItemRegistry.DUNKLEOSTEUS_SPAWN_EGG, "Dunkleosteus Spawn Egg");
 
         // Effects
         addEffect(MobEffectRegistry.INTOXICATED, "Intoxicated");
@@ -72,6 +73,7 @@ public class ModLanguageProvider extends LanguageProvider {
         addEntityType(EntityRegistry.PLATYHYSTRIX, "Platyhystrix");
         addEntityType(EntityRegistry.PROTOCERATOPS, "Protoceratops");
         addEntityType(EntityRegistry.POSTOSUCHUS, "Postosuchus");
+        addEntityType(EntityRegistry.DUNKLEOSTEUS, "Dunkleosteus");
         addEntityType(EntityRegistry.MOD_BOAT, "Boat");
         addEntityType(EntityRegistry.MOD_CHEST_BOAT, "Boat with Chest");
 

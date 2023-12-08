@@ -13,7 +13,6 @@ import net.phoi.rot.registry.ItemRegistry;
 import software.bernie.geckolib3.core.IAnimatable;
 import software.bernie.geckolib3.core.PlayState;
 import software.bernie.geckolib3.core.builder.AnimationBuilder;
-import software.bernie.geckolib3.core.builder.ILoopType.EDefaultLoopTypes;
 import software.bernie.geckolib3.core.controller.AnimationController;
 import software.bernie.geckolib3.core.manager.AnimationData;
 import software.bernie.geckolib3.core.manager.AnimationFactory;
@@ -21,8 +20,8 @@ import software.bernie.geckolib3.util.GeckoLibUtil;
 
 public class Furcacauda extends AbstractSchoolingFish implements IAnimatable {
     private final AnimationFactory cache = GeckoLibUtil.createFactory(this);
-    protected static final AnimationBuilder SWIM = new AnimationBuilder().addAnimation("swim", EDefaultLoopTypes.LOOP);
-    protected static final AnimationBuilder MOVE = new AnimationBuilder().addAnimation("move", EDefaultLoopTypes.LOOP);
+    protected static final AnimationBuilder SWIM = new AnimationBuilder().loop("swim");
+    protected static final AnimationBuilder MOVE = new AnimationBuilder().loop("move");
 
     public Furcacauda(EntityType<? extends AbstractSchoolingFish> entityType, Level level) {
         super(entityType, level);

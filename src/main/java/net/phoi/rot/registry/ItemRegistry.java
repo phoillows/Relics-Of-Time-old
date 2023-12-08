@@ -22,13 +22,13 @@ public class ItemRegistry {
     public static final RegistryObject<Item> DNA_ANALYZER_ITEM = blockItem(DNA_ANALYZER);
     public static final RegistryObject<Item> DNA_CENTRIFUGE_ITEM = blockItem(DNA_CENTRIFUGE);
     public static final RegistryObject<Item> FOSSIL_ORE_ITEM = blockItem(FOSSIL_ORE);
-    public static final RegistryObject<Item> DUNKLEOSTEUS_SKULL_ITEM = blockItem(DUNKLEOSTEUS_SKULL);
     public static final RegistryObject<Item> AMMONITE_FOSSIL_PATH_ITEM = blockItem(AMMONITE_FOSSIL_PATH);
 
     public static final RegistryObject<Item> MESOZOIC_FOSSIL = ITEM.register("mesozoic_fossil", () -> new GenericItem());
     public static final RegistryObject<Item> PALEOZOIC_FOSSIL = ITEM.register("paleozoic_fossil", () -> new GenericItem());
     public static final RegistryObject<Item> PLANT_FOSSIL = ITEM.register("plant_fossil", () -> new GenericItem());
 
+    public static final RegistryObject<Item> DUNKLEOSTEUS_SKULL_ITEM = blockItem(DUNKLEOSTEUS_SKULL);
     public static final RegistryObject<Item> FURCACAUDA_BUCKET = ITEM.register("furcacauda_bucket", () -> new MobBucketItem(EntityRegistry.FURCACAUDA, () -> Fluids.WATER, () -> SoundEvents.BUCKET_FILL_FISH, new Item.Properties().stacksTo(1).tab(RelicsOfTime.RELICS_OF_TIME)));
     public static final RegistryObject<Item> ARCHAEOPTERIS_CLUB = ITEM.register("archaeopteris_club", () -> new ArchaeopterisClubItem(Tiers.WOOD, 4, -3.1F, new Item.Properties().stacksTo(1).tab(RelicsOfTime.RELICS_OF_TIME)));
 
@@ -68,13 +68,12 @@ public class ItemRegistry {
     public static final RegistryObject<Item> PROTOCERATOPS_EGG_ITEM = blockItem(PROTOCERATOPS_EGG);
 
     public static final RegistryObject<Item> CONCAVENATOR_SPAWN_EGG = ITEM.register("concavenator_spawn_egg", () -> new ForgeSpawnEggItem(EntityRegistry.CONCAVENATOR, 10116416, 13478556, new Item.Properties().tab(RelicsOfTime.RELICS_OF_TIME)));
+    public static final RegistryObject<Item> DUNKLEOSTEUS_SPAWN_EGG = ITEM.register("dunkleosteus_spawn_egg", () -> new ForgeSpawnEggItem(EntityRegistry.DUNKLEOSTEUS, 5262917, 9927003, new Item.Properties().tab(RelicsOfTime.RELICS_OF_TIME)));
     public static final RegistryObject<Item> FURCACAUDA_SPAWN_EGG = ITEM.register("furcacauda_spawn_egg", () -> new ForgeSpawnEggItem(EntityRegistry.FURCACAUDA, 14178304, 1326687, new Item.Properties().tab(RelicsOfTime.RELICS_OF_TIME)));
     public static final RegistryObject<Item> PLATYHYSTRIX_SPAWN_EGG = ITEM.register("platyhystrix_spawn_egg", () -> new ForgeSpawnEggItem(EntityRegistry.PLATYHYSTRIX, 7504960, 15046697, new Item.Properties().tab(RelicsOfTime.RELICS_OF_TIME)));
     public static final RegistryObject<Item> POSTOSUCHUS_SPAWN_EGG = ITEM.register("postosuchus_spawn_egg", () -> new ForgeSpawnEggItem(EntityRegistry.POSTOSUCHUS, 11443259, 7352096, new Item.Properties().tab(RelicsOfTime.RELICS_OF_TIME)));
     public static final RegistryObject<Item> PROTOCERATOPS_SPAWN_EGG = ITEM.register("protoceratops_spawn_egg", () -> new ForgeSpawnEggItem(EntityRegistry.PROTOCERATOPS, 9555526, 5929016, new Item.Properties().tab(RelicsOfTime.RELICS_OF_TIME)));
 
-
-    /** Helper methods **/
     private static RegistryObject<Item> blockItem(RegistryObject<Block> block) {
         return ITEM.register(block.getId().getPath(), () -> new BlockItem(block.get(), new Item.Properties().tab(RelicsOfTime.RELICS_OF_TIME)));
     }

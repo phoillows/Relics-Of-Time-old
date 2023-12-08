@@ -59,12 +59,12 @@ public class Dinosaur extends TamableAnimal {
     }
 
     @Override
-    public void travel(Vec3 travelVector) {
+    public void travel(Vec3 pTravelVector) {
         if (this.isSleeping()) {
             this.navigation.stop();
             this.setDeltaMovement(Vec3.ZERO);
         }
-        super.travel(travelVector);
+        super.travel(pTravelVector);
     }
 
     @Override
