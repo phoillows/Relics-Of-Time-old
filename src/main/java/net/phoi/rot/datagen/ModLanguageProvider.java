@@ -85,5 +85,8 @@ public class ModLanguageProvider extends LanguageProvider {
         add("subtitles.entity.concavenator.hurt", "Concavenator hurts");
         add("subtitles.entity.concavenator.death", "Concavenator dies");
         add("subtitles.entity.concavenator.call", "Concavenator calls");
+        add("subtitles.entity.protoceratops.ambient", "Protoceratops screeches");
+        add("subtitles.entity.protoceratops.hurt", "Protoceratops hurts");
+        add("subtitles.entity.protoceratops.death", "Protoceratops dies");
     }
 }

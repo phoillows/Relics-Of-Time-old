@@ -4,6 +4,7 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
+import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.TamableAnimal;
@@ -18,6 +19,7 @@ import net.phoi.rot.level.entity.ai.DinosaurLookAroundGoal;
 import net.phoi.rot.level.entity.ai.DinosaurLookAtPlayerGoal;
 import net.phoi.rot.level.entity.ai.DinosaurSleepGoal;
 import net.phoi.rot.level.entity.ai.ProtoceratopsLayDownGoal;
+import net.phoi.rot.registry.SoundRegistry;
 import software.bernie.geckolib3.core.IAnimatable;
 import software.bernie.geckolib3.core.PlayState;
 import software.bernie.geckolib3.core.builder.AnimationBuilder;
@@ -30,6 +32,10 @@ import software.bernie.geckolib3.util.GeckoLibUtil;
 public class Protoceratops extends Dinosaur implements IAnimatable {
     protected static final EntityDataAccessor<Boolean> DATA_LAYING = SynchedEntityData.defineId(Protoceratops.class, EntityDataSerializers.BOOLEAN);
     private final AnimationFactory cache = GeckoLibUtil.createFactory(this);
+    protected static final AnimationBuilder IDLE = new AnimationBuilder().addAnimation("idle", ILoopType.EDefaultLoopTypes.LOOP);
+    protected static final AnimationBuilder WALK = new AnimationBuilder().addAnimation("walk", ILoopType.EDefaultLoopTypes.LOOP);
+    protected static final AnimationBuilder SLEEP = new AnimationBuilder().addAnimation("sleep", ILoopType.EDefaultLoopTypes.LOOP);
+    protected static final AnimationBuilder LAY = new AnimationBuilder().addAnimation("lay", ILoopType.EDefaultLoopTypes.LOOP);
 
     public Protoceratops(EntityType<? extends TamableAnimal> entityType, Level level) {
         super(entityType, level);
@@ -93,12 +99,20 @@ public class Protoceratops extends Dinosaur implements IAnimatable {
         return super.hurt(damageSource, amount);
     }
 
+    @Override
+    protected SoundEvent getAmbientSound() {
+        return SoundRegistry.PROTOCERATOPS_AMBIENT;
+    }
 
-    // Geo animations
-    protected static final AnimationBuilder IDLE = new AnimationBuilder().addAnimation("idle", ILoopType.EDefaultLoopTypes.LOOP);
-    protected static final AnimationBuilder WALK = new AnimationBuilder().addAnimation("walk", ILoopType.EDefaultLoopTypes.LOOP);
-    protected static final AnimationBuilder SLEEP = new AnimationBuilder().addAnimation("sleep", ILoopType.EDefaultLoopTypes.LOOP);
-    protected static final AnimationBuilder LAY = new AnimationBuilder().addAnimation("lay", ILoopType.EDefaultLoopTypes.LOOP);
+    @Override
+    protected SoundEvent getHurtSound(DamageSource pDamageSource) {
+        return SoundRegistry.PROTOCERATOPS_HURT;
+    }
+
+    @Override
+    protected SoundEvent getDeathSound() {
+        return SoundRegistry.PROTOCERATOPS_DEATH;
+    }
 
     @Override
     public void registerControllers(AnimationData data) {

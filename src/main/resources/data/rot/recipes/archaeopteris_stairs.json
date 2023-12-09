@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "category": "building",
+  "group": "wooden_stairs",
+  "pattern": [
+    "A  ",
+    "AA ",
+    "AAA"
+  ],
+  "key": {
+    "A": {
+      "item": "rot:archaeopteris_planks"
+    }
+  },
+  "result": {
+    "item": "rot:archaeopteris_stairs",
+    "count": 4
+  }
+}

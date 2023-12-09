@@ -34,15 +34,13 @@ public class DnaCentrifugeScreen extends AbstractContainerScreen<DnaCentrifugeMe
         int y = (height - imageHeight) / 2;
         this.blit(poseStack, x, y, 0, 0, imageWidth, imageHeight);
         AgeableMob mob = null;
-        if (this.checkEgg(ItemRegistry.CONCAVENATOR_EGG_ITEM.get())) {
+        if (this.checkEgg(ItemRegistry.CONCAVENATOR_DNA.get())) {
             mob = new Concavenator(EntityRegistry.CONCAVENATOR.get(), this.level);
-            mob.setBaby(true);
-            InventoryScreen.renderEntityInInventory(x + 42, y + 56, 30, (float)(x + 51) - mouseX, (float)(y + 75 - 50) - mouseY, mob);
+            InventoryScreen.renderEntityInInventory(x + 42, y + 62, 20, (float)(x + 42) - mouseX, (float)(y + 75 - 50) - mouseY, mob);
 
-        } else if (this.checkEgg(ItemRegistry.PROTOCERATOPS_EGG_ITEM.get())) {
+        } else if (this.checkEgg(ItemRegistry.PROTOCERATOPS_DNA.get())) {
             mob = new Protoceratops(EntityRegistry.PROTOCERATOPS.get(), this.level);
-            mob.setBaby(true);
-            InventoryScreen.renderEntityInInventory(x + 42, y + 57, 60, (float)(x + 51) - mouseX, (float)(y + 75 - 50) - mouseY, mob);
+            InventoryScreen.renderEntityInInventory(x + 42, y + 57, 35, (float)(x + 42) - mouseX, (float)(y + 75 - 50) - mouseY, mob);
         }
     }
 
@@ -54,6 +52,6 @@ public class DnaCentrifugeScreen extends AbstractContainerScreen<DnaCentrifugeMe
     }
 
     private boolean checkEgg(Item item) {
-        return menu.blockEntity.itemHandler.getStackInSlot(2).is(item);
+        return menu.blockEntity.itemHandler.getStackInSlot(0).is(item);
     }
 }

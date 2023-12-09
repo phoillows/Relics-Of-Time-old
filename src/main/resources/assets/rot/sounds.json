@@ -16,10 +16,35 @@
   },
   "entity.concavenator.death": {
     "subtitle": "subtitles.entity.concavenator.death",
-    "sounds": [ "rot:entity/concav/concavenator_death" ]
+    "sounds": [
+      "rot:entity/concav/concavenator_death"
+    ]
   },
   "entity.concavenator.call": {
     "subtitle": "subtitles.entity.concavenator.call",
-    "sounds": [ "rot:entity/concav/concavenator_call" ]
+    "sounds": [
+      "rot:entity/concav/concavenator_call"
+    ]
+  },
+  "entity.protoceratops.ambient": {
+    "subtitle": "subtitles.entity.protoceratops.ambient",
+    "sounds": [
+      "rot:entity/proto/protoceratops_idle1",
+      "rot:entity/proto/protoceratops_idle2",
+      "rot:entity/proto/protoceratops_idle3"
+    ]
+  },
+  "entity.protoceratops.hurt": {
+    "subtitle": "subtitles.entity.protoceratops.hurt",
+    "sounds": [
+      "rot:entity/proto/protoceratops_hurt1",
+      "rot:entity/proto/protoceratops_hurt2"
+    ]
+  },
+  "entity.protoceratops.death": {
+    "subtitle": "subtitles.entity.protoceratops.death",
+    "sounds": [
+      "rot:entity/proto/protoceratops_death"
+    ]
   }
 }

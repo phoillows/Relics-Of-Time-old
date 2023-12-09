@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "group": "wooden_slab",
+  "pattern": [
+    "AAA"
+  ],
+  "key": {
+    "A": {
+      "item": "rot:archaeopteris_planks"
+    }
+  },
+  "result": {
+    "item": "rot:archaeopteris_slab",
+    "count": 6
+  }
+}

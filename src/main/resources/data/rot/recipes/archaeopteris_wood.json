@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "group": "bark",
+  "pattern": [
+    "AA",
+    "AA"
+  ],
+  "key": {
+    "A": {
+      "item": "rot:archaeopteris_log"
+    }
+  },
+  "result": {
+    "item": "rot:archaeopteris_wood",
+    "count": 3
+  }
+}

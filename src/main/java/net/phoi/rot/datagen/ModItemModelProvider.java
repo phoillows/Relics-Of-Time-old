@@ -95,8 +95,8 @@ public class ModItemModelProvider extends ItemModelProvider {
     private void generateItemModels() {
         for (RegistryObject<Item> item : ItemRegistry.ITEM.getEntries()) {
             if (item.get() instanceof GenericItem) {
-                if (item.get() instanceof DnaBottleItem) {
-                    genericItem(item, "dna/" + item.getId().getPath());
+                if (item.get() instanceof DnaBottleItem dna) {
+                    genericItem(item, "dna/" + dna.getText().toLowerCase());
                 } else {
                     genericItem(item);
                 }

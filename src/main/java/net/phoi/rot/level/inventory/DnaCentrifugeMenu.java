@@ -12,7 +12,6 @@ import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import net.minecraftforge.items.SlotItemHandler;
 import net.phoi.rot.level.block.entity.DnaCentrifugeBlockEntity;
 import net.phoi.rot.level.item.DnaBottleItem;
-import net.phoi.rot.level.tag.ModItemTags;
 import net.phoi.rot.registry.BlockRegistry;
 import net.phoi.rot.registry.MenuTypesRegistry;
 import org.jetbrains.annotations.NotNull;
@@ -43,10 +42,10 @@ public class DnaCentrifugeMenu extends BaseMenu {
                     return stack.is(Items.MILK_BUCKET);
                 }
             });
-            this.addSlot(new SlotItemHandler(handler, 2, 138, 32) {
+            this.addSlot(new SlotItemHandler(handler, 2, 138, 32){
                 @Override
                 public boolean mayPlace(@NotNull ItemStack stack) {
-                    return stack.is(ModItemTags.DINO_EGGS);
+                    return false;
                 }
             });
         });

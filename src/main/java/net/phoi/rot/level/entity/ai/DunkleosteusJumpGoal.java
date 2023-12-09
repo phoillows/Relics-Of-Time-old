@@ -63,10 +63,12 @@ public class DunkleosteusJumpGoal extends JumpGoal {
         Direction direction = this.dunk.getMotionDirection();
         this.dunk.setDeltaMovement(this.dunk.getDeltaMovement().add((double)direction.getStepX() * 0.6D, 0.7D, (double)direction.getStepZ() * 0.6D));
         this.dunk.getNavigation().stop();
+        this.dunk.setBreaching(true);
     }
 
     public void stop() {
         this.dunk.setXRot(0.0F);
+        this.dunk.setBreaching(false);
     }
 
     public void tick() {

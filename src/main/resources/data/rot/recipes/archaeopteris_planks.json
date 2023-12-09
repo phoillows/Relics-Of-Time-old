@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "group": "planks",
+  "ingredients": [
+    {
+      "item": "rot:archaeopteris_log"
+    }
+  ],
+  "result": {
+    "item": "rot:archaeopteris_planks",
+    "count": 4
+  }
+}

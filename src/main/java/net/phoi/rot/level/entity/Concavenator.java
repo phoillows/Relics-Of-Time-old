@@ -48,10 +48,10 @@ import software.bernie.geckolib3.core.manager.AnimationFactory;
 import software.bernie.geckolib3.util.GeckoLibUtil;
 
 public class Concavenator extends Dinosaur implements IAnimatable, Saddleable, PlayerRideable {
+    public int stunAmount = 0;
     private int callTimer = 40;
     private int callCooldown = 0;
     private int stunnedTimer = 100;
-    public int stunAmount = 0;
     protected SimpleContainer inventory;
     protected static final EntityDataAccessor<Boolean> DATA_LEADER = SynchedEntityData.defineId(Concavenator.class, EntityDataSerializers.BOOLEAN);
     protected static final EntityDataAccessor<Boolean> DATA_SADDLED = SynchedEntityData.defineId(Concavenator.class, EntityDataSerializers.BOOLEAN);
@@ -111,8 +111,8 @@ public class Concavenator extends Dinosaur implements IAnimatable, Saddleable, P
                 return !isStunned() &&  super.canContinueToUse();
             }
         });
-        this.targetSelector.addGoal(2, new HurtByTargetGoal(this).setAlertOthers());
-        this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, Player.class, true, (entity) -> !isBaby()));
+        this.targetSelector.addGoal(1, new HurtByTargetGoal(this).setAlertOthers());
+        this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, LivingEntity.class, true, (entity) -> entity != this));
     }
 
     public static AttributeSupplier.Builder createAttributes() {
@@ -253,10 +253,10 @@ public class Concavenator extends Dinosaur implements IAnimatable, Saddleable, P
         super.positionRider(passenger);
         if (this.hasPassenger(passenger)) {
             if (this.isSprinting()) {
-                Vec3 vec3 = (new Vec3((double) 0.2D, 1.0D, 0.0D)).yRot(-this.getYRot() * ((float) Math.PI / 180F) - ((float) Math.PI / 2F));
+                Vec3 vec3 = (new Vec3(0.2D, 1.0D, 0.0D)).yRot(-this.getYRot() * ((float) Math.PI / 180F) - ((float) Math.PI / 2F));
                 passenger.setPos(this.getX() + vec3.x, this.getY() + vec3.y, this.getZ() + vec3.z);
             } else {
-                Vec3 vec3 = (new Vec3((double) 0.1D, 1.05D, 0.0D)).yRot(-this.getYRot() * ((float) Math.PI / 180F) - ((float) Math.PI / 2F));
+                Vec3 vec3 = (new Vec3(0.1D, 1.05D, 0.0D)).yRot(-this.getYRot() * ((float) Math.PI / 180F) - ((float) Math.PI / 2F));
                 passenger.setPos(this.getX() + vec3.x, this.getY() + vec3.y, this.getZ() + vec3.z);
             }
         }

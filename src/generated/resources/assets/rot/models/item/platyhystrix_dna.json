@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "rot:item/dna/platyhystrix_dna"
+    "layer0": "rot:item/dna/platyhystrix"
   }
 }

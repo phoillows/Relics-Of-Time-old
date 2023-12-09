@@ -2,6 +2,9 @@ package net.phoi.rot.level.entity;
 
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.syncher.EntityDataAccessor;
+import net.minecraft.network.syncher.EntityDataSerializers;
+import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.DifficultyInstance;
@@ -16,14 +19,15 @@ import net.minecraft.world.entity.ai.control.SmoothSwimmingMoveControl;
 import net.minecraft.world.entity.ai.goal.*;
 import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
 import net.minecraft.world.entity.ai.navigation.PathNavigation;
-import net.minecraft.world.entity.ai.navigation.WaterBoundPathNavigation;
 import net.minecraft.world.entity.animal.WaterAnimal;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
+import net.minecraft.world.level.pathfinder.BlockPathTypes;
 import net.minecraft.world.phys.Vec3;
 import net.phoi.rot.level.entity.ai.DunkleosteusJumpGoal;
+import net.phoi.rot.util.WaterBreachingNavigation;
 import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib3.core.AnimationState;
 import software.bernie.geckolib3.core.IAnimatable;
@@ -36,6 +40,7 @@ import software.bernie.geckolib3.core.manager.AnimationFactory;
 import software.bernie.geckolib3.util.GeckoLibUtil;
 
 public class Dunkleosteus extends WaterAnimal implements IAnimatable {
+    protected static final EntityDataAccessor<Boolean> DATA_BREACHING = SynchedEntityData.defineId(Dunkleosteus.class, EntityDataSerializers.BOOLEAN);
     private final AnimationFactory cache = GeckoLibUtil.createFactory(this);
     protected static final AnimationBuilder IDLE = new AnimationBuilder().loop("animation.dunkleosteus.idle");
     protected static final AnimationBuilder LAND = new AnimationBuilder().loop("animation.dunkleosteus.land");
@@ -44,7 +49,9 @@ public class Dunkleosteus extends WaterAnimal implements IAnimatable {
 
     public Dunkleosteus(EntityType<? extends WaterAnimal> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
-        this.moveControl = new SmoothSwimmingMoveControl(this, 60, 10, 0.02F, 0.1F, true);
+        this.setPathfindingMalus(BlockPathTypes.WATER, 0.0F);
+        this.setPathfindingMalus(BlockPathTypes.BREACH, 0.0F);
+        this.moveControl = new SmoothSwimmingMoveControl(this, 60, 20, 0.02F, 0.1F, true);
         this.lookControl = new SmoothSwimmingLookControl(this, 10);
     }
 
@@ -76,6 +83,32 @@ public class Dunkleosteus extends WaterAnimal implements IAnimatable {
                 .add(Attributes.ATTACK_DAMAGE, 9.0D);
     }
 
+    public boolean isBreaching() {
+        return this.entityData.get(DATA_BREACHING);
+    }
+
+    public void setBreaching(boolean breaching) {
+        this.entityData.set(DATA_BREACHING, breaching);
+    }
+
+    @Override
+    protected void defineSynchedData() {
+        super.defineSynchedData();
+        this.entityData.define(DATA_BREACHING, false);
+    }
+
+    @Override
+    public void addAdditionalSaveData(CompoundTag pCompound) {
+        super.addAdditionalSaveData(pCompound);
+        pCompound.putBoolean("Breaching", this.isBreaching());
+    }
+
+    @Override
+    public void readAdditionalSaveData(CompoundTag pCompound) {
+        super.readAdditionalSaveData(pCompound);
+        this.setBreaching(pCompound.getBoolean("Breaching"));
+    }
+
     @Override
     protected InteractionResult mobInteract(Player pPlayer, InteractionHand pHand) {
         ItemStack stack = pPlayer.getItemInHand(pHand);
@@ -94,6 +127,13 @@ public class Dunkleosteus extends WaterAnimal implements IAnimatable {
         return super.mobInteract(pPlayer, pHand);
     }
 
+    public void tick() {
+        super.tick();
+        if (this.isNoAi()) {
+            this.setAirSupply(this.getMaxAirSupply());
+        }
+    }
+
     @Override
     public void travel(Vec3 pTravelVector) {
         if (this.isEffectiveAi() && this.isInWater()) {
@@ -106,7 +146,7 @@ public class Dunkleosteus extends WaterAnimal implements IAnimatable {
 
     @Override
     public boolean hurt(DamageSource pSource, float pAmount) {
-        if (pSource.getEntity() instanceof Player) {
+        if (pSource.getEntity() instanceof Player player && !player.isCreative()) {
             this.setAggressive(true);
         }
         return super.hurt(pSource, pAmount);
@@ -121,7 +161,7 @@ public class Dunkleosteus extends WaterAnimal implements IAnimatable {
 
     @Override
     protected PathNavigation createNavigation(Level pLevel) {
-        return new WaterBoundPathNavigation(this, pLevel);
+        return new WaterBreachingNavigation(this, pLevel);
     }
 
     @Override
@@ -145,7 +185,7 @@ public class Dunkleosteus extends WaterAnimal implements IAnimatable {
 
     @Override
     public int getMaxAirSupply() {
-        return 1000;
+        return 700;
     }
 
     @Override

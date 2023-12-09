@@ -1,5 +1,6 @@
 package net.phoi.rot.level.entity.ai;
 
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.goal.MeleeAttackGoal;
 import net.phoi.rot.level.entity.Concavenator;
 
@@ -13,12 +14,32 @@ public class ConcavenatorAttackGoal extends MeleeAttackGoal {
 
     @Override
     public boolean canUse() {
-        return !this.mob.isBaby() && !this.mob.isStunned() && super.canUse();
+        if (!this.mob.isStunned()) {
+            LivingEntity target = this.mob.getTarget();
+            if (target != null) {
+                double concavX = this.mob.getBoundingBox().getXsize();
+                double concavY = this.mob.getBoundingBox().getYsize();
+                double targetX = target.getBoundingBox().getXsize();
+                double targetY = target.getBoundingBox().getYsize();
+                return targetX < concavX && targetY < concavY && super.canUse();
+            }
+        }
+        return false;
     }
 
     @Override
     public boolean canContinueToUse() {
-        return !this.mob.isStunned() && super.canContinueToUse();
+        if (!this.mob.isStunned()) {
+            LivingEntity target = this.mob.getTarget();
+            if (target != null) {
+                double concavX = this.mob.getBoundingBox().getXsize();
+                double concavY = this.mob.getBoundingBox().getYsize();
+                double targetX = target.getBoundingBox().getXsize();
+                double targetY = target.getBoundingBox().getYsize();
+                return targetX < concavX && targetY < concavY && super.canContinueToUse();
+            }
+        }
+        return false;
     }
 
     @Override

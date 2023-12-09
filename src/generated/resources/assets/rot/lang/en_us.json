@@ -55,5 +55,8 @@
   "subtitles.entity.concavenator.ambient": "Concavenator roars",
   "subtitles.entity.concavenator.call": "Concavenator calls",
   "subtitles.entity.concavenator.death": "Concavenator dies",
-  "subtitles.entity.concavenator.hurt": "Concavenator hurts"
+  "subtitles.entity.concavenator.hurt": "Concavenator hurts",
+  "subtitles.entity.protoceratops.ambient": "Protoceratops screeches",
+  "subtitles.entity.protoceratops.death": "Protoceratops dies",
+  "subtitles.entity.protoceratops.hurt": "Protoceratops hurts"
 }

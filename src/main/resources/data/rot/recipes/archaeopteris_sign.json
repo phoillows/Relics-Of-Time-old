@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "group": "wooden_sign",
+  "pattern": [
+    "AAA",
+    "AAA",
+    " S "
+  ],
+  "key": {
+    "A": {
+      "item": "rot:archaeopteris_planks"
+    },
+    "S": {
+      "item": "minecraft:stick"
+    }
+  },
+  "result": {
+    "item": "rot:archaeopteris_sign",
+    "count": 3
+  }
+}
