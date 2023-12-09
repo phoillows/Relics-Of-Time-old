@@ -18,6 +18,7 @@ public class DunkleosteusRenderer extends GeoEntityRenderer<Dunkleosteus> {
     @Override
     public void render(Dunkleosteus animatable, float entityYaw, float partialTick, PoseStack poseStack, MultiBufferSource bufferSource, int packedLight) {
         if (animatable.isBreaching()) {
+            poseStack.mulPose(Vector3f.YP.rotationDegrees(Mth.lerp(partialTick, animatable.yRotO, animatable.getYRot()) - 20.0F));
             poseStack.mulPose(Vector3f.ZP.rotationDegrees(Mth.lerp(partialTick, animatable.xRotO, animatable.getXRot()) + 20.0F));
         }
         super.render(animatable, entityYaw, partialTick, poseStack, bufferSource, packedLight);
