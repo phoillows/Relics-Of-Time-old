@@ -35,6 +35,7 @@ import net.phoi.rot.level.entity.ai.DinosaurLookAroundGoal;
 import net.phoi.rot.level.entity.ai.DinosaurLookAtPlayerGoal;
 import net.phoi.rot.level.entity.ai.DinosaurSleepGoal;
 import net.phoi.rot.level.inventory.ConcavenatorMenu;
+import net.phoi.rot.registry.EntityRegistry;
 import net.phoi.rot.registry.SoundRegistry;
 import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib3.core.AnimationState;
@@ -347,7 +348,7 @@ public class Concavenator extends Dinosaur implements IAnimatable, Saddleable, P
     @Nullable
     @Override
     public AgeableMob getBreedOffspring(ServerLevel level, AgeableMob mob) {
-        return null;
+        return EntityRegistry.CONCAVENATOR.get().create(level);
     }
 
     @Override

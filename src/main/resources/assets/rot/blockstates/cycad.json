@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "tip=false": {
+      "model": "rot:block/cycad_stem"
+    },
+    "tip=true": {
+      "model": "rot:block/cycad_fronds"
+    }
+  }
+}

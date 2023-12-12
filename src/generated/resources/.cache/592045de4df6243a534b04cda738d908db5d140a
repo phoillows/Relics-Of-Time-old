@@ -1,4 +1,4 @@
-// 1.19.2	2023-10-16T20:26:45.6402489	Block States: rot
+// 1.19.2	2023-12-12T07:01:08.871054	Block States: rot
 705ca8a887cd3ce29c4bbb5a68eb0e767c8b020a assets/rot/blockstates/amber_glass.json
 31c479b45f3747a4def17025a3705bbb9f766be2 assets/rot/blockstates/amber_ore.json
 bb3b812cf64af8432306c938e73075d3bfb7ed05 assets/rot/blockstates/ammonite_fossil_path.json
@@ -17,6 +17,7 @@ e85a0c6bbe50594b3a800b412e21582091547e99 assets/rot/blockstates/archaeopteris_si
 b4b1e5184a9efb564c958cb06ba493d8de7a3bc6 assets/rot/blockstates/archaeopteris_trapdoor.json
 e85a0c6bbe50594b3a800b412e21582091547e99 assets/rot/blockstates/archaeopteris_wall_sign.json
 ea83424dc1b18eb832c533a54258cb60ced225b9 assets/rot/blockstates/archaeopteris_wood.json
+2bcc10ac054862ce4f8887c24c1f91afb00347f9 assets/rot/blockstates/cooksonia.json
 055a62cf6dfac438d6348a1fa540c0db2ddb00b6 assets/rot/blockstates/fossil_ore.json
 13f8c66fd8fb313b713e44926cd1b5071b5682c7 assets/rot/blockstates/small_horsetail.json
 68f5bed05ad4d39f4b42d457fe49dbbc9d8c9d33 assets/rot/blockstates/stripped_archaeopteris_log.json
@@ -57,6 +58,7 @@ fcefd2b27f300190d74e831d0be82d6ed1b423e5 assets/rot/models/block/archaeopteris_t
 f6c3f4b7a2f328f06ca2e5d7cb65a4c772d1fa12 assets/rot/models/block/archaeopteris_trapdoor_open.json
 4339fa4355860cccc1e52d0473685859ec7a0b4f assets/rot/models/block/archaeopteris_trapdoor_top.json
 3e3b35a44c9ca9420ade5538fa0d2d3c269bff17 assets/rot/models/block/archaeopteris_wood.json
+56e0243fd2ed4835962d009d3c4f5905b1cfb9be assets/rot/models/block/cooksonia.json
 9f85d76ef8992ac98b68db60c20c01845524e275 assets/rot/models/block/fossil_ore.json
 adb96d334d070c5539eedcb5f8421a668220e2c6 assets/rot/models/block/small_horsetail.json
 abf188c44d0752e9b0d7846cbe62b166092f7f3b assets/rot/models/block/stripped_archaeopteris_log.json

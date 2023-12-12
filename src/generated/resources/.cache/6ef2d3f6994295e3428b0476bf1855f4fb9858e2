@@ -1,4 +1,4 @@
-// 1.19.2	2023-12-09T10:31:36.4707252	Item Models: rot
+// 1.19.2	2023-12-12T07:01:08.8690596	Item Models: rot
 cee045daa42fdce5dcb04627b8e55e14bdd98de5 assets/rot/models/item/amber.json
 a7c140919a115f2d6d35dcf16089c6064cc3002e assets/rot/models/item/amber_glass.json
 f84bbc69c52f7e120cb98828384fea917a639db1 assets/rot/models/item/amber_ore.json
@@ -23,6 +23,7 @@ c801f6be3c6203aa1040737a996f525485a51cca assets/rot/models/item/archaeopteris_lo
 68f8c9109b423ed4c5bd19621961dadc4c9cf3ff assets/rot/models/item/concavenator_dna.json
 7117752c82663412a62a9d8835abd1641f2f8f34 assets/rot/models/item/concavenator_egg.json
 63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/rot/models/item/concavenator_spawn_egg.json
+a43000b982725a389a981c9010ee9615047ad9fd assets/rot/models/item/cooksonia.json
 942e69a6f715e9bb14e811bb4647c61ca05b8143 assets/rot/models/item/dna_analyzer.json
 a2ec00d37869f09bcd8264c4c841f96549a6c514 assets/rot/models/item/dna_centrifuge.json
 58d6b7e55ef60fb9b15e77ada66b2bfb82d6a8e0 assets/rot/models/item/dunkleosteus_skull.json
@@ -45,5 +46,6 @@ fb320b70e286ba446b008f0c46ef851e24b4defd assets/rot/models/item/neocalamites_dna
 09cdd03eb300d50133a48856a58f188066523aa0 assets/rot/models/item/protoceratops_egg.json
 63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/rot/models/item/protoceratops_spawn_egg.json
 bdeb265dcb3ad6f4d68f188615c1ede1d1041db0 assets/rot/models/item/small_horsetail.json
+49ca587aa0a239561015322a5266abbf303a5c53 assets/rot/models/item/sphenopteris.json
 d4182c411d04527208f6b44c276c7598197f6dc2 assets/rot/models/item/stripped_archaeopteris_log.json
 7675d7bc8ce268b65cbc1c8de275604899128d7e assets/rot/models/item/stripped_archaeopteris_wood.json

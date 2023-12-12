@@ -3,6 +3,7 @@ package net.phoi.rot.level.block;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.tags.BlockTags;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
@@ -21,15 +22,17 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.Nullable;
 
-public class NeocalamitesBlock extends Block implements SimpleWaterloggedBlock {
+public class GrowingPlantBlock extends Block implements SimpleWaterloggedBlock {
     private static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
     private static final BooleanProperty TIP = BooleanProperty.create("tip");
-    private static final VoxelShape STEM_SHAPE = box(5, 0, 5, 11, 16, 11);
-    private static final VoxelShape TIP_SHAPE = box(5, 0, 5, 11, 11, 11);
+    private static final VoxelShape STEM_SHAPE = box(3, 0, 3, 13, 16, 13);
+    private static final VoxelShape TIP_SHAPE = box(4, 0, 4, 12, 11, 12);
+    private int maxHeight;
 
-    public NeocalamitesBlock(Properties properties) {
+    public GrowingPlantBlock(int maxHeight, Properties properties) {
         super(properties);
         this.registerDefaultState(this.getStateDefinition().any().setValue(TIP, true).setValue(WATERLOGGED, false));
+        this.maxHeight = maxHeight;
     }
 
     @Override
@@ -40,7 +43,7 @@ public class NeocalamitesBlock extends Block implements SimpleWaterloggedBlock {
     @Override
     public void randomTick(BlockState pState, ServerLevel pLevel, BlockPos pPos, RandomSource pRandom) {
         if (pLevel.getBlockState(pPos.above()).isAir()) {
-            for (int i = 0; i < 7; i++) {
+            for (int i = 0; i < this.maxHeight; i++) {
                 if (!pLevel.getBlockState(pPos.below(i)).is(this)) {
                     pLevel.setBlock(pPos.above(), this.defaultBlockState(), 2);
                 }
@@ -51,7 +54,7 @@ public class NeocalamitesBlock extends Block implements SimpleWaterloggedBlock {
 
     @Override
     public boolean canSurvive(BlockState state, LevelReader level, BlockPos pos) {
-        return !level.getBlockState(pos.below()).isAir();
+        return !level.getBlockState(pos.below()).isAir() && level.getBlockState(pos.below()).is(BlockTags.DIRT) || level.getBlockState(pos.below()).is(this);
     }
 
     @Override

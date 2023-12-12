@@ -29,7 +29,7 @@ public class DinosaurSleepGoal extends Goal {
 
     @Override
     public boolean canContinueToUse() {
-        if (this.dinosaur.level.isDay()) {
+        if (this.dinosaur.level.isDay() && !this.dinosaur.isInWater() && !this.dinosaur.isInLava()) {
             stop();
             return false;
         } else {

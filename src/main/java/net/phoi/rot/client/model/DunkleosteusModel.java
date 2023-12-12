@@ -13,7 +13,7 @@ public class DunkleosteusModel extends AnimatedGeoModel<Dunkleosteus> {
 
     @Override
     public ResourceLocation getTextureResource(Dunkleosteus entity) {
-        return entity.isAggressive() ? createPath("textures/entity/dunkleosteus/dunkleosteus_angry.png") : createPath("textures/entity/dunkleosteus/dunkleosteus.png");
+        return createPath("textures/entity/dunkleosteus/dunkleosteus.png");
     }
 
     @Override

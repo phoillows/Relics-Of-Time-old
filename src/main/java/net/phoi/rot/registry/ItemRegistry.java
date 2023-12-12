@@ -53,7 +53,10 @@ public class ItemRegistry {
 
     public static final RegistryObject<Item> SMALL_HORSETAIL_ITEM = blockItem(SMALL_HORSETAIL);
     public static final RegistryObject<Item> LARGE_HORSETAIL_ITEM = blockItem(LARGE_HORSETAIL);
+    public static final RegistryObject<Item> COOKSONIA_ITEM = blockItem(COOKSONIA);
+    public static final RegistryObject<Item> SPHENOPTERIS_ITEM = blockItem(SPHENOPTERIS);
     public static final RegistryObject<Item> NEOCALAMITES_ITEM = blockItem(NEOCALAMITES);
+    public static final RegistryObject<Item> CYCAD_ITEM = blockItem(CYCAD);
 
     public static final RegistryObject<Item> HORSETAIL_DNA = ITEM.register("horsetail_dna", () -> new DnaBottleItem("Horsetail"));
     public static final RegistryObject<Item> NEOCALAMITES_DNA = ITEM.register("neocalamites_dna", () -> new DnaBottleItem("Neocalamites"));

@@ -34,21 +34,25 @@ public class DnaCentrifugeScreen extends AbstractContainerScreen<DnaCentrifugeMe
         int y = (height - imageHeight) / 2;
         this.blit(poseStack, x, y, 0, 0, imageWidth, imageHeight);
         AgeableMob mob = null;
-        if (this.checkEgg(ItemRegistry.CONCAVENATOR_DNA.get())) {
+        if (checkEgg(ItemRegistry.CONCAVENATOR_DNA.get())) {
             mob = new Concavenator(EntityRegistry.CONCAVENATOR.get(), this.level);
             InventoryScreen.renderEntityInInventory(x + 42, y + 62, 20, (float)(x + 42) - mouseX, (float)(y + 75 - 50) - mouseY, mob);
 
-        } else if (this.checkEgg(ItemRegistry.PROTOCERATOPS_DNA.get())) {
+        } else if (checkEgg(ItemRegistry.PROTOCERATOPS_DNA.get())) {
             mob = new Protoceratops(EntityRegistry.PROTOCERATOPS.get(), this.level);
             InventoryScreen.renderEntityInInventory(x + 42, y + 57, 35, (float)(x + 42) - mouseX, (float)(y + 75 - 50) - mouseY, mob);
         }
     }
 
     @Override
-    public void render(PoseStack poseStack, int mouseX, int mouseY, float delta) {
-        renderBackground(poseStack);
-        super.render(poseStack, mouseX, mouseY, delta);
-        renderTooltip(poseStack, mouseX, mouseY);
+    public void render(PoseStack pPoseStack, int pMouseX, int pMouseY, float pPartialTick) {
+        this.renderBackground(pPoseStack);
+        super.render(pPoseStack, pMouseX, pMouseY, pPartialTick);
+        this.renderTooltip(pPoseStack, pMouseX, pMouseY);
+    }
+
+    @Override
+    protected void renderLabels(PoseStack pPoseStack, int pMouseX, int pMouseY) {
     }
 
     private boolean checkEgg(Item item) {

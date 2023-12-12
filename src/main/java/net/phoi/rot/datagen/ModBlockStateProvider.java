@@ -27,6 +27,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
         translucentBlock(AMBER_GLASS);
         crossBlock(SMALL_HORSETAIL);
         crossBlock(ARCHAEOPTERIS_SAPLING);
+        crossBlock(COOKSONIA);
         cutoutBlock(ARCHAEOPTERIS_LEAVES);
         logBlock((RotatedPillarBlock)ARCHAEOPTERIS_LOG.get());
         logBlock((RotatedPillarBlock)STRIPPED_ARCHAEOPTERIS_LOG.get());

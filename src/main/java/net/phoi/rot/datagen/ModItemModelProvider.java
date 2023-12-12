@@ -55,6 +55,8 @@ public class ModItemModelProvider extends ItemModelProvider {
         blockItem(ARCHAEOPTERIS_SAPLING_ITEM, "block/archaeopteris_sapling");
         blockItem(CONCAVENATOR_EGG_ITEM, "item/concavenator_egg");
         blockItem(PROTOCERATOPS_EGG_ITEM, "item/protoceratops_egg");
+        blockItem(SPHENOPTERIS_ITEM, "block/sphenopteris");
+        blockItem(COOKSONIA_ITEM, "block/cooksonia");
         trapdoorBlockItem(ARCHAEOPTERIS_TRAPDOOR_ITEM);
         inventoryBlockItem(ARCHAEOPTERIS_FENCE_ITEM);
         inventoryBlockItem(ARCHAEOPTERIS_BUTTON_ITEM);
