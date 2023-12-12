@@ -15,14 +15,12 @@ import net.phoi.rot.util.Helper;
 
 public class ConcavenatorScreen extends AbstractContainerScreen<ConcavenatorMenu> {
     private static final ResourceLocation TEXTURE = Helper.createPath("textures/gui/concavenator.png");
-    private final ConcavenatorMenu menu;
     private final Level level;
     private int xMouse;
     private int yMouse;
 
     public ConcavenatorScreen(ConcavenatorMenu menu, Inventory inventory, Component component) {
         super(menu, inventory, component);
-        this.menu = menu;
         this.level = menu.level;
     }
 

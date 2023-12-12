@@ -1,5 +1,10 @@
 {
   "variants": {
-    "": { "model": "rot:block/sphenopteris" }
+    "half=lower": {
+      "model": "rot:block/sphenopteris_bottom"
+    },
+    "half=upper": {
+      "model": "rot:block/sphenopteris_top"
+    }
   }
 }

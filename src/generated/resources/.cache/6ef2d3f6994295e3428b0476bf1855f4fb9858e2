@@ -1,4 +1,4 @@
-// 1.19.2	2023-12-12T07:01:08.8690596	Item Models: rot
+// 1.19.2	2023-12-12T11:31:44.3508075	Item Models: rot
 cee045daa42fdce5dcb04627b8e55e14bdd98de5 assets/rot/models/item/amber.json
 a7c140919a115f2d6d35dcf16089c6064cc3002e assets/rot/models/item/amber_glass.json
 f84bbc69c52f7e120cb98828384fea917a639db1 assets/rot/models/item/amber_ore.json
@@ -45,7 +45,8 @@ fb320b70e286ba446b008f0c46ef851e24b4defd assets/rot/models/item/neocalamites_dna
 3a0797848339998c51e1fd53099184f5cd5228c1 assets/rot/models/item/protoceratops_dna.json
 09cdd03eb300d50133a48856a58f188066523aa0 assets/rot/models/item/protoceratops_egg.json
 63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/rot/models/item/protoceratops_spawn_egg.json
+f44e977494f29a292e8bceb6b856843bc0f082c5 assets/rot/models/item/sagenopteris.json
 bdeb265dcb3ad6f4d68f188615c1ede1d1041db0 assets/rot/models/item/small_horsetail.json
-49ca587aa0a239561015322a5266abbf303a5c53 assets/rot/models/item/sphenopteris.json
+aae7271ccba0336431d127e584a14a6a117e39e8 assets/rot/models/item/sphenopteris.json
 d4182c411d04527208f6b44c276c7598197f6dc2 assets/rot/models/item/stripped_archaeopteris_log.json
 7675d7bc8ce268b65cbc1c8de275604899128d7e assets/rot/models/item/stripped_archaeopteris_wood.json

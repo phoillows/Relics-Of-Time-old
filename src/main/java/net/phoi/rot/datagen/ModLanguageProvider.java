@@ -49,6 +49,7 @@ public class ModLanguageProvider extends LanguageProvider {
         addBlock(BlockRegistry.CYCAD, "Cycad");
         addBlock(BlockRegistry.SPHENOPTERIS, "Sphenopteris");
         addBlock(BlockRegistry.COOKSONIA, "Cooksonia");
+        addBlock(BlockRegistry.SAGENOPTERIS, "Sagenopteris");
 
         // Items
         add("item.rot.dna_bottle", "DNA Bottle");

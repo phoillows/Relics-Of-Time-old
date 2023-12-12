@@ -113,7 +113,7 @@ public class Concavenator extends Dinosaur implements IAnimatable, Saddleable, P
             }
         });
         this.targetSelector.addGoal(1, new HurtByTargetGoal(this).setAlertOthers());
-        this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, LivingEntity.class, true, (entity) -> entity != this));
+        this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, LivingEntity.class, true, (entity) -> !(entity instanceof Concavenator)));
     }
 
     public static AttributeSupplier.Builder createAttributes() {
@@ -436,7 +436,7 @@ public class Concavenator extends Dinosaur implements IAnimatable, Saddleable, P
         }
     }
 
-    private PlayState attackPredicate(AnimationEvent event) {
+    private <E extends IAnimatable> PlayState attackPredicate(AnimationEvent<E> event) {
         if (this.swinging && event.getController().getAnimationState().equals(AnimationState.Stopped)) {
             event.getController().markNeedsReload();
             event.getController().setAnimation(BITE);

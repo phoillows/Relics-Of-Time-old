@@ -4,8 +4,10 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.entity.AgeableMob;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.TamableAnimal;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
@@ -19,6 +21,7 @@ import net.phoi.rot.level.entity.ai.DinosaurLookAroundGoal;
 import net.phoi.rot.level.entity.ai.DinosaurLookAtPlayerGoal;
 import net.phoi.rot.level.entity.ai.DinosaurSleepGoal;
 import net.phoi.rot.level.entity.ai.ProtoceratopsLayDownGoal;
+import net.phoi.rot.registry.EntityRegistry;
 import net.phoi.rot.registry.SoundRegistry;
 import software.bernie.geckolib3.core.IAnimatable;
 import software.bernie.geckolib3.core.PlayState;
@@ -112,6 +115,11 @@ public class Protoceratops extends Dinosaur implements IAnimatable {
     @Override
     protected SoundEvent getDeathSound() {
         return SoundRegistry.PROTOCERATOPS_DEATH;
+    }
+
+    @Override
+    public AgeableMob getBreedOffspring(ServerLevel level, AgeableMob mob) {
+        return EntityRegistry.PROTOCERATOPS.get().create(level);
     }
 
     @Override

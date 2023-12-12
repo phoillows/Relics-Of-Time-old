@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "half=lower": {
+      "model": "rot:block/sagenopteris_bottom"
+    },
+    "half=upper": {
+      "model": "rot:block/sagenopteris_top"
+    }
+  }
+}

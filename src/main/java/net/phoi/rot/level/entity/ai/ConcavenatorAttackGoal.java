@@ -8,7 +8,7 @@ public class ConcavenatorAttackGoal extends MeleeAttackGoal {
     private final Concavenator mob;
 
     public ConcavenatorAttackGoal(Concavenator mob) {
-        super(mob, 1.9D, true);
+        super(mob, mob.isBaby() ? 1.6D : 1.9D, true);
         this.mob = mob;
     }
 

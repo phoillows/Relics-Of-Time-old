@@ -10,14 +10,22 @@ import software.bernie.geckolib3.model.provider.data.EntityModelData;
 import static net.phoi.rot.util.Helper.createPath;
 
 public class ProtoceratopsModel extends AnimatedGeoModel<Protoceratops> {
+    private static final ResourceLocation DEFAULT = createPath("textures/entity/protoceratops/protoceratops.png");
+    private static final ResourceLocation SLEEPING = createPath("textures/entity/protoceratops/sleeping_protoceratops.png");
+    private static final ResourceLocation BABY = createPath("textures/entity/protoceratops/baby_protoceratops.png");
+    private static final ResourceLocation BABY_SLEEPING = createPath("textures/entity/protoceratops/baby_sleeping_protoceratops.png");
+
     @Override
     public ResourceLocation getModelResource(Protoceratops entity) {
-        return createPath("geo/protoceratops.geo.json");
+        return entity.isBaby() ? createPath("geo/baby_protoceratops.geo.json") :  createPath("geo/protoceratops.geo.json");
     }
 
     @Override
     public ResourceLocation getTextureResource(Protoceratops entity) {
-        return entity.isSleeping() ? createPath("textures/entity/protoceratops/protoceratops_sleeping.png") : createPath("textures/entity/protoceratops/protoceratops.png");
+        if (entity.isSleeping()) {
+            return entity.isBaby() ? BABY_SLEEPING : SLEEPING;
+        }
+        return entity.isBaby() ? BABY : DEFAULT;
     }
 
     @Override

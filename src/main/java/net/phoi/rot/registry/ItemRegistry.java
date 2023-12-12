@@ -55,6 +55,7 @@ public class ItemRegistry {
     public static final RegistryObject<Item> LARGE_HORSETAIL_ITEM = blockItem(LARGE_HORSETAIL);
     public static final RegistryObject<Item> COOKSONIA_ITEM = blockItem(COOKSONIA);
     public static final RegistryObject<Item> SPHENOPTERIS_ITEM = blockItem(SPHENOPTERIS);
+    public static final RegistryObject<Item> SAGENOPTERIS_ITEM = blockItem(SAGENOPTERIS);
     public static final RegistryObject<Item> NEOCALAMITES_ITEM = blockItem(NEOCALAMITES);
     public static final RegistryObject<Item> CYCAD_ITEM = blockItem(CYCAD);
 
@@ -71,11 +72,11 @@ public class ItemRegistry {
     public static final RegistryObject<Item> PROTOCERATOPS_EGG_ITEM = blockItem(PROTOCERATOPS_EGG);
 
     public static final RegistryObject<Item> CONCAVENATOR_SPAWN_EGG = ITEM.register("concavenator_spawn_egg", () -> new ForgeSpawnEggItem(EntityRegistry.CONCAVENATOR, 10116416, 13478556, new Item.Properties().tab(RelicsOfTime.RELICS_OF_TIME)));
-    public static final RegistryObject<Item> DUNKLEOSTEUS_SPAWN_EGG = ITEM.register("dunkleosteus_spawn_egg", () -> new ForgeSpawnEggItem(EntityRegistry.DUNKLEOSTEUS, 5262917, 9927003, new Item.Properties().tab(RelicsOfTime.RELICS_OF_TIME)));
+    public static final RegistryObject<Item> DUNKLEOSTEUS_SPAWN_EGG = ITEM.register("dunkleosteus_spawn_egg", () -> new ForgeSpawnEggItem(EntityRegistry.DUNKLEOSTEUS, 8094617, 3812675, new Item.Properties().tab(RelicsOfTime.RELICS_OF_TIME)));
     public static final RegistryObject<Item> FURCACAUDA_SPAWN_EGG = ITEM.register("furcacauda_spawn_egg", () -> new ForgeSpawnEggItem(EntityRegistry.FURCACAUDA, 14178304, 1326687, new Item.Properties().tab(RelicsOfTime.RELICS_OF_TIME)));
     public static final RegistryObject<Item> PLATYHYSTRIX_SPAWN_EGG = ITEM.register("platyhystrix_spawn_egg", () -> new ForgeSpawnEggItem(EntityRegistry.PLATYHYSTRIX, 7504960, 15046697, new Item.Properties().tab(RelicsOfTime.RELICS_OF_TIME)));
     public static final RegistryObject<Item> POSTOSUCHUS_SPAWN_EGG = ITEM.register("postosuchus_spawn_egg", () -> new ForgeSpawnEggItem(EntityRegistry.POSTOSUCHUS, 11443259, 7352096, new Item.Properties().tab(RelicsOfTime.RELICS_OF_TIME)));
-    public static final RegistryObject<Item> PROTOCERATOPS_SPAWN_EGG = ITEM.register("protoceratops_spawn_egg", () -> new ForgeSpawnEggItem(EntityRegistry.PROTOCERATOPS, 9555526, 5929016, new Item.Properties().tab(RelicsOfTime.RELICS_OF_TIME)));
+    public static final RegistryObject<Item> PROTOCERATOPS_SPAWN_EGG = ITEM.register("protoceratops_spawn_egg", () -> new ForgeSpawnEggItem(EntityRegistry.PROTOCERATOPS, 6373677, 14076739, new Item.Properties().tab(RelicsOfTime.RELICS_OF_TIME)));
 
     private static RegistryObject<Item> blockItem(RegistryObject<Block> block) {
         return ITEM.register(block.getId().getPath(), () -> new BlockItem(block.get(), new Item.Properties().tab(RelicsOfTime.RELICS_OF_TIME)));

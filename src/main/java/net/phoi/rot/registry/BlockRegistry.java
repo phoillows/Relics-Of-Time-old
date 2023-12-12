@@ -45,7 +45,8 @@ public class BlockRegistry {
     public static final RegistryObject<Block> SMALL_HORSETAIL = BLOCK.register("small_horsetail", () -> new TallGrassBlock(BlockBehaviour.Properties.of(Material.REPLACEABLE_PLANT).noCollission().instabreak().sound(SoundType.GRASS)));
     public static final RegistryObject<Block> LARGE_HORSETAIL = BLOCK.register("large_horsetail", () -> new DoublePlantBlock(BlockBehaviour.Properties.of(Material.REPLACEABLE_PLANT).noCollission().instabreak().sound(SoundType.GRASS)));
     public static final RegistryObject<Block> COOKSONIA = BLOCK.register("cooksonia", () -> new TallGrassBlock(BlockBehaviour.Properties.of(Material.REPLACEABLE_PLANT).noCollission().instabreak().sound(SoundType.GRASS)));
-    public static final RegistryObject<Block> SPHENOPTERIS = BLOCK.register("sphenopteris", () -> new TallGrassBlock(BlockBehaviour.Properties.of(Material.PLANT).sound(SoundType.GRASS).instabreak().noCollission()));
+    public static final RegistryObject<Block> SPHENOPTERIS = BLOCK.register("sphenopteris", () -> new DoublePlantBlock(BlockBehaviour.Properties.of(Material.PLANT).sound(SoundType.GRASS).instabreak().noCollission()));
+    public static final RegistryObject<Block> SAGENOPTERIS = BLOCK.register("sagenopteris", () -> new DoublePlantBlock(BlockBehaviour.Properties.of(Material.PLANT).sound(SoundType.GRASS).instabreak().noCollission()));
     public static final RegistryObject<Block> NEOCALAMITES = BLOCK.register("neocalamites", () -> new GrowingPlantBlock(7, BlockBehaviour.Properties.of(Material.BAMBOO).strength(1.0F).sound(SoundType.BAMBOO).randomTicks()));
     public static final RegistryObject<Block> CYCAD = BLOCK.register("cycad", () -> new GrowingPlantBlock(3, BlockBehaviour.Properties.of(Material.BAMBOO).strength(1.0F).sound(SoundType.BAMBOO).randomTicks()));
 

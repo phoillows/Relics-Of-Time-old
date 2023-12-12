@@ -17,6 +17,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.fluids.FluidType;
 import net.phoi.rot.level.entity.ai.*;
+import net.phoi.rot.registry.EntityRegistry;
 import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib3.core.IAnimatable;
 import software.bernie.geckolib3.core.PlayState;
@@ -133,7 +134,7 @@ public class Platyhystrix extends Dinosaur implements IAnimatable {
     @Nullable
     @Override
     public AgeableMob getBreedOffspring(ServerLevel level, AgeableMob mob) {
-        return null;
+        return EntityRegistry.PLATYHYSTRIX.get().create(level);
     }
 
     @Override
