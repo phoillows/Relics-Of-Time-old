@@ -41,6 +41,7 @@ public class ModItemModelProvider extends ItemModelProvider {
         spawnEgg(ItemRegistry.PROTOCERATOPS_SPAWN_EGG);
         spawnEgg(ItemRegistry.POSTOSUCHUS_SPAWN_EGG);
         spawnEgg(ItemRegistry.DUNKLEOSTEUS_SPAWN_EGG);
+        spawnEgg(ItemRegistry.SHRINGASAURUS_SPAWN_EGG);
 
         blockItem(ItemRegistry.AMBER_ORE);
         blockItem(ItemRegistry.AMBER_GLASS);

@@ -56,7 +56,7 @@ public class Platyhystrix extends Dinosaur implements IAnimatable, Bucketable {
         super(entityType, level);
         this.setPathfindingMalus(BlockPathTypes.WATER, 0.0F);
         this.setPersistenceRequired();
-        this.moveControl = new SmoothSwimmingMoveControl(this, 85, 15, 0.45F, 1.4F, true);
+        this.moveControl = new SmoothSwimmingMoveControl(this, 85, 15, 0.7F, 1.1F, true);
     }
 
     @Override

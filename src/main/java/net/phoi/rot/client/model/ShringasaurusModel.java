@@ -2,31 +2,31 @@ package net.phoi.rot.client.model;
 
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
-import net.phoi.rot.level.entity.Postosuchus;
+import net.phoi.rot.level.entity.Shringasaurus;
 import net.phoi.rot.util.Helper;
 import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
 import software.bernie.geckolib3.core.processor.IBone;
 import software.bernie.geckolib3.model.AnimatedGeoModel;
 import software.bernie.geckolib3.model.provider.data.EntityModelData;
 
-public class PostosuchusModel extends AnimatedGeoModel<Postosuchus> {
+public class ShringasaurusModel extends AnimatedGeoModel<Shringasaurus> {
     @Override
-    public ResourceLocation getModelResource(Postosuchus entity) {
-        return Helper.createPath("geo/postosuchus.geo.json");
+    public ResourceLocation getModelResource(Shringasaurus entity) {
+        return Helper.createPath("geo/shringasaurus.geo.json");
     }
 
     @Override
-    public ResourceLocation getTextureResource(Postosuchus entity) {
-        return entity.isSleeping() ? Helper.createPath("textures/entity/postosuchus/postosuchus_sleeping.png") : Helper.createPath("textures/entity/postosuchus/postosuchus.png");
+    public ResourceLocation getTextureResource(Shringasaurus entity) {
+        return Helper.createPath("textures/entity/shringasaurus.png");
     }
 
     @Override
-    public ResourceLocation getAnimationResource(Postosuchus entity) {
-        return Helper.createPath("animations/postosuchus.animation.json");
+    public ResourceLocation getAnimationResource(Shringasaurus entity) {
+        return Helper.createPath("animations/shringasaurus.animation.json");
     }
 
     @Override
-    public void setCustomAnimations(Postosuchus animatable, int instanceId, AnimationEvent animationEvent) {
+    public void setCustomAnimations(Shringasaurus animatable, int instanceId, AnimationEvent animationEvent) {
         super.setCustomAnimations(animatable, instanceId, animationEvent);
         IBone head = this.getAnimationProcessor().getBone("bone");
         EntityModelData modelData = (EntityModelData)animationEvent.getExtraDataOfType(EntityModelData.class).get(0);

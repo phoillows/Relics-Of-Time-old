@@ -3,21 +3,21 @@ package net.phoi.rot.client.model;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 import net.phoi.rot.level.entity.Protoceratops;
+import net.phoi.rot.util.Helper;
 import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
 import software.bernie.geckolib3.core.processor.IBone;
 import software.bernie.geckolib3.model.AnimatedGeoModel;
 import software.bernie.geckolib3.model.provider.data.EntityModelData;
-import static net.phoi.rot.util.Helper.createPath;
 
 public class ProtoceratopsModel extends AnimatedGeoModel<Protoceratops> {
-    private static final ResourceLocation DEFAULT = createPath("textures/entity/protoceratops/protoceratops.png");
-    private static final ResourceLocation SLEEPING = createPath("textures/entity/protoceratops/sleeping_protoceratops.png");
-    private static final ResourceLocation BABY = createPath("textures/entity/protoceratops/baby_protoceratops.png");
-    private static final ResourceLocation BABY_SLEEPING = createPath("textures/entity/protoceratops/baby_sleeping_protoceratops.png");
+    private static final ResourceLocation DEFAULT = Helper.createPath("textures/entity/protoceratops/protoceratops.png");
+    private static final ResourceLocation SLEEPING = Helper.createPath("textures/entity/protoceratops/sleeping_protoceratops.png");
+    private static final ResourceLocation BABY = Helper.createPath("textures/entity/protoceratops/baby_protoceratops.png");
+    private static final ResourceLocation BABY_SLEEPING = Helper.createPath("textures/entity/protoceratops/baby_sleeping_protoceratops.png");
 
     @Override
     public ResourceLocation getModelResource(Protoceratops entity) {
-        return entity.isBaby() ? createPath("geo/baby_protoceratops.geo.json") :  createPath("geo/protoceratops.geo.json");
+        return entity.isBaby() ? Helper.createPath("geo/baby_protoceratops.geo.json") :  Helper.createPath("geo/protoceratops.geo.json");
     }
 
     @Override
@@ -30,7 +30,7 @@ public class ProtoceratopsModel extends AnimatedGeoModel<Protoceratops> {
 
     @Override
     public ResourceLocation getAnimationResource(Protoceratops entity) {
-        return createPath("animations/protoceratops.animation.json");
+        return Helper.createPath("animations/protoceratops.animation.json");
     }
 
     @Override

@@ -3,21 +3,21 @@ package net.phoi.rot.client.model;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 import net.phoi.rot.level.entity.Concavenator;
+import net.phoi.rot.util.Helper;
 import software.bernie.geckolib3.core.event.predicate.AnimationEvent;
 import software.bernie.geckolib3.core.processor.IBone;
 import software.bernie.geckolib3.model.AnimatedGeoModel;
 import software.bernie.geckolib3.model.provider.data.EntityModelData;
-import static net.phoi.rot.util.Helper.createPath;
 
 public class ConcavenatorModel extends AnimatedGeoModel<Concavenator> {
-    private static final ResourceLocation DEFAULT = createPath("textures/entity/concavenator/concavenator.png");
-    private static final ResourceLocation SLEEPING = createPath("textures/entity/concavenator/concavenator_sleeping.png");
-    private static final ResourceLocation BABY = createPath("textures/entity/concavenator/hatchling_concavenator.png");
-    private static final ResourceLocation BABY_SLEEPING = createPath("textures/entity/concavenator/hatchling_concavenator_sleeping.png");
+    private static final ResourceLocation DEFAULT = Helper.createPath("textures/entity/concavenator/concavenator.png");
+    private static final ResourceLocation SLEEPING = Helper.createPath("textures/entity/concavenator/concavenator_sleeping.png");
+    private static final ResourceLocation BABY = Helper.createPath("textures/entity/concavenator/hatchling_concavenator.png");
+    private static final ResourceLocation BABY_SLEEPING = Helper.createPath("textures/entity/concavenator/hatchling_concavenator_sleeping.png");
 
     @Override
     public ResourceLocation getModelResource(Concavenator entity) {
-        return entity.isBaby() ? createPath("geo/hatchling_concavenator.geo.json") : createPath("geo/concavenator.geo.json");
+        return entity.isBaby() ? Helper.createPath("geo/hatchling_concavenator.geo.json") : Helper.createPath("geo/concavenator.geo.json");
     }
 
     @Override
@@ -30,7 +30,7 @@ public class ConcavenatorModel extends AnimatedGeoModel<Concavenator> {
 
     @Override
     public ResourceLocation getAnimationResource(Concavenator entity) {
-        return entity.isBaby() ? createPath("animations/hatchling_concavenator.animation.json") : createPath("animations/concavenator.animation.json");
+        return entity.isBaby() ? Helper.createPath("animations/hatchling_concavenator.animation.json") : Helper.createPath("animations/concavenator.animation.json");
     }
 
     @Override

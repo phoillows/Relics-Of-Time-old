@@ -40,6 +40,7 @@ public class ModClientEvents {
         event.registerEntityRenderer(PROTOCERATOPS.get(), ProtoceratopsRenderer::new);
         event.registerEntityRenderer(POSTOSUCHUS.get(), PostosuchusRenderer::new);
         event.registerEntityRenderer(DUNKLEOSTEUS.get(), DunkleosteusRenderer::new);
+        event.registerEntityRenderer(SHRINGASAURUS.get(), ShringasaurusRenderer::new);
         event.registerEntityRenderer(MOD_BOAT.get(), (context) -> new TemplateBoatRenderer(context, false));
         event.registerEntityRenderer(MOD_CHEST_BOAT.get(), (context) -> new TemplateBoatRenderer(context, true));
 

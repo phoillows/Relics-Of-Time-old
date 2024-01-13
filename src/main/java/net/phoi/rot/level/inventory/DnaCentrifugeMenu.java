@@ -25,10 +25,25 @@ public class DnaCentrifugeMenu extends BaseContainerMenu {
     }
 
     public DnaCentrifugeMenu(int id, Inventory inventory, BlockEntity blockEntity) {
-        super(MenuTypesRegistry.DNA_CENTRIFUGE_MENU.get(), id, inventory, true);
-        checkContainerSize(inventory, 3);
+        super(MenuTypesRegistry.DNA_CENTRIFUGE_MENU.get(), id);
         this.blockEntity = (DnaCentrifugeBlockEntity)blockEntity;
         this.level = inventory.player.level;
+        this.addMenuSlots();
+        this.addPlayerInventory(inventory);
+        this.addPlayerHotbar(inventory);
+    }
+
+    @Override
+    protected int getSlots() {
+        return 3;
+    }
+
+    @Override
+    public boolean stillValid(Player player) {
+        return stillValid(ContainerLevelAccess.create(level, blockEntity.getBlockPos()), player, BlockRegistry.DNA_CENTRIFUGE.get());
+    }
+
+    private void addMenuSlots() {
         this.blockEntity.getCapability(ForgeCapabilities.ITEM_HANDLER).ifPresent(handler -> {
             this.addSlot(new SlotItemHandler(handler, 0, 80, 15) {
                 @Override
@@ -49,15 +64,5 @@ public class DnaCentrifugeMenu extends BaseContainerMenu {
                 }
             });
         });
-    }
-
-    @Override
-    protected int getSlots() {
-        return 3;
-    }
-
-    @Override
-    public boolean stillValid(Player player) {
-        return stillValid(ContainerLevelAccess.create(level, blockEntity.getBlockPos()), player, BlockRegistry.DNA_CENTRIFUGE.get());
     }
 }

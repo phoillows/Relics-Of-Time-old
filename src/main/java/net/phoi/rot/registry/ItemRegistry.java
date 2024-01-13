@@ -66,12 +66,12 @@ public class ItemRegistry {
     public static final RegistryObject<Item> POSTOSUCHUS_DNA = ITEM.register("postosuchus_dna", () -> new DnaBottleItem("Postosuchus"));
     public static final RegistryObject<Item> PROTOCERATOPS_DNA = ITEM.register("protoceratops_dna", () -> new DnaBottleItem("Protoceratops"));
 
-    public static final RegistryObject<Item> FURCACAUDA_BUCKET = ITEM.register("furcacauda_bucket", () -> new MobBucketItem(EntityRegistry.FURCACAUDA, () -> Fluids.WATER, () -> SoundEvents.BUCKET_FILL_FISH, new Item.Properties().stacksTo(1).tab(RotCreativeTabs.DEFAULT)));
-    public static final RegistryObject<Item> BABY_PLATYHYSTRIX_BUCKET = ITEM.register("baby_platyhystrix_bucket", () -> new BabyBucketItem(EntityRegistry.PLATYHYSTRIX, () -> Fluids.WATER, () -> SoundEvents.BUCKET_EMPTY_AXOLOTL, new Item.Properties().stacksTo(1).tab(RotCreativeTabs.DEFAULT)));
-    public static final RegistryObject<Item> PLATYHYSTRIX_EGGS = blockItem(BlockRegistry.PLATYHYSTRIX_EGGS);
-    public static final RegistryObject<Item> DUNKLEOSTEUS_SKULL = blockItem(BlockRegistry.DUNKLEOSTEUS_SKULL, true);
     public static final RegistryObject<Item> CONCAVENATOR_EGG = blockItem(BlockRegistry.CONCAVENATOR_EGG, true);
     public static final RegistryObject<Item> PROTOCERATOPS_EGG = blockItem(BlockRegistry.PROTOCERATOPS_EGG, true);
+    public static final RegistryObject<Item> PLATYHYSTRIX_EGGS = blockItem(BlockRegistry.PLATYHYSTRIX_EGGS, true);
+    public static final RegistryObject<Item> FURCACAUDA_BUCKET = ITEM.register("furcacauda_bucket", () -> new MobBucketItem(EntityRegistry.FURCACAUDA, () -> Fluids.WATER, () -> SoundEvents.BUCKET_FILL_FISH, new Item.Properties().stacksTo(1).tab(RotCreativeTabs.SPAWN_EGGS)));
+    public static final RegistryObject<Item> BABY_PLATYHYSTRIX_BUCKET = ITEM.register("baby_platyhystrix_bucket", () -> new BabyBucketItem(EntityRegistry.PLATYHYSTRIX, () -> Fluids.WATER, () -> SoundEvents.BUCKET_EMPTY_AXOLOTL, new Item.Properties().stacksTo(1).tab(RotCreativeTabs.SPAWN_EGGS)));
+    public static final RegistryObject<Item> DUNKLEOSTEUS_SKULL = blockItem(BlockRegistry.DUNKLEOSTEUS_SKULL, true);
 
     public static final RegistryObject<Item> CONCAVENATOR_SPAWN_EGG = ITEM.register("concavenator_spawn_egg", () -> new ForgeSpawnEggItem(EntityRegistry.CONCAVENATOR, 10116416, 13478556, new Item.Properties().tab(RotCreativeTabs.SPAWN_EGGS)));
     public static final RegistryObject<Item> DUNKLEOSTEUS_SPAWN_EGG = ITEM.register("dunkleosteus_spawn_egg", () -> new ForgeSpawnEggItem(EntityRegistry.DUNKLEOSTEUS, 8094617, 3812675, new Item.Properties().tab(RotCreativeTabs.SPAWN_EGGS)));
@@ -79,6 +79,7 @@ public class ItemRegistry {
     public static final RegistryObject<Item> PLATYHYSTRIX_SPAWN_EGG = ITEM.register("platyhystrix_spawn_egg", () -> new ForgeSpawnEggItem(EntityRegistry.PLATYHYSTRIX, 7504960, 15046697, new Item.Properties().tab(RotCreativeTabs.SPAWN_EGGS)));
     public static final RegistryObject<Item> POSTOSUCHUS_SPAWN_EGG = ITEM.register("postosuchus_spawn_egg", () -> new ForgeSpawnEggItem(EntityRegistry.POSTOSUCHUS, 11443259, 7352096, new Item.Properties().tab(RotCreativeTabs.SPAWN_EGGS)));
     public static final RegistryObject<Item> PROTOCERATOPS_SPAWN_EGG = ITEM.register("protoceratops_spawn_egg", () -> new ForgeSpawnEggItem(EntityRegistry.PROTOCERATOPS, 6373677, 14076739, new Item.Properties().tab(RotCreativeTabs.SPAWN_EGGS)));
+    public static final RegistryObject<Item> SHRINGASAURUS_SPAWN_EGG = ITEM.register("shringasaurus_spawn_egg", () -> new ForgeSpawnEggItem(EntityRegistry.SHRINGASAURUS, 8015674, 10566926, new Item.Properties().tab(RotCreativeTabs.SPAWN_EGGS)));
 
     private static RegistryObject<Item> blockItem(RegistryObject<Block> block) {
         return blockItem(block, false);

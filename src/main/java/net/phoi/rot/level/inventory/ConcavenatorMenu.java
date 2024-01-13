@@ -22,10 +22,26 @@ public class ConcavenatorMenu extends BaseContainerMenu {
     }
 
     public ConcavenatorMenu(int id, Container container, Inventory playerInventory, Concavenator concav) {
-        super(MenuTypesRegistry.CONCAVENATOR_MENU.get(), id, playerInventory, true);
+        super(MenuTypesRegistry.CONCAVENATOR_MENU.get(), id);
         this.container = container;
         this.concav = concav;
         this.level = playerInventory.player.level;
+        this.addMenuSlots();
+        this.addPlayerInventory(playerInventory);
+        this.addPlayerHotbar(playerInventory);
+    }
+
+    @Override
+    protected int getSlots() {
+        return 16;
+    }
+
+    @Override
+    public boolean stillValid(Player pPlayer) {
+        return this.concav.isAlive();
+    }
+
+    private void addMenuSlots() {
         this.addSlot(new Slot(container, 0, 8, 18) {
             @Override
             public boolean mayPlace(ItemStack pStack) {
@@ -45,15 +61,5 @@ public class ConcavenatorMenu extends BaseContainerMenu {
                 this.addSlot(new Slot(container, slotId++, 80 + y * 18, 18 + x * 18));
             }
         }
-    }
-
-    @Override
-    protected int getSlots() {
-        return 16;
-    }
-
-    @Override
-    public boolean stillValid(Player pPlayer) {
-        return this.concav.isAlive();
     }
 }

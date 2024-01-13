@@ -9,21 +9,8 @@ import net.minecraft.world.item.ItemStack;
 import org.jetbrains.annotations.Nullable;
 
 public abstract class BaseContainerMenu extends AbstractContainerMenu {
-    protected BaseContainerMenu(@Nullable MenuType<?> pMenuType, int pContainerId, Inventory inventory, boolean hasPlayerInv) {
+    protected BaseContainerMenu(@Nullable MenuType<?> pMenuType, int pContainerId) {
         super(pMenuType, pContainerId);
-        if (hasPlayerInv) {
-            // Player inventory
-            for (int x = 0; x < 3; x++) {
-                for (int y = 0; y < 9; y++) {
-                    this.addSlot(new Slot(inventory, y + x * 9 + 9, 8 + y * 18, 84 + x * 18));
-                }
-            }
-
-            // Player hotbar
-            for (int x = 0; x < 9; x++) {
-                this.addSlot(new Slot(inventory, x, 8 + x * 18, 142));
-            }
-        }
     }
 
     protected abstract int getSlots();
@@ -54,5 +41,19 @@ public abstract class BaseContainerMenu extends AbstractContainerMenu {
         }
         sourceSlot.onTake(playerIn, sourceStack);
         return copyOfSourceStack;
+    }
+
+    protected void addPlayerInventory(Inventory inventory) {
+        for (int x = 0; x < 3; x++) {
+            for (int y = 0; y < 9; y++) {
+                this.addSlot(new Slot(inventory, y + x * 9 + 9, 8 + y * 18, 84 + x * 18));
+            }
+        }
+    }
+
+    protected void addPlayerHotbar(Inventory inventory) {
+        for (int x = 0; x < 9; x++) {
+            this.addSlot(new Slot(inventory, x, 8 + x * 18, 142));
+        }
     }
 }

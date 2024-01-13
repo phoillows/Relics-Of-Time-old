@@ -15,7 +15,7 @@ import org.jetbrains.annotations.Nullable;
 
 public class Dinosaur extends TamableAnimal {
     protected static final EntityDataAccessor<Boolean> DATA_SLEEPING = SynchedEntityData.defineId(Dinosaur.class, EntityDataSerializers.BOOLEAN);
-    protected static final EntityDataAccessor<Boolean> DATA_RUNNNING = SynchedEntityData.defineId(Dinosaur.class, EntityDataSerializers.BOOLEAN);
+    protected static final EntityDataAccessor<Boolean> DATA_RUNNING = SynchedEntityData.defineId(Dinosaur.class, EntityDataSerializers.BOOLEAN);
 
     public Dinosaur(EntityType<? extends TamableAnimal> entityType, Level level) {
         super(entityType, level);
@@ -30,18 +30,18 @@ public class Dinosaur extends TamableAnimal {
     }
 
     public boolean isRunning() {
-        return this.entityData.get(DATA_RUNNNING);
+        return this.entityData.get(DATA_RUNNING);
     }
 
     public void setRunning(boolean running) {
-        this.entityData.set(DATA_RUNNNING, running);
+        this.entityData.set(DATA_RUNNING, running);
     }
 
     @Override
     protected void defineSynchedData() {
         super.defineSynchedData();
         this.entityData.define(DATA_SLEEPING, false);
-        this.entityData.define(DATA_RUNNNING, false);
+        this.entityData.define(DATA_RUNNING, false);
     }
 
     @Override

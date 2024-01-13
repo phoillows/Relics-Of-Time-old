@@ -24,10 +24,25 @@ public class DnaAnaylzerMenu extends BaseContainerMenu {
     }
 
     public DnaAnaylzerMenu(int id, Inventory inventory, BlockEntity blockEntity) {
-        super(MenuTypesRegistry.DNA_ANAYLZER_MENU.get(), id, inventory, true);
-        checkContainerSize(inventory, 5);
+        super(MenuTypesRegistry.DNA_ANAYLZER_MENU.get(), id);
         this.blockEntity = (DnaAnaylzerBlockEntity)blockEntity;
         this.level = inventory.player.level;
+        this.addMenuSlots();
+        this.addPlayerInventory(inventory);
+        this.addPlayerHotbar(inventory);
+    }
+
+    @Override
+    protected int getSlots() {
+        return 5;
+    }
+
+    @Override
+    public boolean stillValid(Player player) {
+        return stillValid(ContainerLevelAccess.create(level, blockEntity.getBlockPos()), player, BlockRegistry.DNA_ANALYZER.get());
+    }
+
+    private void addMenuSlots() {
         this.blockEntity.getCapability(ForgeCapabilities.ITEM_HANDLER).ifPresent(handler -> {
             this.addSlot(new SlotItemHandler(handler, 0, 58, 12));
             this.addSlot(new SlotItemHandler(handler, 1, 103, 12) {
@@ -40,15 +55,5 @@ public class DnaAnaylzerMenu extends BaseContainerMenu {
             this.addSlot(new SlotItemHandler(handler, 3, 80, 57));
             this.addSlot(new SlotItemHandler(handler, 4, 107, 57));
         });
-    }
-
-    @Override
-    protected int getSlots() {
-        return 5;
-    }
-
-    @Override
-    public boolean stillValid(Player player) {
-        return stillValid(ContainerLevelAccess.create(level, blockEntity.getBlockPos()), player, BlockRegistry.DNA_ANALYZER.get());
     }
 }

@@ -25,6 +25,7 @@ public class ModCommonEvents {
         event.put(PROTOCERATOPS.get(), Protoceratops.createAttributes().build());
         event.put(POSTOSUCHUS.get(), Postosuchus.createAttributes().build());
         event.put(DUNKLEOSTEUS.get(), Dunkleosteus.createAttributes().build());
+        event.put(SHRINGASAURUS.get(), Shringasaurus.createAttributes().build());
     }
 
     @SubscribeEvent
