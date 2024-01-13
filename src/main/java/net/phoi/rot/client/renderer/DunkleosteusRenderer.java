@@ -1,11 +1,11 @@
 package net.phoi.rot.client.renderer;
 
+import net.phoi.rot.client.model.DunkleosteusModel;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Vector3f;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.util.Mth;
-import net.phoi.rot.client.model.DunkleosteusModel;
 import net.phoi.rot.level.entity.Dunkleosteus;
 import software.bernie.geckolib3.renderers.geo.GeoEntityRenderer;
 

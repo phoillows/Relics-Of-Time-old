@@ -1,0 +1,19 @@
+// 1.19.2	2024-01-13T12:21:04.8834733	Tags for minecraft:block
+cd1e65326d941579caa96dd428c278263ec80ac2 data/minecraft/tags/blocks/fences.json
+74e118310b1f9d050286706c03b674cbad2df980 data/minecraft/tags/blocks/fence_gates.json
+8ca571f2dc0a0c456b7fb6dd38081cbb436d5234 data/minecraft/tags/blocks/leaves.json
+1137dc6035079fec3d6b3c04e7c549bc2d86d6fc data/minecraft/tags/blocks/logs_that_burn.json
+88ee6de219a600f0107d6a3d149320f09fa9f8a4 data/minecraft/tags/blocks/mineable/pickaxe.json
+e47959e35ae42228e401156fa7501d0c981d7451 data/minecraft/tags/blocks/needs_stone_tool.json
+677a845e6a985b4dc64ed576fa5e419fb0df3203 data/minecraft/tags/blocks/planks.json
+a93792d941c820a35552efcef03ae363451d50cf data/minecraft/tags/blocks/saplings.json
+506650194456caf1c38d1343d7a3d2e8d30c8df7 data/minecraft/tags/blocks/small_flowers.json
+7db2e01629c82f810cea07cec2794d26ce59be4d data/minecraft/tags/blocks/standing_signs.json
+5397a992e3f591e9cc2fc47170d974f3b8d0e9c3 data/minecraft/tags/blocks/tall_flowers.json
+ebf6e1618ebc34ad14281c81fbcff5e29709c052 data/minecraft/tags/blocks/wall_signs.json
+1afad6532897c869190c0c5578843d90cebbfc22 data/minecraft/tags/blocks/wooden_buttons.json
+05ff9ae87051b7b0701a921a7a36ee561030dc20 data/minecraft/tags/blocks/wooden_doors.json
+78791b1deb0720bcc092f096225922f3ae57f145 data/minecraft/tags/blocks/wooden_pressure_plates.json
+aadb5aa70d48cb4376b845e0e4ed4fe9486cb01a data/minecraft/tags/blocks/wooden_slabs.json
+d8a16b1baffec5d83026fc62a8998c4b8bc9f9b0 data/minecraft/tags/blocks/wooden_stairs.json
+e3a2a486999dabf8a52ccfdc984275aed5875c1e data/minecraft/tags/blocks/wooden_trapdoors.json

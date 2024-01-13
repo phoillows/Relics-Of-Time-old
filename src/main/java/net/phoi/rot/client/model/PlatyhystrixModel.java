@@ -10,9 +10,14 @@ import software.bernie.geckolib3.model.provider.data.EntityModelData;
 import static net.phoi.rot.util.Helper.createPath;
 
 public class PlatyhystrixModel extends AnimatedGeoModel<Platyhystrix> {
+    private static final ResourceLocation DEFAULT = createPath("textures/entity/concavenator/concavenator.png");
+    private static final ResourceLocation SLEEPING = createPath("textures/entity/concavenator/concavenator_sleeping.png");
+    private static final ResourceLocation BABY = createPath("textures/entity/concavenator/hatchling_concavenator.png");
+    private static final ResourceLocation BABY_SLEEPING = createPath("textures/entity/concavenator/hatchling_concavenator_sleeping.png");
+
     @Override
     public ResourceLocation getModelResource(Platyhystrix entity) {
-        return createPath("geo/platyhystrix.geo.json");
+        return entity.isBaby() ? createPath("geo/baby_platyhystrix.geo.json") : createPath("geo/platyhystrix.geo.json");
     }
 
     @Override
@@ -22,12 +27,12 @@ public class PlatyhystrixModel extends AnimatedGeoModel<Platyhystrix> {
         } else if (entity.isDrousy()) {
             return createPath("textures/entity/platyhystrix/platyhystrix_drousy.png");
         }
-        return createPath("textures/entity/platyhystrix/platyhystrix.png");
+        return entity.isBaby() ? createPath("textures/entity/platyhystrix/baby_platyhystrix.png" ): createPath("textures/entity/platyhystrix/platyhystrix.png");
     }
 
     @Override
     public ResourceLocation getAnimationResource(Platyhystrix entity) {
-        return createPath("animations/platyhystrix.animation.json");
+        return entity.isBaby() ? createPath("animations/baby_platyhystrix.animation.json") : createPath("animations/platyhystrix.animation.json");
     }
 
     @Override

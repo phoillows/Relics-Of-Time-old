@@ -11,7 +11,6 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraftforge.network.NetworkHooks;
-import net.phoi.rot.RelicsOfTime;
 import net.phoi.rot.level.block.entity.DnaAnaylzerBlockEntity;
 import org.jetbrains.annotations.Nullable;
 
@@ -21,16 +20,14 @@ public class DnaAnaylzerBlock extends BaseFacingBlock implements EntityBlock {
     }
 
     @Override
-    public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
-        if (!level.isClientSide) {
-            BlockEntity blockEntity = level.getBlockEntity(pos);
-            if (blockEntity instanceof DnaAnaylzerBlockEntity) {
-                NetworkHooks.openScreen((ServerPlayer)player, (DnaAnaylzerBlockEntity)blockEntity, pos);
-            } else {
-                RelicsOfTime.LOGGER.error("Incorrect block entity");
+    public InteractionResult use(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHit) {
+        if (!pLevel.isClientSide) {
+            if (pLevel.getBlockEntity(pPos) instanceof DnaAnaylzerBlockEntity blockEntity) {
+                NetworkHooks.openScreen((ServerPlayer)pPlayer, blockEntity, pPos);
+                return InteractionResult.CONSUME;
             }
         }
-        return super.use(state, level, pos, player, hand, hit);
+        return InteractionResult.SUCCESS;
     }
 
     @Nullable

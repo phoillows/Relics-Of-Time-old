@@ -27,7 +27,7 @@ import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.level.pathfinder.BlockPathTypes;
 import net.minecraft.world.phys.Vec3;
 import net.phoi.rot.level.entity.ai.DunkleosteusJumpGoal;
-import net.phoi.rot.util.WaterBreachingNavigation;
+import net.phoi.rot.level.entity.ai.WaterBreachingNavigation;
 import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib3.core.AnimationState;
 import software.bernie.geckolib3.core.IAnimatable;
@@ -49,10 +49,10 @@ public class Dunkleosteus extends WaterAnimal implements IAnimatable {
 
     public Dunkleosteus(EntityType<? extends WaterAnimal> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
-        this.setPathfindingMalus(BlockPathTypes.WATER, 0.0F);
         this.setPathfindingMalus(BlockPathTypes.BREACH, 0.0F);
         this.moveControl = new SmoothSwimmingMoveControl(this, 60, 20, 0.02F, 0.1F, true);
         this.lookControl = new SmoothSwimmingLookControl(this, 10);
+        this.setPersistenceRequired();
     }
 
     @Override
@@ -72,7 +72,7 @@ public class Dunkleosteus extends WaterAnimal implements IAnimatable {
         this.goalSelector.addGoal(2, new RandomSwimmingGoal(this, 1.0D, 10));
         this.goalSelector.addGoal(3, new DunkleosteusJumpGoal(this, 10));
         this.goalSelector.addGoal(3, new LookAtPlayerGoal(this, Player.class, 6.0F));
-        this.goalSelector.addGoal(3, new RandomLookAroundGoal(this));
+        this.goalSelector.addGoal(3, new DunkleosteusLookGoal(this));
         this.targetSelector.addGoal(1, new HurtByTargetGoal(this).setAlertOthers());
     }
 
@@ -171,12 +171,12 @@ public class Dunkleosteus extends WaterAnimal implements IAnimatable {
 
     @Override
     public int getMaxHeadXRot() {
-        return 1;
+        return 5;
     }
 
     @Override
     public int getMaxHeadYRot() {
-        return 1;
+        return 5;
     }
 
     @Override
@@ -225,5 +225,24 @@ public class Dunkleosteus extends WaterAnimal implements IAnimatable {
     @Override
     public AnimationFactory getFactory() {
         return cache;
+    }
+
+    public static class DunkleosteusLookGoal extends RandomLookAroundGoal {
+        private final Dunkleosteus dunkleosteus;
+
+        public DunkleosteusLookGoal(Dunkleosteus dunkleosteus) {
+            super(dunkleosteus);
+            this.dunkleosteus = dunkleosteus;
+        }
+
+        @Override
+        public boolean canUse() {
+            return !dunkleosteus.isOnGround() && super.canUse();
+        }
+
+        @Override
+        public boolean canContinueToUse() {
+            return !dunkleosteus.isOnGround() && super.canContinueToUse();
+        }
     }
 }

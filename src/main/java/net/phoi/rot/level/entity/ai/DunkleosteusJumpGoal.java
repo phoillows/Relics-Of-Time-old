@@ -16,7 +16,7 @@ public class DunkleosteusJumpGoal extends JumpGoal {
     private final int interval;
     private boolean breached;
 
-    /** Copied directly from the DolphinJumpGoal class **/
+    /** Copied directly from the DolphinJumpGoal class cuz it requires the entity to extend Dolphin **/
     public DunkleosteusJumpGoal(Dunkleosteus dunk, int pInterval) {
         this.dunk = dunk;
         this.interval = reducedTickDelay(pInterval);

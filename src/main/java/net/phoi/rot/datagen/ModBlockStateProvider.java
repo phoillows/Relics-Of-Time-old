@@ -8,8 +8,8 @@ import net.minecraftforge.client.model.generators.ConfiguredModel;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.registries.RegistryObject;
 import net.phoi.rot.RelicsOfTime;
-import static net.phoi.rot.registry.BlockRegistry.*;
-import static net.phoi.rot.util.Helper.createPath;
+import net.phoi.rot.registry.BlockRegistry;
+import net.phoi.rot.util.Helper;
 
 public class ModBlockStateProvider extends BlockStateProvider {
     public ModBlockStateProvider(DataGenerator gen, ExistingFileHelper exFileHelper) {
@@ -18,28 +18,41 @@ public class ModBlockStateProvider extends BlockStateProvider {
 
     @Override
     protected void registerStatesAndModels() {
-        genericBlock(AMBER_ORE);
-        genericBlock(FOSSIL_ORE);
-        genericBlock(AMMONITE_FOSSIL_PATH);
-        genericBlock(ARCHAEOPTERIS_PLANKS);
-        genericBlock(ARCHAEOPTERIS_WOOD, "block/archaeopteris_log");
-        genericBlock(STRIPPED_ARCHAEOPTERIS_WOOD, "block/stripped_archaeopteris_log");
-        translucentBlock(AMBER_GLASS);
-        crossBlock(SMALL_HORSETAIL);
-        crossBlock(ARCHAEOPTERIS_SAPLING);
-        crossBlock(COOKSONIA);
-        cutoutBlock(ARCHAEOPTERIS_LEAVES);
-        logBlock((RotatedPillarBlock)ARCHAEOPTERIS_LOG.get());
-        logBlock((RotatedPillarBlock)STRIPPED_ARCHAEOPTERIS_LOG.get());
-        doorBlockWithRenderType((DoorBlock)ARCHAEOPTERIS_DOOR.get(), createPath("block/archaeopteris_door_bottom"), createPath("block/archaeopteris_door_top"), "cutout");
-        trapdoorBlockWithRenderType((TrapDoorBlock)ARCHAEOPTERIS_TRAPDOOR.get(), createPath("block/archaeopteris_trapdoor"), true, "cutout");
-        signBlock(ARCHAEOPTERIS_SIGN, ARCHAEOPTERIS_WALL_SIGN, createPath("block/archaeopteris_planks"));
-        slabBlock((SlabBlock)ARCHAEOPTERIS_SLAB.get(), createPath("block/archaeopteris_planks"), createPath("block/archaeopteris_planks"));
-        stairsBlock((StairBlock)ARCHAEOPTERIS_STAIRS.get(), "archaeopteris", createPath("block/archaeopteris_planks"));
-        fenceBlock((FenceBlock)ARCHAEOPTERIS_FENCE.get(), createPath("block/archaeopteris_planks"));
-        fenceGateBlock((FenceGateBlock)ARCHAEOPTERIS_FENCE_GATE.get(), createPath("block/archaeopteris_planks"));
-        buttonBlock((ButtonBlock)ARCHAEOPTERIS_BUTTON.get(), createPath("block/archaeopteris_planks"));
-        pressurePlateBlock((PressurePlateBlock)ARCHAEOPTERIS_PRESSURE_PLATE.get(), createPath("block/archaeopteris_planks"));
+        genericBlock(BlockRegistry.AMBER_ORE);
+        genericBlock(BlockRegistry.FOSSIL_ORE);
+        genericBlock(BlockRegistry.AMMONITE_FOSSIL_PATH);
+        genericBlock(BlockRegistry.ARCHAEOPTERIS_PLANKS);
+        genericBlock(BlockRegistry.ARCHAEOPTERIS_WOOD, "block/archaeopteris_log");
+        genericBlock(BlockRegistry.STRIPPED_ARCHAEOPTERIS_WOOD, "block/stripped_archaeopteris_log");
+
+        translucentBlock(BlockRegistry.AMBER_GLASS);
+
+        crossBlock(BlockRegistry.SMALL_HORSETAIL);
+        crossBlock(BlockRegistry.ARCHAEOPTERIS_SAPLING);
+        crossBlock(BlockRegistry.COOKSONIA);
+
+        cutoutBlock(BlockRegistry.ARCHAEOPTERIS_LEAVES);
+
+        logBlock((RotatedPillarBlock)BlockRegistry.ARCHAEOPTERIS_LOG.get());
+        logBlock((RotatedPillarBlock)BlockRegistry.STRIPPED_ARCHAEOPTERIS_LOG.get());
+
+        doorBlockWithRenderType((DoorBlock)BlockRegistry.ARCHAEOPTERIS_DOOR.get(), Helper.createPath("block/archaeopteris_door_bottom"), Helper.createPath("block/archaeopteris_door_top"), "cutout");
+
+        trapdoorBlockWithRenderType((TrapDoorBlock)BlockRegistry.ARCHAEOPTERIS_TRAPDOOR.get(), Helper.createPath("block/archaeopteris_trapdoor"), true, "cutout");
+
+        signBlock(BlockRegistry.ARCHAEOPTERIS_SIGN, BlockRegistry.ARCHAEOPTERIS_WALL_SIGN, Helper.createPath("block/archaeopteris_planks"));
+
+        slabBlock((SlabBlock)BlockRegistry.ARCHAEOPTERIS_SLAB.get(), Helper.createPath("block/archaeopteris_planks"), Helper.createPath("block/archaeopteris_planks"));
+
+        stairsBlock((StairBlock)BlockRegistry.ARCHAEOPTERIS_STAIRS.get(), "archaeopteris", Helper.createPath("block/archaeopteris_planks"));
+
+        fenceBlock((FenceBlock)BlockRegistry.ARCHAEOPTERIS_FENCE.get(), Helper.createPath("block/archaeopteris_planks"));
+
+        fenceGateBlock((FenceGateBlock)BlockRegistry.ARCHAEOPTERIS_FENCE_GATE.get(), Helper.createPath("block/archaeopteris_planks"));
+
+        buttonBlock((ButtonBlock)BlockRegistry.ARCHAEOPTERIS_BUTTON.get(), Helper.createPath("block/archaeopteris_planks"));
+
+        pressurePlateBlock((PressurePlateBlock)BlockRegistry.ARCHAEOPTERIS_PRESSURE_PLATE.get(), Helper.createPath("block/archaeopteris_planks"));
     }
 
     private void genericBlock(RegistryObject<Block> block) {
@@ -47,7 +60,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
     }
 
     private void genericBlock(RegistryObject<Block> block, String texture) {
-        simpleBlock(block.get(), new ConfiguredModel(models().cubeAll(block.getId().getPath(), createPath(texture))));
+        simpleBlock(block.get(), new ConfiguredModel(models().cubeAll(block.getId().getPath(), Helper.createPath(texture))));
     }
 
     private void translucentBlock(RegistryObject<Block> block) {

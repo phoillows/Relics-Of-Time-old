@@ -1,4 +1,4 @@
-// 1.19.2	2023-12-12T11:31:44.3508075	Item Models: rot
+// 1.19.2	2023-12-12T17:46:33.114253	Item Models: rot
 cee045daa42fdce5dcb04627b8e55e14bdd98de5 assets/rot/models/item/amber.json
 a7c140919a115f2d6d35dcf16089c6064cc3002e assets/rot/models/item/amber_glass.json
 f84bbc69c52f7e120cb98828384fea917a639db1 assets/rot/models/item/amber_ore.json
@@ -20,6 +20,7 @@ c801f6be3c6203aa1040737a996f525485a51cca assets/rot/models/item/archaeopteris_lo
 529ccea8726069e1b212af2bbd6249d28a26797e assets/rot/models/item/archaeopteris_stairs.json
 1456e44e301d6cf4eb672f9a519e68d140e8c8a9 assets/rot/models/item/archaeopteris_trapdoor.json
 53528cda2be926e30cdc4828e484bd43cf672352 assets/rot/models/item/archaeopteris_wood.json
+fe6adb5821739c1771530917ca6a528c39d44b13 assets/rot/models/item/baby_platyhystrix_bucket.json
 68f8c9109b423ed4c5bd19621961dadc4c9cf3ff assets/rot/models/item/concavenator_dna.json
 7117752c82663412a62a9d8835abd1641f2f8f34 assets/rot/models/item/concavenator_egg.json
 63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/rot/models/item/concavenator_spawn_egg.json
@@ -39,6 +40,7 @@ fb320b70e286ba446b008f0c46ef851e24b4defd assets/rot/models/item/neocalamites_dna
 7d862403bc1807271779890cda7a17674da7f187 assets/rot/models/item/paleozoic_fossil.json
 4c513b41879323170bc24992c4385a5d423fdd06 assets/rot/models/item/plant_fossil.json
 691cf904e7ae0dc091952eba40a2017ab5fb9e57 assets/rot/models/item/platyhystrix_dna.json
+3a2233a7466892ca06c2893d1315c82450c6a56f assets/rot/models/item/platyhystrix_eggs.json
 63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/rot/models/item/platyhystrix_spawn_egg.json
 27cd5e39cab42ac8542c5a5701494e40117e9a6d assets/rot/models/item/postosuchus_dna.json
 63ec6c618a3a23eab4cab9c52d7d3250de9b516e assets/rot/models/item/postosuchus_spawn_egg.json

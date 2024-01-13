@@ -11,7 +11,7 @@ import net.minecraft.world.level.Level;
 import net.phoi.rot.level.entity.Concavenator;
 import net.phoi.rot.registry.MenuTypesRegistry;
 
-public class ConcavenatorMenu extends BaseMenu {
+public class ConcavenatorMenu extends BaseContainerMenu {
     private final Container container;
     public final Concavenator concav;
     public final Level level;

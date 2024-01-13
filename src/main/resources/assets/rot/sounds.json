@@ -46,5 +46,20 @@
     "sounds": [
       "rot:entity/proto/protoceratops_death"
     ]
+  },
+  "entity.platyhystrix.ambient": {
+    "subtitle": "subtitles.entity.platyhystrix.ambient",
+    "sounds": [
+      "rot:entity/platy/platyhystrix_idle1",
+      "rot:entity/platy/platyhystrix_idle2",
+      "rot:entity/platy/platyhystrix_idle3"
+    ]
+  },
+  "entity.platyhystrix.hurt": {
+    "subtitle": "subtitles.entity.platyhystrix.hurt",
+    "sounds": [
+      "rot:entity/platy/platyhystrix_hurt1",
+      "rot:entity/platy/platyhystrix_hurt2"
+    ]
   }
 }

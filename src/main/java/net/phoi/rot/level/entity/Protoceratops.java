@@ -42,6 +42,7 @@ public class Protoceratops extends Dinosaur implements IAnimatable {
 
     public Protoceratops(EntityType<? extends TamableAnimal> entityType, Level level) {
         super(entityType, level);
+        this.setPersistenceRequired();
     }
 
     @Override

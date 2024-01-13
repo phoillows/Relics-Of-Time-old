@@ -11,7 +11,6 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraftforge.network.NetworkHooks;
-import net.phoi.rot.RelicsOfTime;
 import net.phoi.rot.level.block.entity.DnaCentrifugeBlockEntity;
 import org.jetbrains.annotations.Nullable;
 
@@ -21,16 +20,14 @@ public class DnaCentrifugeBlock extends BaseFacingBlock implements EntityBlock {
     }
 
     @Override
-    public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult blockHitResult) {
-        if (!level.isClientSide) {
-            BlockEntity blockEntity = level.getBlockEntity(pos);
-            if (blockEntity instanceof DnaCentrifugeBlockEntity) {
-                NetworkHooks.openScreen((ServerPlayer)player, (DnaCentrifugeBlockEntity)blockEntity, pos);
-            } else {
-                RelicsOfTime.LOGGER.error("Incorrect block entity");
+    public InteractionResult use(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHit) {
+        if (!pLevel.isClientSide) {
+            if (pLevel.getBlockEntity(pPos) instanceof DnaCentrifugeBlockEntity blockEntity) {
+                NetworkHooks.openScreen((ServerPlayer)pPlayer, blockEntity, pPos);
+                return InteractionResult.CONSUME;
             }
         }
-        return super.use(state, level, pos, player, hand, blockHitResult);
+        return InteractionResult.SUCCESS;
     }
 
     @Nullable

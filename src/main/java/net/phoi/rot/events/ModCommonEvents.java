@@ -8,6 +8,9 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.phoi.rot.RelicsOfTime;
 import net.phoi.rot.datagen.*;
+import net.phoi.rot.datagen.tag.ModBiomeTagProvider;
+import net.phoi.rot.datagen.tag.ModBlockTagProvider;
+import net.phoi.rot.datagen.tag.ModItemTagProvider;
 import net.phoi.rot.level.entity.*;
 
 import static net.phoi.rot.registry.EntityRegistry.*;
@@ -28,9 +31,13 @@ public class ModCommonEvents {
     public static void gatherData(GatherDataEvent event) {
         DataGenerator generator = event.getGenerator();
         ExistingFileHelper fileHelper = event.getExistingFileHelper();
+        ModBlockTagProvider blockTagProvider = new ModBlockTagProvider(generator, fileHelper);
 
         generator.addProvider(true, new ModBlockStateProvider(generator, fileHelper));
         generator.addProvider(true, new ModItemModelProvider(generator, fileHelper));
         generator.addProvider(true, new ModLanguageProvider(generator));
+        generator.addProvider(true, blockTagProvider);
+        generator.addProvider(true, new ModItemTagProvider(generator, blockTagProvider, fileHelper));
+        generator.addProvider(true, new ModBiomeTagProvider(generator, fileHelper));
     }
 }

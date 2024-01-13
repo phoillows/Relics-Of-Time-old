@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "boat",
+  "pattern": [
+    "A A",
+    "AAA"
+  ],
+  "key": {
+    "A": {
+      "item": "rot:archaeopteris_planks"
+    }
+  },
+  "result": {
+    "item": "rot:archaeopteris_boat",
+    "count": 1
+  }
+}

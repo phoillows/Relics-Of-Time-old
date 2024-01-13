@@ -25,6 +25,7 @@ public class Furcacauda extends AbstractSchoolingFish implements IAnimatable {
 
     public Furcacauda(EntityType<? extends AbstractSchoolingFish> entityType, Level level) {
         super(entityType, level);
+        this.setPersistenceRequired();
     }
 
     public static AttributeSupplier.Builder createAttributes() {

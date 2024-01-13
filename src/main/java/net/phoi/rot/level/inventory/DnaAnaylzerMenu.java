@@ -15,7 +15,7 @@ import net.phoi.rot.registry.ItemRegistry;
 import net.phoi.rot.registry.MenuTypesRegistry;
 import org.jetbrains.annotations.NotNull;
 
-public class DnaAnaylzerMenu extends BaseMenu {
+public class DnaAnaylzerMenu extends BaseContainerMenu {
     public final DnaAnaylzerBlockEntity blockEntity;
     private final Level level;
 

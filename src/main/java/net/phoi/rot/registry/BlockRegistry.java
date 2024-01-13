@@ -12,7 +12,7 @@ import net.phoi.rot.RelicsOfTime;
 import net.phoi.rot.level.block.*;
 import net.phoi.rot.level.block.GrowingPlantBlock;
 import net.phoi.rot.level.feature.tree.ArchaeopterisTreeGrower;
-import net.phoi.rot.util.ModWoodTypes;
+import net.phoi.rot.util.RotWoodTypes;
 
 public class BlockRegistry {
     public static final DeferredRegister<Block> BLOCK = DeferredRegister.create(ForgeRegistries.BLOCKS, RelicsOfTime.MODID);
@@ -39,8 +39,8 @@ public class BlockRegistry {
     public static final RegistryObject<Block> ARCHAEOPTERIS_DOOR = BLOCK.register("archaeopteris_door", () -> new DoorBlock(BlockBehaviour.Properties.of(Material.WOOD, MaterialColor.COLOR_ORANGE).strength(2.0F).sound(SoundType.LADDER).noOcclusion()));
     public static final RegistryObject<Block> ARCHAEOPTERIS_TRAPDOOR = BLOCK.register("archaeopteris_trapdoor", () -> new TrapDoorBlock(BlockBehaviour.Properties.of(Material.WOOD, MaterialColor.COLOR_ORANGE).strength(3.0F).sound(SoundType.WOOD).noOcclusion()));
     public static final RegistryObject<Block> ARCHAEOPTERIS_SAPLING = BLOCK.register("archaeopteris_sapling", () -> new SaplingBlock(new ArchaeopterisTreeGrower(), BlockBehaviour.Properties.of(Material.REPLACEABLE_PLANT).noCollission().instabreak().sound(SoundType.GRASS)));
-    public static final RegistryObject<Block> ARCHAEOPTERIS_SIGN = BLOCK.register("archaeopteris_sign", () -> new TemplateStandingSignBlock(BlockBehaviour.Properties.of(Material.WOOD).strength(1.0F).sound(SoundType.WOOD).noCollission(), ModWoodTypes.ARCHAEOPTERIS));
-    public static final RegistryObject<Block> ARCHAEOPTERIS_WALL_SIGN = BLOCK.register("archaeopteris_wall_sign", () -> new TemplateWallSignBlock(BlockBehaviour.Properties.of(Material.WOOD).strength(1.0F).sound(SoundType.WOOD).noCollission(), ModWoodTypes.ARCHAEOPTERIS));
+    public static final RegistryObject<Block> ARCHAEOPTERIS_SIGN = BLOCK.register("archaeopteris_sign", () -> new TemplateStandingSignBlock(BlockBehaviour.Properties.of(Material.WOOD).strength(1.0F).sound(SoundType.WOOD).noCollission(), RotWoodTypes.ARCHAEOPTERIS));
+    public static final RegistryObject<Block> ARCHAEOPTERIS_WALL_SIGN = BLOCK.register("archaeopteris_wall_sign", () -> new TemplateWallSignBlock(BlockBehaviour.Properties.of(Material.WOOD).strength(1.0F).sound(SoundType.WOOD).noCollission(), RotWoodTypes.ARCHAEOPTERIS));
 
     public static final RegistryObject<Block> SMALL_HORSETAIL = BLOCK.register("small_horsetail", () -> new TallGrassBlock(BlockBehaviour.Properties.of(Material.REPLACEABLE_PLANT).noCollission().instabreak().sound(SoundType.GRASS)));
     public static final RegistryObject<Block> LARGE_HORSETAIL = BLOCK.register("large_horsetail", () -> new DoublePlantBlock(BlockBehaviour.Properties.of(Material.REPLACEABLE_PLANT).noCollission().instabreak().sound(SoundType.GRASS)));
@@ -53,4 +53,5 @@ public class BlockRegistry {
     public static final RegistryObject<Block> CONCAVENATOR_EGG = BLOCK.register("concavenator_egg", () -> new DinosaurEggBlock(EntityRegistry.CONCAVENATOR, BlockBehaviour.Properties.of(Material.EGG, MaterialColor.COLOR_ORANGE).strength(0.5F).sound(SoundType.METAL).randomTicks().noOcclusion()));
     public static final RegistryObject<Block> PROTOCERATOPS_EGG = BLOCK.register("protoceratops_egg", () -> new DinosaurEggBlock(EntityRegistry.PROTOCERATOPS, BlockBehaviour.Properties.of(Material.EGG, MaterialColor.COLOR_ORANGE).strength(0.5F).sound(SoundType.METAL).randomTicks().noOcclusion()));
     public static final RegistryObject<Block> DUNKLEOSTEUS_SKULL = BLOCK.register("dunkleosteus_skull", () -> new BaseFacingBlock(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.COLOR_GRAY).strength(2.0F).sound(SoundType.BONE_BLOCK).requiresCorrectToolForDrops()));
+    public static final RegistryObject<Block> PLATYHYSTRIX_EGGS = BLOCK.register("platyhystrix_eggs", () -> new PlatyhystrixEggBlock(BlockBehaviour.Properties.of(Material.REPLACEABLE_PLANT).instabreak().sound(SoundType.VINE).noCollission()));
 }

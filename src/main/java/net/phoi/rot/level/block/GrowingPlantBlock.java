@@ -41,6 +41,22 @@ public class GrowingPlantBlock extends Block implements SimpleWaterloggedBlock {
     }
 
     @Override
+    public BlockState updateShape(BlockState pState, Direction pDirection, BlockState pNeighborState, LevelAccessor pLevel, BlockPos pCurrentPos, BlockPos pNeighborPos) {
+        if (pLevel.getBlockState(pCurrentPos.above()).isAir()) {
+            pLevel.setBlock(pCurrentPos, this.defaultBlockState(), 2);
+        } else {
+            pLevel.setBlock(pCurrentPos, pState.setValue(TIP, false), 2);
+        }
+        if (!pState.canSurvive(pLevel, pCurrentPos)) {
+            return Blocks.AIR.defaultBlockState();
+        }
+        if (pState.getValue(WATERLOGGED)) {
+            pLevel.scheduleTick(pCurrentPos, Fluids.WATER, Fluids.WATER.getTickDelay(pLevel));
+        }
+        return super.updateShape(pState, pDirection, pNeighborState, pLevel, pCurrentPos, pNeighborPos);
+    }
+
+    @Override
     public void randomTick(BlockState pState, ServerLevel pLevel, BlockPos pPos, RandomSource pRandom) {
         if (pLevel.getBlockState(pPos.above()).isAir()) {
             for (int i = 0; i < this.maxHeight; i++) {
@@ -55,22 +71,6 @@ public class GrowingPlantBlock extends Block implements SimpleWaterloggedBlock {
     @Override
     public boolean canSurvive(BlockState state, LevelReader level, BlockPos pos) {
         return !level.getBlockState(pos.below()).isAir() && level.getBlockState(pos.below()).is(BlockTags.DIRT) || level.getBlockState(pos.below()).is(this);
-    }
-
-    @Override
-    public BlockState updateShape(BlockState state, Direction direction, BlockState facingState, LevelAccessor level, BlockPos pos, BlockPos facingPos) {
-        if (level.getBlockState(pos.above()).isAir()) {
-            level.setBlock(pos, this.defaultBlockState(), 2);
-        } else {
-            level.setBlock(pos, state.setValue(TIP, false), 2);
-        }
-        if (!state.canSurvive(level, pos)) {
-            return Blocks.AIR.defaultBlockState();
-        }
-        if (state.getValue(WATERLOGGED)) {
-            level.scheduleTick(pos, Fluids.WATER, Fluids.WATER.getTickDelay(level));
-        }
-        return super.updateShape(state, direction, facingState, level, pos, facingPos);
     }
 
     @Nullable

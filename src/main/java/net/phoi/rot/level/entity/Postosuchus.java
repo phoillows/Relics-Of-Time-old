@@ -35,6 +35,7 @@ public class Postosuchus extends Dinosaur implements IAnimatable {
 
     public Postosuchus(EntityType<? extends TamableAnimal> entityType, Level level) {
         super(entityType, level);
+        this.setPersistenceRequired();
     }
 
     @Override

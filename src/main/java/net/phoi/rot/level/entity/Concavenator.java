@@ -49,15 +49,15 @@ import software.bernie.geckolib3.core.manager.AnimationFactory;
 import software.bernie.geckolib3.util.GeckoLibUtil;
 
 public class Concavenator extends Dinosaur implements IAnimatable, Saddleable, PlayerRideable {
+    protected static final EntityDataAccessor<Boolean> DATA_LEADER = SynchedEntityData.defineId(Concavenator.class, EntityDataSerializers.BOOLEAN);
+    protected static final EntityDataAccessor<Boolean> DATA_SADDLED = SynchedEntityData.defineId(Concavenator.class, EntityDataSerializers.BOOLEAN);
+    protected static final EntityDataAccessor<Boolean> DATA_CALLING = SynchedEntityData.defineId(Concavenator.class, EntityDataSerializers.BOOLEAN);
+    protected static final EntityDataAccessor<Boolean> DATA_STUNNED = SynchedEntityData.defineId(Concavenator.class, EntityDataSerializers.BOOLEAN);
     public int stunAmount = 0;
     private int callTimer = 40;
     private int callCooldown = 0;
     private int stunnedTimer = 100;
     protected SimpleContainer inventory;
-    protected static final EntityDataAccessor<Boolean> DATA_LEADER = SynchedEntityData.defineId(Concavenator.class, EntityDataSerializers.BOOLEAN);
-    protected static final EntityDataAccessor<Boolean> DATA_SADDLED = SynchedEntityData.defineId(Concavenator.class, EntityDataSerializers.BOOLEAN);
-    protected static final EntityDataAccessor<Boolean> DATA_CALLING = SynchedEntityData.defineId(Concavenator.class, EntityDataSerializers.BOOLEAN);
-    protected static final EntityDataAccessor<Boolean> DATA_STUNNED = SynchedEntityData.defineId(Concavenator.class, EntityDataSerializers.BOOLEAN);
     private final AnimationFactory cache = GeckoLibUtil.createFactory(this);
     protected static final AnimationBuilder IDLE = new AnimationBuilder().loop("idle");
     protected static final AnimationBuilder WALK = new AnimationBuilder().loop("walk");
@@ -71,18 +71,13 @@ public class Concavenator extends Dinosaur implements IAnimatable, Saddleable, P
         super(entityType, level);
         this.maxUpStep = 1.0F;
         this.inventory = new SimpleContainer(16);
+        this.setPersistenceRequired();
     }
 
     @Override
     protected void registerGoals() {
         this.goalSelector.addGoal(0, new FloatGoal(this));
-        this.goalSelector.addGoal(1, new PanicGoal(this, 1.2D) {
-            @Override
-            public boolean canUse() {
-                return isBaby() && super.canUse();
-            }
-        });
-        this.goalSelector.addGoal(1, new ConcavenatorAttackGoal(this));
+        this.goalSelector.addGoal(1, new ConcavenatorAttackGoal(this, this.isBaby() ? 1.2D : 1.9D));
         this.goalSelector.addGoal(2, new DinosaurSleepGoal(this) {
             @Override
             public boolean canUse() {
@@ -90,7 +85,7 @@ public class Concavenator extends Dinosaur implements IAnimatable, Saddleable, P
             }
         });
         this.goalSelector.addGoal(3, new FollowParentGoal(this, 1.2D));
-        this.goalSelector.addGoal(4, new RandomStrollGoal(this, 1.1D));
+        this.goalSelector.addGoal(4, new WaterAvoidingRandomStrollGoal(this, 1.1D));
         this.goalSelector.addGoal(5, new DinosaurLookAtPlayerGoal(this) {
             @Override
             public boolean canUse() {
@@ -290,6 +285,12 @@ public class Concavenator extends Dinosaur implements IAnimatable, Saddleable, P
     }
 
     @Override
+    public void aiStep() {
+        this.updateSwingTime();
+        super.aiStep();
+    }
+
+    @Override
     public SpawnGroupData finalizeSpawn(ServerLevelAccessor level, DifficultyInstance difficulty, MobSpawnType spawnType, @Nullable SpawnGroupData groupData, @Nullable CompoundTag nbt) {
         boolean foundLeader = false;
         for (Concavenator concav : level.getEntitiesOfClass(Concavenator.class, this.getBoundingBox().inflate(24))) {
@@ -304,7 +305,6 @@ public class Concavenator extends Dinosaur implements IAnimatable, Saddleable, P
                 }
             }
         }
-
         this.entityData.set(DATA_LEADER, !foundLeader);
         if (this.isLeader()) {
             RelicsOfTime.LOGGER.info("Current concavenator has been chosen as leader");

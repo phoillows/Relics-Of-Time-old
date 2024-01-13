@@ -15,8 +15,6 @@ public class ModLanguageProvider extends LanguageProvider {
 
     @Override
     protected void addTranslations() {
-        add("itemGroup.relics_of_time", "Relics of Time");
-
         // Blocks
         addBlock(BlockRegistry.DNA_ANALYZER, "DNA Analyzer");
         addBlock(BlockRegistry.DNA_CENTRIFUGE, "DNA Centrifuge");
@@ -50,6 +48,7 @@ public class ModLanguageProvider extends LanguageProvider {
         addBlock(BlockRegistry.SPHENOPTERIS, "Sphenopteris");
         addBlock(BlockRegistry.COOKSONIA, "Cooksonia");
         addBlock(BlockRegistry.SAGENOPTERIS, "Sagenopteris");
+        addBlock(BlockRegistry.PLATYHYSTRIX_EGGS, "Platyhystrix Eggs");
 
         // Items
         add("item.rot.dna_bottle", "DNA Bottle");
@@ -61,6 +60,7 @@ public class ModLanguageProvider extends LanguageProvider {
         addItem(ItemRegistry.ARCHAEOPTERIS_CLUB, "Archaeopteris Club");
         addItem(ItemRegistry.ARCHAEOPTERIS_BOAT, "Archaeopteris Boat");
         addItem(ItemRegistry.ARCHAEOPTERIS_CHEST_BOAT, "Archaeopteris Boat with Chest");
+        addItem(ItemRegistry.BABY_PLATYHYSTRIX_BUCKET, "Bucket of Baby Platyhystrix");
         addItem(ItemRegistry.CONCAVENATOR_SPAWN_EGG, "Concavenator Spawn Egg");
         addItem(ItemRegistry.FURCACAUDA_SPAWN_EGG, "Furcacauda Spawn Egg");
         addItem(ItemRegistry.PLATYHYSTRIX_SPAWN_EGG, "Platyhystrix Spawn Egg");
@@ -84,6 +84,10 @@ public class ModLanguageProvider extends LanguageProvider {
         // GUI
         // ...
 
+        // Creative tabs
+        add("itemGroup.default", "Relics of Time");
+        add("itemGroup.spawn_eggs", "Relics of Time Spawns");
+
         // Subtitles
         add("subtitles.entity.concavenator.ambient", "Concavenator roars");
         add("subtitles.entity.concavenator.hurt", "Concavenator hurts");
@@ -92,5 +96,7 @@ public class ModLanguageProvider extends LanguageProvider {
         add("subtitles.entity.protoceratops.ambient", "Protoceratops screeches");
         add("subtitles.entity.protoceratops.hurt", "Protoceratops hurts");
         add("subtitles.entity.protoceratops.death", "Protoceratops dies");
+        add("subtitles.entity.platyhystrix.ambient", "Platyhystrix crickets?");
+        add("subtitles.entity.platyhystrix.hurt", "Platyhystrix hurts");
     }
 }

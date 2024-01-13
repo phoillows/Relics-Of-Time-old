@@ -50,18 +50,18 @@ public class DinosaurEggBlock extends Block {
     }
 
     @Override
-    public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult blockHitResult) {
-        ItemStack stack = player.getItemInHand(hand);
-        if (stack.is(this.asItem()) && state.getValue(EGGS) < 3) {
-            level.setBlock(pos, state.setValue(EGGS, state.getValue(EGGS) + 1), 2);
-            level.playSound(player, pos, SoundEvents.METAL_PLACE, SoundSource.BLOCKS, 1.0F, 1.0F);
-            player.swing(hand);
-            if (!player.isCreative()) {
+    public InteractionResult use(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHit) {
+        ItemStack stack = pPlayer.getItemInHand(pHand);
+        if (stack.is(this.asItem()) && pState.getValue(EGGS) < 3 && !this.isCracked(pState)) {
+            pLevel.setBlock(pPos, pState.setValue(EGGS, pState.getValue(EGGS) + 1), 2);
+            pLevel.playSound(pPlayer, pPos, SoundEvents.METAL_PLACE, SoundSource.BLOCKS, 1.0F, 1.0F);
+            pPlayer.swing(pHand);
+            if (!pPlayer.isCreative()) {
                 stack.shrink(1);
             }
-            return InteractionResult.sidedSuccess(level.isClientSide);
+            return InteractionResult.sidedSuccess(pLevel.isClientSide);
         }
-        return super.use(state, level, pos, player, hand, blockHitResult);
+        return super.use(pState, pLevel, pPos, pPlayer, pHand, pHit);
     }
 
     @Override
@@ -88,6 +88,10 @@ public class DinosaurEggBlock extends Block {
             }
             level.playSound(null, pos, SoundEvents.TURTLE_EGG_BREAK, SoundSource.BLOCKS, 1.0F, 1.0F);
         }
+    }
+
+    public boolean isCracked(BlockState state) {
+        return state.getValue(CRACKED) > 0;
     }
 
     @Override

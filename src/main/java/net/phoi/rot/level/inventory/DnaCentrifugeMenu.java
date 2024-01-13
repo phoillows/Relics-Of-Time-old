@@ -16,7 +16,7 @@ import net.phoi.rot.registry.BlockRegistry;
 import net.phoi.rot.registry.MenuTypesRegistry;
 import org.jetbrains.annotations.NotNull;
 
-public class DnaCentrifugeMenu extends BaseMenu {
+public class DnaCentrifugeMenu extends BaseContainerMenu {
     public final DnaCentrifugeBlockEntity blockEntity;
     public final Level level;
 

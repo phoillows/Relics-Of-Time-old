@@ -7,8 +7,8 @@ import net.phoi.rot.level.entity.Concavenator;
 public class ConcavenatorAttackGoal extends MeleeAttackGoal {
     private final Concavenator mob;
 
-    public ConcavenatorAttackGoal(Concavenator mob) {
-        super(mob, mob.isBaby() ? 1.6D : 1.9D, true);
+    public ConcavenatorAttackGoal(Concavenator mob, double speedModifier) {
+        super(mob, speedModifier, true);
         this.mob = mob;
     }
 

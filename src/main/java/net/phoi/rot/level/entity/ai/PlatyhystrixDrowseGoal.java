@@ -4,7 +4,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.ai.goal.Goal;
 import net.phoi.rot.level.entity.Platyhystrix;
-import net.phoi.rot.level.tag.ModBiomeTags;
+import net.phoi.rot.level.tag.RotBiomeTags;
 
 public class PlatyhystrixDrowseGoal extends Goal {
     private final Platyhystrix mob;
@@ -16,12 +16,12 @@ public class PlatyhystrixDrowseGoal extends Goal {
 
     @Override
     public boolean canUse() {
-        return !this.mob.isInWater() && this.mob.level.getBiome(new BlockPos(this.mob.getX(), this.mob.getY(), this.mob.getZ())).is(ModBiomeTags.ALLOWS_PLATY_TO_DROWSE);
+        return !this.mob.isInWater() && this.mob.level.getBiome(new BlockPos(this.mob.getX(), this.mob.getY(), this.mob.getZ())).is(RotBiomeTags.ALLOWS_PLATY_TO_DROWSE) && !this.mob.isBaby();
     }
 
     @Override
     public boolean canContinueToUse() {
-        return !this.mob.isInWater() && this.mob.level.getBiome(new BlockPos(this.mob.getX(), this.mob.getY(), this.mob.getZ())).is(ModBiomeTags.ALLOWS_PLATY_TO_DROWSE);
+        return !this.mob.isInWater() && this.mob.level.getBiome(new BlockPos(this.mob.getX(), this.mob.getY(), this.mob.getZ())).is(RotBiomeTags.ALLOWS_PLATY_TO_DROWSE);
     }
 
     @Override

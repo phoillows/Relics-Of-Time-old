@@ -2,14 +2,12 @@ package net.phoi.rot;
 
 import com.mojang.logging.LogUtils;
 import net.minecraft.client.renderer.Sheets;
-import net.minecraft.world.item.CreativeModeTab;
-import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
-import net.phoi.rot.util.ModWoodTypes;
+import net.phoi.rot.util.RotWoodTypes;
 import net.phoi.rot.registry.*;
 import org.slf4j.Logger;
 
@@ -18,12 +16,6 @@ import org.slf4j.Logger;
 public class RelicsOfTime {
     public static final String MODID = "rot";
     public static final Logger LOGGER = LogUtils.getLogger();
-    public static final CreativeModeTab RELICS_OF_TIME = new CreativeModeTab("relics_of_time") {
-        @Override
-        public ItemStack makeIcon() {
-            return new ItemStack(ItemRegistry.AMBER.get());
-        }
-    };
 
     public RelicsOfTime() {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
@@ -36,6 +28,7 @@ public class RelicsOfTime {
         MenuTypesRegistry.MENU.register(modEventBus);
         MobEffectRegistry.MOB_EFFECT.register(modEventBus);
         PaintingRegistry.PAINTING.register(modEventBus);
+        PlacedFeatureRegistry.PLACED_FEATURE.register(modEventBus);
 
         // Register the commonSetup method for modloading
         modEventBus.addListener(this::commonSetup);
@@ -46,7 +39,7 @@ public class RelicsOfTime {
 
     private void commonSetup(final FMLCommonSetupEvent event) {
         event.enqueueWork(() -> {
-            Sheets.addWoodType(ModWoodTypes.ARCHAEOPTERIS);
+            Sheets.addWoodType(RotWoodTypes.ARCHAEOPTERIS);
         });
     }
 }
