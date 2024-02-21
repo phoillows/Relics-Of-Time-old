@@ -1,6 +1,9 @@
 # Relics of Time!
 A 1.19.2 mod for Forge that allows you to revive prehistoric animals and plants using machinery. Each animal has their own use and purpose. We aim to add a plethora of building blocks for you to use in your prehistoric parks.
 
+# !!!
+*THIS IS AN OUTDATED REPOSITORY OF RELICS OF TIME, THE NEW REPOSITORY IS [HERE](https://github.com/phoillows/Relics-of-Time)*
+
 <br>
 <details>
 <summary>Socials</summary>
